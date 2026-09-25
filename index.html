@@ -25,8 +25,8 @@ content="Impacto Pro Vendas: toalhas de confecção própria desenvolvidas para 
 
 /* =========================================================
    IMPACTO PRO VENDAS
-   ETAPA 1 — SITE COMERCIAL
-   HTML + CSS + JAVASCRIPT
+   ETAPA 1
+   SITE COMPLETO
 ========================================================= */
 
 :root{
@@ -50,6 +50,8 @@ content="Impacto Pro Vendas: toalhas de confecção própria desenvolvidas para 
     --pink:#ff2d94;
 
     --pink-light:#ff79bd;
+
+    --pink-soft:#ffc8e2;
 
     --white:#ffffff;
 
@@ -341,7 +343,7 @@ header{
 
     align-items:center;
 
-    gap:24px;
+    gap:21px;
 
 }
 
@@ -1581,6 +1583,240 @@ header{
 
 
 /* =========================================================
+   KITS
+========================================================= */
+
+.kit-section{
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fdff,
+            #e7f7ff,
+            #f8fdff
+        );
+
+}
+
+.kit-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+
+    margin-top:42px;
+
+}
+
+.kit-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:26px;
+
+    min-height:310px;
+
+    border-radius:28px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:#fff;
+
+    box-shadow:
+        0 22px 55px
+        rgba(41,96,120,.12);
+
+}
+
+.kit-card:after{
+
+    content:"";
+
+    position:absolute;
+
+    width:200px;
+
+    height:200px;
+
+    right:-70px;
+
+    top:-80px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,45,148,.12);
+
+    filter:blur(15px);
+
+}
+
+.kit-badge{
+
+    display:inline-flex;
+
+    padding:
+        7px 10px;
+
+    border-radius:999px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--black),
+            var(--pink)
+        );
+
+    font-size:9px;
+
+    font-weight:950;
+
+    letter-spacing:1px;
+
+}
+
+.kit-number{
+
+    margin-top:28px;
+
+    color:var(--black);
+
+    font-size:47px;
+
+    font-weight:1000;
+
+    line-height:.9;
+
+    letter-spacing:-2px;
+
+}
+
+.kit-number span{
+
+    display:block;
+
+    margin-top:7px;
+
+    color:var(--pink);
+
+    font-size:17px;
+
+    letter-spacing:0;
+
+}
+
+.kit-card h3{
+
+    margin:
+        22px 0 8px;
+
+    font-size:21px;
+
+}
+
+.kit-card p{
+
+    margin:0;
+
+    color:#69798a;
+
+    font-size:12px;
+
+    line-height:1.65;
+
+}
+
+.kit-footer{
+
+    position:absolute;
+
+    left:26px;
+
+    right:26px;
+
+    bottom:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+}
+
+.kit-price{
+
+    color:#59697a;
+
+    font-size:13px;
+
+    font-weight:950;
+
+}
+
+.custom-kit-box{
+
+    margin-top:28px;
+
+    padding:30px;
+
+    border-radius:28px;
+
+    color:#fff;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr auto;
+
+    gap:30px;
+
+    align-items:center;
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--black),
+            #2d3139 55%,
+            #571b3e
+        );
+
+}
+
+.custom-kit-box h3{
+
+    margin:
+        0 0 8px;
+
+    font-size:28px;
+
+}
+
+.custom-kit-box p{
+
+    margin:0;
+
+    max-width:720px;
+
+    color:#cbd4dd;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================================================
    ALTA RESISTÊNCIA
 ========================================================= */
 
@@ -1710,12 +1946,12 @@ header{
 
 
 /* =========================================================
-   VISUAL DA RESISTÊNCIA
+   CÍRCULOS COM TEXTURA DE TOALHA ROSA
 ========================================================= */
 
 .resistance-visual{
 
-    min-height:485px;
+    min-height:510px;
 
     display:grid;
 
@@ -1725,48 +1961,120 @@ header{
 
 }
 
-.resistance-ring{
+.towel-ring{
 
     position:absolute;
 
     border-radius:50%;
 
-    border:
-        1px solid
-        rgba(17,19,24,.12);
-
     animation:
         rotateRing 18s
         linear infinite;
 
+    box-shadow:
+
+        0 0 0 1px
+        rgba(255,255,255,.35),
+
+        0 20px 45px
+        rgba(255,45,148,.14),
+
+        inset 0 2px 5px
+        rgba(255,255,255,.48),
+
+        inset 0 -5px 9px
+        rgba(120,0,55,.18);
+
+    background:
+
+        repeating-radial-gradient(
+            circle at center,
+            rgba(255,255,255,.18) 0px,
+            rgba(255,255,255,.18) 1px,
+            rgba(255,45,148,.16) 2px,
+            rgba(255,45,148,.16) 4px
+        ),
+
+        repeating-linear-gradient(
+            45deg,
+            #ff69b2 0px,
+            #ff69b2 4px,
+            #f94a9f 5px,
+            #ff82c2 7px,
+            #ff5dab 9px
+        );
+
+    border:
+        12px solid
+        #ff5eaa;
+
 }
 
-.resistance-ring.r1{
+.towel-ring:before{
 
-    width:390px;
+    content:"";
 
-    height:390px;
+    position:absolute;
+
+    inset:-7px;
+
+    border-radius:50%;
+
+    border:
+        2px dashed
+        rgba(255,255,255,.55);
+
+    opacity:.75;
 
 }
 
-.resistance-ring.r2{
+.towel-ring:after{
 
-    width:305px;
+    content:"";
 
-    height:305px;
+    position:absolute;
 
-    border-color:
-        rgba(255,45,148,.22);
+    inset:7px;
+
+    border-radius:50%;
+
+    border:
+        2px dotted
+        rgba(120,0,55,.22);
+
+}
+
+.towel-ring.r1{
+
+    width:410px;
+
+    height:410px;
+
+    border-width:14px;
+
+}
+
+.towel-ring.r2{
+
+    width:315px;
+
+    height:315px;
+
+    border-width:11px;
 
     animation-direction:
         reverse;
+
+    animation-duration:
+        13s;
 
 }
 
 @keyframes rotateRing{
 
     to{
-        transform:rotate(360deg);
+        transform:
+            rotate(360deg);
     }
 
 }
@@ -1809,6 +2117,10 @@ header{
 
     line-height:.91;
 
+    position:relative;
+
+    z-index:3;
+
 }
 
 .resistance-core b{
@@ -1846,7 +2158,7 @@ header{
         var(--line);
 
     background:
-        rgba(255,255,255,.90);
+        rgba(255,255,255,.93);
 
     box-shadow:
         0 15px 35px
@@ -1855,6 +2167,8 @@ header{
     font-size:9px;
 
     font-weight:950;
+
+    z-index:5;
 
 }
 
@@ -2113,29 +2427,6 @@ header{
         rgba(255,45,148,.28);
 
     filter:blur(60px);
-
-}
-
-.final-cta:after{
-
-    content:"";
-
-    position:absolute;
-
-    width:250px;
-
-    height:250px;
-
-    left:-100px;
-
-    bottom:-120px;
-
-    border-radius:50%;
-
-    background:
-        rgba(148,221,255,.18);
-
-    filter:blur(55px);
 
 }
 
@@ -2445,7 +2736,7 @@ footer{
 
 
 /* =========================================================
-   ANIMAÇÃO DE ENTRADA
+   ANIMAÇÃO
 ========================================================= */
 
 .reveal{
@@ -2488,7 +2779,8 @@ footer{
     .split-heading,
     .resistance-grid,
     .wholesale-card,
-    .final-content{
+    .final-content,
+    .custom-kit-box{
         grid-template-columns:1fr;
     }
 
@@ -2520,7 +2812,8 @@ footer{
 
     }
 
-    .product-grid{
+    .product-grid,
+    .kit-grid{
         grid-template-columns:
             repeat(2,1fr);
     }
@@ -2766,6 +3059,7 @@ footer{
 
     .bento-grid,
     .product-grid,
+    .kit-grid,
     .audience-grid{
 
         grid-template-columns:1fr;
@@ -2780,6 +3074,10 @@ footer{
         height:250px;
     }
 
+    .kit-card{
+        min-height:300px;
+    }
+
     .resistance-panel{
         padding:22px;
     }
@@ -2788,19 +3086,23 @@ footer{
         min-height:450px;
     }
 
-    .resistance-ring.r1{
+    .towel-ring.r1{
 
-        width:330px;
+        width:335px;
 
-        height:330px;
+        height:335px;
+
+        border-width:12px;
 
     }
 
-    .resistance-ring.r2{
+    .towel-ring.r2{
 
         width:255px;
 
         height:255px;
+
+        border-width:9px;
 
     }
 
@@ -2920,6 +3222,10 @@ Diferenciais
 Produtos
 </a>
 
+<a href="#kits">
+KITs
+</a>
+
 <a href="#resistencia">
 Alta resistência
 </a>
@@ -3018,6 +3324,15 @@ Comprar toalhas
 
 
 <a
+href="#kits"
+onclick="toggleMobileMenu()">
+
+KITs
+
+</a>
+
+
+<a
 href="#resistencia"
 onclick="toggleMobileMenu()">
 
@@ -3077,8 +3392,6 @@ id="inicio">
 
 <div class="container hero-grid">
 
-
-<!-- TEXTO HERO -->
 
 <div class="reveal">
 
@@ -3327,7 +3640,7 @@ Ajuda a preservar a aparência
 
 
 <!-- =========================================================
-     FAIXA DE DESTAQUES
+     TICKER
 ========================================================= -->
 
 <section class="ticker">
@@ -3367,7 +3680,19 @@ MAIOR VIDA ÚTIL
 <b>✦</b>
 
 <span>
-VENDA UNITÁRIA
+KIT 20
+</span>
+
+<b>✦</b>
+
+<span>
+KIT 50
+</span>
+
+<b>✦</b>
+
+<span>
+KIT 100
 </span>
 
 <b>✦</b>
@@ -3650,7 +3975,7 @@ id="produtos">
 
 <span class="section-code">
 
-02 • COMPRE IMPACTO PRO
+02 • PRODUTOS
 
 </span>
 
@@ -3681,9 +4006,8 @@ tanto pelo computador quanto pelo celular.
 A linha inicial possui opções em azul,
 rosa e preto,
 com estrutura preparada para novos modelos,
-kits,
 quantidades
-e vendas em atacado.
+e futuras integrações.
 
 </p>
 
@@ -3694,6 +4018,302 @@ e vendas em atacado.
 <div
 class="product-grid reveal"
 id="productGrid">
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<!-- =========================================================
+     KITS
+========================================================= -->
+
+<section
+class="section kit-section"
+id="kits">
+
+
+<div class="container">
+
+
+<span class="section-code">
+
+03 • KITS IMPACTO PRO
+
+</span>
+
+
+<h2 class="section-title">
+
+Escolha o volume ideal
+
+<br>
+
+<span class="gradient-text">
+
+para sua operação.
+
+</span>
+
+</h2>
+
+
+<p class="section-description">
+
+A Impacto Pro terá opções de kits prontos
+para diferentes níveis de utilização.
+
+Os valores serão definidos na Etapa 2,
+junto com o desenvolvimento do sistema administrativo.
+
+</p>
+
+
+<div class="kit-grid reveal">
+
+
+<!-- KIT 20 -->
+
+<article class="kit-card">
+
+
+<span class="kit-badge">
+
+KIT IMPACTO PRO
+
+</span>
+
+
+<div class="kit-number">
+
+20
+
+<span>
+
+TOALHAS
+
+</span>
+
+</div>
+
+
+<h3>
+
+KIT 20 TOALHAS
+
+</h3>
+
+
+<p>
+
+Ideal para operações menores,
+equipes enxutas
+ou primeiros pedidos em volume.
+
+</p>
+
+
+<div class="kit-footer">
+
+
+<span class="kit-price">
+
+Valor a definir
+
+</span>
+
+
+<button
+class="btn btn-primary"
+onclick="kitInterest('KIT 20 TOALHAS')">
+
+Tenho interesse
+
+</button>
+
+
+</div>
+
+
+</article>
+
+
+<!-- KIT 50 -->
+
+<article class="kit-card">
+
+
+<span class="kit-badge">
+
+KIT IMPACTO PRO
+
+</span>
+
+
+<div class="kit-number">
+
+50
+
+<span>
+
+TOALHAS
+
+</span>
+
+</div>
+
+
+<h3>
+
+KIT 50 TOALHAS
+
+</h3>
+
+
+<p>
+
+Opção intermediária
+para salões
+e operações com utilização frequente.
+
+</p>
+
+
+<div class="kit-footer">
+
+
+<span class="kit-price">
+
+Valor a definir
+
+</span>
+
+
+<button
+class="btn btn-primary"
+onclick="kitInterest('KIT 50 TOALHAS')">
+
+Tenho interesse
+
+</button>
+
+
+</div>
+
+
+</article>
+
+
+<!-- KIT 100 -->
+
+<article class="kit-card">
+
+
+<span class="kit-badge">
+
+KIT IMPACTO PRO
+
+</span>
+
+
+<div class="kit-number">
+
+100
+
+<span>
+
+TOALHAS
+
+</span>
+
+</div>
+
+
+<h3>
+
+KIT 100 TOALHAS
+
+</h3>
+
+
+<p>
+
+Desenvolvido para operações de alta rotatividade,
+redes
+e compras em maior volume.
+
+</p>
+
+
+<div class="kit-footer">
+
+
+<span class="kit-price">
+
+Valor a definir
+
+</span>
+
+
+<button
+class="btn btn-primary"
+onclick="kitInterest('KIT 100 TOALHAS')">
+
+Tenho interesse
+
+</button>
+
+
+</div>
+
+
+</article>
+
+
+</div>
+
+
+<!-- OUTRAS OPÇÕES -->
+
+<div class="custom-kit-box reveal">
+
+
+<div>
+
+
+<h3>
+
+Precisa de outra quantidade?
+
+</h3>
+
+
+<p>
+
+Também poderemos trabalhar com outras opções de KITs
+e composições personalizadas.
+
+Entre em contato com a equipe da Impacto Pro
+para consultar outras quantidades.
+
+</p>
+
+
+</div>
+
+
+<button
+class="btn btn-pink btn-lg"
+onclick="openWhatsApp()">
+
+Consultar pelo WhatsApp →
+
+</button>
+
 
 </div>
 
@@ -3721,7 +4341,7 @@ id="resistencia">
 
 <span class="section-code">
 
-03 • ALTA RESISTÊNCIA
+04 • ALTA RESISTÊNCIA
 
 </span>
 
@@ -3893,14 +4513,14 @@ antes da necessidade de substituição.
 </div>
 
 
-<!-- VISUAL -->
+<!-- CÍRCULOS DE TOALHA -->
 
 <div class="resistance-visual reveal">
 
 
-<div class="resistance-ring r1"></div>
+<div class="towel-ring r1"></div>
 
-<div class="resistance-ring r2"></div>
+<div class="towel-ring r2"></div>
 
 
 <div class="resistance-core">
@@ -3983,7 +4603,7 @@ id="publico">
 
 <span class="section-code">
 
-04 • FEITA PARA QUEM USA MUITO
+05 • FEITA PARA QUEM USA MUITO
 
 </span>
 
@@ -4153,7 +4773,7 @@ id="atacado">
 
 <span class="section-code">
 
-05 • IMPACTO PRO ATACADO
+06 • IMPACTO PRO ATACADO
 
 </span>
 
@@ -4247,7 +4867,7 @@ id="contato">
 
 <span class="section-code">
 
-06 • IMPACTO PRO VENDAS
+07 • IMPACTO PRO VENDAS
 
 </span>
 
@@ -4269,6 +4889,7 @@ aguentar sua rotina?
 
 Fale com a Impacto Pro Vendas
 para pedidos,
+KITs,
 atacado,
 revenda
 e informações sobre a linha profissional.
@@ -4466,11 +5087,16 @@ Continuar pedido →
 
 <p class="cart-note">
 
-Nesta Etapa 1 o carrinho funciona como demonstração local.
+O carrinho da Etapa 1 já permite adicionar produtos,
+alterar quantidades,
+remover itens
+e calcular o total.
+
 Pagamento,
-estoque em tempo real
+estoque centralizado,
+pedidos reais
 e integração com o sistema administrativo
-serão implementados nas etapas posteriores.
+serão implementados posteriormente.
 
 </p>
 
@@ -4482,12 +5108,6 @@ serão implementados nas etapas posteriores.
 
 
 <script>
-
-/* =========================================================
-   IMPACTO PRO
-   ETAPA 1
-========================================================= */
-
 
 /* =========================================================
    PRODUTOS DE DEMONSTRAÇÃO
@@ -5129,7 +5749,7 @@ function renderCart(){
 
 
 /* =========================================================
-   CHECKOUT DEMONSTRATIVO
+   CHECKOUT
 ========================================================= */
 
 function checkout(){
@@ -5149,55 +5769,26 @@ function checkout(){
 
     }
 
-    const products =
-        getProducts();
-
-    let message =
-        "Olá! Tenho interesse nestes produtos da Impacto Pro:%0A%0A";
-
-    let total = 0;
-
-    cart.forEach(
-        item => {
-
-            const product =
-                products.find(
-                    product =>
-                        product.id ===
-                        item.id
-                );
-
-            if(!product){
-                return;
-            }
-
-            const subtotal =
-                product.price *
-                item.qty;
-
-            total += subtotal;
-
-            message +=
-                "• " +
-                product.name +
-                " - Qtd: " +
-                item.qty +
-                " - " +
-                money(subtotal) +
-                "%0A";
-
-        }
+    alert(
+        "O carrinho da Etapa 1 está funcionando. A finalização real do pedido será integrada posteriormente com WhatsApp, pagamento e sistema administrativo."
     );
 
-    message +=
-        "%0AValor demonstrativo: " +
-        money(total);
+}
 
-    message +=
-        "%0A%0AGostaria de finalizar meu pedido.";
+
+/* =========================================================
+   KIT
+========================================================= */
+
+function kitInterest(
+    kitName
+){
 
     alert(
-        "Carrinho funcionando! Na Etapa 1 o pedido ainda é demonstrativo. Quando definirmos o WhatsApp oficial ou a integração de pagamento, este botão enviará o pedido automaticamente."
+        kitName +
+        " selecionado. " +
+        "O valor será definido na Etapa 2. " +
+        "Para informações comerciais, entre em contato pelo WhatsApp."
     );
 
 }
@@ -5210,7 +5801,7 @@ function checkout(){
 function openWhatsApp(){
 
     alert(
-        "Insira o número oficial da Impacto Pro na próxima atualização para que este botão abra o WhatsApp automaticamente."
+        "Na próxima atualização basta inserir o número oficial da Impacto Pro para este botão abrir o WhatsApp automaticamente."
     );
 
 }
@@ -5223,7 +5814,7 @@ function openWhatsApp(){
 function requestWholesale(){
 
     alert(
-        "O botão de atacado está preparado. Na próxima atualização podemos adicionar formulário ou envio direto ao WhatsApp comercial."
+        "O botão de atacado está preparado. Poderemos conectá-lo ao WhatsApp ou formulário comercial posteriormente."
     );
 
 }
@@ -5280,7 +5871,7 @@ document
 
 
 /* =========================================================
-   ANIMAÇÕES DE SCROLL
+   ANIMAÇÕES
 ========================================================= */
 
 const revealObserver =
