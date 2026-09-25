@@ -3,32 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#05070d">
+<meta name="theme-color" content="#dff4ff">
+
 <title>Impacto Pro Vendas | Toalhas Profissionais de Alta Resistência</title>
+
 <meta name="description" content="Impacto Pro Vendas: toalhas de confecção própria para alta utilização profissional. Resistência direcionada ao contato com pó descolorante, ajudando a reduzir manchas e aumentar a vida útil.">
 
 <style>
 
+/* =====================================================
+   IMPACTO PRO
+   AZUL CLARO + PRETO + ROSA
+===================================================== */
+
 :root{
-  --bg:#05070d;
-  --bg2:#080d16;
-  --card:#0b111c;
-  --line:rgba(255,255,255,.09);
+  --bg:#eaf8ff;
+  --bg2:#d9f1ff;
+  --card:#ffffff;
+  --card2:#f5fbff;
 
-  --text:#f6f9ff;
-  --muted:#8b9ab0;
+  --black:#111318;
+  --black2:#20242d;
 
-  --blue:#00b8ff;
-  --blue2:#1269ff;
+  --text:#111318;
+  --muted:#687587;
+
+  --blue:#bfeaff;
+  --blue2:#8fd6ff;
 
   --pink:#ff2d94;
   --pink2:#ff77c0;
 
-  --green:#32ddb4;
+  --green:#22a97a;
+
+  --line:rgba(17,19,24,.12);
 
   --shadow:
-      0 30px 80px
-      rgba(0,0,0,.45);
+      0 24px 65px
+      rgba(20,80,110,.14);
 }
 
 *{
@@ -43,10 +55,14 @@ body{
   margin:0;
 
   background:
-      var(--bg);
+      linear-gradient(
+          180deg,
+          #effaff,
+          #dff5ff 45%,
+          #eefaff
+      );
 
-  color:
-      var(--text);
+  color:var(--text);
 
   font-family:
       Inter,
@@ -70,21 +86,17 @@ button{
 }
 
 .container{
-  width:min(
-      1220px,
-      92%
-  );
-
+  width:min(1220px,92%);
   margin:auto;
 }
 
 .hidden{
-  display:none !important;
+  display:none!important;
 }
 
 
 /* =====================================================
-BACKGROUND
+   BACKGROUND
 ===================================================== */
 
 body:before{
@@ -100,17 +112,17 @@ body:before{
 
       radial-gradient(
           circle at 10% 3%,
-          rgba(0,184,255,.11),
-          transparent 26%
+          rgba(143,214,255,.55),
+          transparent 28%
       ),
 
       radial-gradient(
           circle at 92% 10%,
-          rgba(255,45,148,.09),
-          transparent 28%
+          rgba(255,45,148,.13),
+          transparent 30%
       ),
 
-      #05070d;
+      #eaf8ff;
 }
 
 .grid-bg{
@@ -120,20 +132,20 @@ body:before{
 
   z-index:-2;
 
-  opacity:.32;
+  opacity:.45;
 
   pointer-events:none;
 
   background-image:
 
       linear-gradient(
-          rgba(255,255,255,.025) 1px,
+          rgba(17,19,24,.035) 1px,
           transparent 1px
       ),
 
       linear-gradient(
           90deg,
-          rgba(255,255,255,.025) 1px,
+          rgba(17,19,24,.035) 1px,
           transparent 1px
       );
 
@@ -149,7 +161,7 @@ body:before{
 
 
 /* =====================================================
-HEADER
+   HEADER
 ===================================================== */
 
 header{
@@ -160,14 +172,13 @@ header{
   z-index:80;
 
   background:
-      rgba(5,7,13,.76);
+      rgba(239,250,255,.88);
 
   backdrop-filter:
       blur(22px);
 
   border-bottom:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 }
 
 .nav{
@@ -177,8 +188,7 @@ header{
 
   align-items:center;
 
-  justify-content:
-      space-between;
+  justify-content:space-between;
 
   gap:22px;
 }
@@ -200,7 +210,7 @@ header{
 }
 
 .logo .impacto{
-  color:var(--blue);
+  color:var(--black);
 
   font-size:24px;
 }
@@ -220,7 +230,7 @@ header{
 
   font-size:7px;
 
-  color:#68788f;
+  color:#667786;
 
   letter-spacing:2px;
 
@@ -238,7 +248,7 @@ header{
 .navlinks a{
   font-size:13px;
 
-  color:#c7d1df;
+  color:#26313f;
 
   font-weight:800;
 
@@ -256,12 +266,12 @@ header{
 
   width:0;
 
-  height:1px;
+  height:2px;
 
   background:
       linear-gradient(
           90deg,
-          var(--blue),
+          var(--black),
           var(--pink)
       );
 
@@ -282,7 +292,7 @@ header{
 
 
 /* =====================================================
-BUTTONS
+   BUTTONS
 ===================================================== */
 
 .btn{
@@ -318,29 +328,29 @@ BUTTONS
   background:
       linear-gradient(
           110deg,
-          var(--blue2),
-          var(--blue) 44%,
+          #15171c,
+          #242832 45%,
           var(--pink)
       );
 
   box-shadow:
 
       0 12px 34px
-      rgba(0,130,255,.18),
+      rgba(17,19,24,.18),
 
-      0 0 28px
-      rgba(255,45,148,.10);
+      0 0 25px
+      rgba(255,45,148,.12);
 }
 
 .btn-ghost{
-  color:#fff;
+  color:var(--black);
 
   background:
-      rgba(255,255,255,.035);
+      rgba(255,255,255,.72);
 
   border:
       1px solid
-      rgba(255,255,255,.12);
+      rgba(17,19,24,.13);
 }
 
 .btn-lg{
@@ -362,7 +372,7 @@ BUTTONS
 
 
 /* =====================================================
-MOBILE MENU
+   MOBILE MENU
 ===================================================== */
 
 .mobile-menu{
@@ -375,7 +385,7 @@ MOBILE MENU
   z-index:120;
 
   background:
-      rgba(4,7,12,.98);
+      rgba(232,248,255,.98);
 
   backdrop-filter:
       blur(24px);
@@ -396,18 +406,19 @@ MOBILE MENU
       17px 0;
 
   border-bottom:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   font-size:20px;
 
   font-weight:900;
+
+  color:var(--black);
 }
 
 .mobile-menu .internal{
   font-size:13px;
 
-  color:#77879d;
+  color:#667786;
 
   border:0;
 
@@ -428,20 +439,19 @@ MOBILE MENU
   border-radius:13px;
 
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   background:
-      rgba(255,255,255,.04);
+      rgba(255,255,255,.75);
 
-  color:#fff;
+  color:var(--black);
 
   font-size:27px;
 }
 
 
 /* =====================================================
-HERO
+   HERO
 ===================================================== */
 
 .hero{
@@ -478,7 +488,7 @@ HERO
 
   gap:10px;
 
-  color:#aab8cb;
+  color:#495867;
 
   font-size:11px;
 
@@ -492,12 +502,12 @@ HERO
 
   width:26px;
 
-  height:1px;
+  height:2px;
 
   background:
       linear-gradient(
           90deg,
-          var(--blue),
+          var(--black),
           var(--pink)
       );
 }
@@ -516,16 +526,18 @@ HERO
 
   margin:
       18px 0 24px;
+
+  color:var(--black);
 }
 
 .gradient{
   background:
       linear-gradient(
           90deg,
-          #21c8ff,
-          #7aa6ff 35%,
-          #ff4ba8 73%,
-          #ff88c9
+          #15171c,
+          #343945 38%,
+          var(--pink) 72%,
+          #ff76bb
       );
 
   background-clip:text;
@@ -542,11 +554,11 @@ HERO
 
   line-height:1.8;
 
-  color:#abb7c9;
+  color:#556474;
 }
 
 .hero p strong{
-  color:#fff;
+  color:var(--black);
 }
 
 .hero-buttons{
@@ -561,7 +573,7 @@ HERO
 
 
 /* =====================================================
-PROOF
+   PROOF
 ===================================================== */
 
 .proof{
@@ -577,8 +589,7 @@ PROOF
 
 .proof > div{
   border-top:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   padding-top:16px;
 }
@@ -586,7 +597,7 @@ PROOF
 .proof span{
   font-size:9px;
 
-  color:#68788f;
+  color:#788695;
 
   font-weight:900;
 }
@@ -598,12 +609,14 @@ PROOF
 
   margin:
       6px 0;
+
+  color:var(--black);
 }
 
 .proof small{
   display:block;
 
-  color:#78879c;
+  color:#667786;
 
   font-size:11px;
 
@@ -612,7 +625,7 @@ PROOF
 
 
 /* =====================================================
-HERO VISUAL
+   HERO VISUAL
 ===================================================== */
 
 .visual{
@@ -630,7 +643,7 @@ HERO VISUAL
 
   border:
       1px solid
-      rgba(255,255,255,.08);
+      rgba(17,19,24,.10);
 
   border-radius:50%;
 
@@ -652,7 +665,7 @@ HERO VISUAL
   height:405px;
 
   border-color:
-      rgba(0,184,255,.14);
+      rgba(255,45,148,.18);
 
   animation-direction:
       reverse;
@@ -677,15 +690,15 @@ HERO VISUAL
 
   border:
       1px solid
-      rgba(255,255,255,.10);
+      rgba(17,19,24,.12);
 
   border-radius:35px;
 
   background:
       linear-gradient(
           155deg,
-          rgba(255,255,255,.06),
-          rgba(255,255,255,.012)
+          rgba(255,255,255,.92),
+          rgba(223,245,255,.70)
       );
 
   backdrop-filter:
@@ -712,13 +725,13 @@ HERO VISUAL
 
       radial-gradient(
           circle at 20% 10%,
-          rgba(0,184,255,.12),
+          rgba(143,214,255,.48),
           transparent 35%
       ),
 
       radial-gradient(
           circle at 85% 12%,
-          rgba(255,45,148,.1),
+          rgba(255,45,148,.10),
           transparent 34%
       );
 }
@@ -733,6 +746,8 @@ HERO VISUAL
   font-size:13px;
 
   letter-spacing:1.3px;
+
+  color:var(--black);
 }
 
 .core-title b{
@@ -741,7 +756,7 @@ HERO VISUAL
 
 
 /* =====================================================
-TOWELS
+   TOWELS
 ===================================================== */
 
 .towels{
@@ -773,10 +788,10 @@ TOWELS
   box-shadow:
 
       0 24px 38px
-      rgba(0,0,0,.4),
+      rgba(20,60,80,.25),
 
       inset 0 0 0 1px
-      rgba(255,255,255,.14);
+      rgba(255,255,255,.30);
 
   animation:
       float 5s
@@ -793,9 +808,9 @@ TOWELS
 
   background:
       linear-gradient(
-          rgba(255,255,255,.25),
+          rgba(255,255,255,.30),
           transparent 34%,
-          rgba(0,0,0,.14)
+          rgba(0,0,0,.12)
       );
 }
 
@@ -804,8 +819,8 @@ TOWELS
 
   background:
       linear-gradient(
-          #39d0ff,
-          #086fff
+          #7fdbff,
+          #4ab8f0
       );
 }
 
@@ -826,8 +841,8 @@ TOWELS
 
   background:
       linear-gradient(
-          #565d68,
-          #0b0e14
+          #444952,
+          #111318
       );
 
   animation-delay:-2.6s;
@@ -848,16 +863,17 @@ TOWELS
   z-index:2;
 
   border-top:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   padding-top:16px;
+
+  color:var(--black);
 }
 
 .core-caption small{
   display:block;
 
-  color:#708096;
+  color:#68798a;
 
   font-size:9px;
 
@@ -872,7 +888,7 @@ TOWELS
 
 
 /* =====================================================
-FLOATING CARDS
+   FLOATING CARDS
 ===================================================== */
 
 .float-card{
@@ -884,13 +900,12 @@ FLOATING CARDS
       14px 15px;
 
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-radius:16px;
 
   background:
-      rgba(7,11,18,.76);
+      rgba(255,255,255,.82);
 
   backdrop-filter:
       blur(15px);
@@ -903,10 +918,12 @@ FLOATING CARDS
   display:block;
 
   font-size:12px;
+
+  color:var(--black);
 }
 
 .float-card small{
-  color:#75849a;
+  color:#6c7b8c;
 
   font-size:10px;
 }
@@ -925,21 +942,25 @@ FLOATING CARDS
 
 
 /* =====================================================
-TICKER
+   TICKER
 ===================================================== */
 
 .ticker{
   border-top:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-bottom:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   overflow:hidden;
 
-  background:#070a10;
+  background:
+      linear-gradient(
+          90deg,
+          #111318,
+          #252933,
+          #111318
+      );
 }
 
 .ticker div{
@@ -962,7 +983,7 @@ TICKER
 
   letter-spacing:1.7px;
 
-  color:#c8d2df;
+  color:#fff;
 }
 
 .ticker b{
@@ -971,7 +992,7 @@ TICKER
 
 
 /* =====================================================
-SECTIONS
+   SECTIONS
 ===================================================== */
 
 .section{
@@ -984,7 +1005,7 @@ SECTIONS
 
   letter-spacing:2px;
 
-  color:#a8b6c9;
+  color:#59697a;
 
   font-weight:900;
 }
@@ -1003,12 +1024,14 @@ SECTIONS
 
   margin:
       12px 0 18px;
+
+  color:var(--black);
 }
 
 .section-intro{
   max-width:700px;
 
-  color:#8999ae;
+  color:#637283;
 
   line-height:1.75;
 }
@@ -1023,7 +1046,7 @@ SECTIONS
 
 
 /* =====================================================
-BENTO
+   BENTO
 ===================================================== */
 
 .bento{
@@ -1046,8 +1069,7 @@ BENTO
   overflow:hidden;
 
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-radius:27px;
 
@@ -1056,13 +1078,13 @@ BENTO
   background:
       linear-gradient(
           150deg,
-          rgba(255,255,255,.045),
-          rgba(255,255,255,.01)
+          rgba(255,255,255,.90),
+          rgba(226,246,255,.75)
       );
 
   box-shadow:
-      0 30px 60px
-      rgba(0,0,0,.28);
+      0 24px 55px
+      rgba(30,100,130,.12);
 }
 
 .bento-card:after{
@@ -1083,27 +1105,25 @@ BENTO
   filter:
       blur(18px);
 
-  opacity:.23;
+  opacity:.22;
 }
 
 .bento-blue:after{
-  background:
-      var(--blue);
+  background:#8fd6ff;
 }
 
 .bento-pink:after{
-  background:
-      var(--pink);
+  background:var(--pink);
 }
 
 .bento-white:after{
-  background:#fff;
+  background:#111318;
 }
 
 .bento-mix:after{
   background:
       linear-gradient(
-          var(--blue),
+          #111318,
           var(--pink)
       );
 }
@@ -1121,7 +1141,7 @@ BENTO
 .card-no{
   font-size:9px;
 
-  color:#63738a;
+  color:#748394;
 
   font-weight:900;
 }
@@ -1134,7 +1154,13 @@ BENTO
   border-radius:16px;
 
   background:
-      rgba(255,255,255,.055);
+      linear-gradient(
+          135deg,
+          #111318,
+          var(--pink)
+      );
+
+  color:#fff;
 
   display:grid;
 
@@ -1160,7 +1186,7 @@ BENTO
 .card-copy small{
   font-size:8px;
 
-  color:#738299;
+  color:#657586;
 
   letter-spacing:1.5px;
 
@@ -1174,6 +1200,8 @@ BENTO
 
   margin:
       8px 0;
+
+  color:var(--black);
 }
 
 .card-copy p{
@@ -1181,23 +1209,23 @@ BENTO
 
   line-height:1.65;
 
-  color:#8594a8;
+  color:#677788;
 
   margin:0;
 }
 
 
 /* =====================================================
-COLLECTION
+   COLLECTION
 ===================================================== */
 
 .collection{
   background:
       linear-gradient(
           180deg,
-          transparent,
-          rgba(255,255,255,.015),
-          transparent
+          rgba(255,255,255,.1),
+          rgba(191,234,255,.32),
+          rgba(255,255,255,.1)
       );
 }
 
@@ -1213,7 +1241,7 @@ COLLECTION
 }
 
 .split p{
-  color:#8998ad;
+  color:#5f6f80;
 
   line-height:1.75;
 }
@@ -1231,16 +1259,19 @@ COLLECTION
 
 .product{
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-radius:25px;
 
   overflow:hidden;
 
-  background:#080d15;
+  background:#fff;
 
   transition:.25s;
+
+  box-shadow:
+      0 20px 50px
+      rgba(40,100,125,.12);
 }
 
 .product:hover{
@@ -1248,7 +1279,7 @@ COLLECTION
       translateY(-6px);
 
   border-color:
-      rgba(0,184,255,.28);
+      rgba(255,45,148,.28);
 }
 
 .product-photo{
@@ -1264,11 +1295,11 @@ COLLECTION
 
       radial-gradient(
           circle at 50% 25%,
-          rgba(255,255,255,.07),
-          transparent 36%
+          rgba(143,214,255,.52),
+          transparent 38%
       ),
 
-      #080d15;
+      #effaff;
 }
 
 .product-photo:after{
@@ -1285,7 +1316,7 @@ COLLECTION
   border-radius:50%;
 
   background:
-      rgba(255,255,255,.18);
+      rgba(17,19,24,.15);
 
   filter:
       blur(14px);
@@ -1301,7 +1332,7 @@ COLLECTION
 
   box-shadow:
       0 30px 45px
-      rgba(0,0,0,.45);
+      rgba(0,0,0,.25);
 
   position:relative;
 
@@ -1322,10 +1353,10 @@ COLLECTION
 
   border:
       1px solid
-      rgba(50,221,180,.2);
+      rgba(34,169,122,.20);
 
   background:
-      rgba(50,221,180,.08);
+      rgba(34,169,122,.08);
 
   color:
       var(--green);
@@ -1340,6 +1371,8 @@ COLLECTION
 
   margin:
       12px 0 8px;
+
+  color:var(--black);
 }
 
 .product-desc{
@@ -1347,7 +1380,7 @@ COLLECTION
 
   line-height:1.55;
 
-  color:#7e8da2;
+  color:#69798a;
 
   min-height:52px;
 }
@@ -1369,11 +1402,13 @@ COLLECTION
   font-size:25px;
 
   font-weight:1000;
+
+  color:var(--black);
 }
 
 
 /* =====================================================
-RESISTANCE
+   RESISTANCE
 ===================================================== */
 
 .resistance{
@@ -1382,22 +1417,20 @@ RESISTANCE
   overflow:hidden;
 
   border-top:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-bottom:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   background:
 
       radial-gradient(
           circle at center,
-          rgba(0,184,255,.07),
-          transparent 42%
+          rgba(143,214,255,.45),
+          transparent 45%
       ),
 
-      #04070c;
+      #dff4ff;
 }
 
 .resistance-grid{
@@ -1413,19 +1446,14 @@ RESISTANCE
 
 .resistance-panel{
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-radius:30px;
 
   padding:32px;
 
   background:
-      linear-gradient(
-          145deg,
-          rgba(255,255,255,.045),
-          rgba(255,255,255,.012)
-      );
+      rgba(255,255,255,.80);
 
   box-shadow:
       var(--shadow);
@@ -1440,8 +1468,7 @@ RESISTANCE
       17px 0;
 
   border-bottom:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 }
 
 .resistance-item:last-child{
@@ -1459,9 +1486,11 @@ RESISTANCE
   background:
       linear-gradient(
           135deg,
-          var(--blue2),
+          #111318,
           var(--pink)
       );
+
+  color:#fff;
 
   display:grid;
 
@@ -1474,6 +1503,8 @@ RESISTANCE
   display:block;
 
   margin-bottom:5px;
+
+  color:var(--black);
 }
 
 .resistance-item p{
@@ -1481,14 +1512,14 @@ RESISTANCE
 
   font-size:12px;
 
-  color:#8291a6;
+  color:#657586;
 
   line-height:1.6;
 }
 
 
 /* =====================================================
-RING
+   RING
 ===================================================== */
 
 .ring-visual{
@@ -1508,7 +1539,7 @@ RING
 
   border:
       1px solid
-      rgba(255,255,255,.09);
+      rgba(17,19,24,.12);
 
   animation:
       spin 18s
@@ -1528,7 +1559,7 @@ RING
   height:305px;
 
   border-color:
-      rgba(255,45,148,.16);
+      rgba(255,45,148,.22);
 
   animation-direction:
       reverse;
@@ -1548,26 +1579,27 @@ RING
   text-align:center;
 
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   background:
       radial-gradient(
           circle,
-          rgba(0,184,255,.15),
-          rgba(255,45,148,.07),
-          #080d15 72%
+          #fff,
+          #d9f1ff 65%,
+          #cbeeff
       );
 
   box-shadow:
       0 0 70px
-      rgba(0,184,255,.08);
+      rgba(70,160,200,.18);
 
   font-size:24px;
 
   font-weight:1000;
 
   line-height:.9;
+
+  color:var(--black);
 }
 
 .ring-core b{
@@ -1582,7 +1614,7 @@ RING
 
   letter-spacing:2px;
 
-  color:#718197;
+  color:#677789;
 
   margin-top:10px;
 }
@@ -1595,17 +1627,22 @@ RING
   padding:13px;
 
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-radius:16px;
 
   background:
-      rgba(9,13,21,.82);
+      rgba(255,255,255,.85);
+
+  color:var(--black);
 
   font-size:10px;
 
   font-weight:900;
+
+  box-shadow:
+      0 15px 35px
+      rgba(40,100,125,.12);
 }
 
 .rt1{
@@ -1634,13 +1671,12 @@ RING
 
 
 /* =====================================================
-WHOLESALE
+   WHOLESALE
 ===================================================== */
 
 .wholesale-box{
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-radius:31px;
 
@@ -1649,9 +1685,9 @@ WHOLESALE
   background:
       linear-gradient(
           120deg,
-          rgba(0,184,255,.075),
-          rgba(255,45,148,.065),
-          rgba(255,255,255,.015)
+          #fff,
+          #def4ff,
+          #ffe6f3
       );
 
   display:grid;
@@ -1666,6 +1702,9 @@ WHOLESALE
   position:relative;
 
   overflow:hidden;
+
+  box-shadow:
+      var(--shadow);
 }
 
 .wholesale-box:after{
@@ -1684,7 +1723,7 @@ WHOLESALE
   top:-130px;
 
   background:
-      rgba(255,45,148,.16);
+      rgba(255,45,148,.15);
 
   filter:
       blur(55px);
@@ -1699,7 +1738,7 @@ WHOLESALE
 .wholesale-box p{
   max-width:700px;
 
-  color:#8796aa;
+  color:#667687;
 
   line-height:1.7;
 }
@@ -1714,7 +1753,7 @@ WHOLESALE
 
 
 /* =====================================================
-CONTACT
+   CONTACT
 ===================================================== */
 
 .contact-grid{
@@ -1741,25 +1780,27 @@ CONTACT
 .text-link{
   font-size:12px;
 
-  color:#8999ae;
+  color:#596a7c;
 
   font-weight:850;
 }
 
 
 /* =====================================================
-FOOTER
+   FOOTER
 ===================================================== */
 
 footer{
   border-top:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   padding:
       32px 0;
 
-  color:#69798f;
+  color:#68798a;
+
+  background:
+      rgba(255,255,255,.45);
 }
 
 .footer-grid{
@@ -1789,7 +1830,7 @@ footer{
 
 
 /* =====================================================
-CART
+   CART
 ===================================================== */
 
 .cart-modal{
@@ -1800,10 +1841,10 @@ CART
   z-index:160;
 
   background:
-      rgba(0,0,0,.82);
+      rgba(17,19,24,.46);
 
   backdrop-filter:
-      blur(10px);
+      blur(12px);
 
   display:grid;
 
@@ -1822,17 +1863,18 @@ CART
   overflow:auto;
 
   border:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 
   border-radius:25px;
 
   padding:24px;
 
-  background:#080d15;
+  background:#fff;
 
   box-shadow:
       var(--shadow);
+
+  color:var(--black);
 }
 
 .cart-head,
@@ -1859,14 +1901,13 @@ CART
       14px 0;
 
   border-bottom:
-      1px solid
-      var(--line);
+      1px solid var(--line);
 }
 
 .cart-line small{
   display:block;
 
-  color:#718197;
+  color:#6f7e8e;
 
   margin-top:4px;
 }
@@ -1879,7 +1920,7 @@ CART
 
 
 /* =====================================================
-MOBILE BUY BAR
+   MOBILE BUY BAR
 ===================================================== */
 
 .mobile-buybar{
@@ -1888,7 +1929,7 @@ MOBILE BUY BAR
 
 
 /* =====================================================
-ANIMATION
+   ANIMATION
 ===================================================== */
 
 .reveal{
@@ -1908,7 +1949,7 @@ ANIMATION
 
 
 /* =====================================================
-TABLET / MOBILE
+   TABLET / MOBILE
 ===================================================== */
 
 @media(max-width:1040px){
@@ -1995,12 +2036,12 @@ TABLET / MOBILE
 
       border:
           1px solid
-          rgba(255,255,255,.13);
+          rgba(17,19,24,.13);
 
       border-radius:18px;
 
       background:
-          rgba(5,8,14,.9);
+          rgba(238,249,255,.93);
 
       backdrop-filter:
           blur(18px);
@@ -3436,7 +3477,7 @@ const PRODUCTS = [
     price:19.90,
     stock:120,
     color:
-        "linear-gradient(#39d0ff,#086fff)"
+        "linear-gradient(#7fdbff,#4ab8f0)"
 },
 
 {
@@ -3454,7 +3495,7 @@ const PRODUCTS = [
     price:21.90,
     stock:140,
     color:
-        "linear-gradient(#565d68,#0b0e14)"
+        "linear-gradient(#444952,#111318)"
 }
 
 ];
