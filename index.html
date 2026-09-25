@@ -1,0 +1,3438 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Impacto Pro | Toalhas Profissionais</title>
+
+<meta name="description" content="Impacto Pro - Toalhas profissionais para salões, barbearias, estética e revendedores.">
+
+<style>
+
+/* =====================================================
+   IMPACTO PRO
+   SITE FUTURISTA
+===================================================== */
+
+:root{
+    --bg:#03050a;
+    --bg2:#070b12;
+    --card:#0a101a;
+    --blue:#00b9ff;
+    --blue2:#006eff;
+    --pink:#ff258f;
+    --pink2:#ff72bd;
+    --white:#ffffff;
+    --text:#edf4ff;
+    --muted:#8493aa;
+    --line:rgba(255,255,255,.09);
+    --green:#31e2b4;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 10% 5%,rgba(0,185,255,.09),transparent 28%),
+        radial-gradient(circle at 90% 15%,rgba(255,37,143,.08),transparent 30%),
+        var(--bg);
+
+    color:var(--text);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button{
+    font:inherit;
+}
+
+.container{
+    width:min(1240px,92%);
+    margin:auto;
+}
+
+/* =====================================================
+   BACKGROUND
+===================================================== */
+
+.grid-background{
+    position:fixed;
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.34;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+    background-size:60px 60px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            transparent 88%
+        );
+
+    z-index:-3;
+}
+
+.mouse-light{
+    width:350px;
+    height:350px;
+
+    position:fixed;
+
+    border-radius:50%;
+
+    transform:translate(-50%,-50%);
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,185,255,.07),
+            rgba(255,37,143,.025) 45%,
+            transparent 70%
+        );
+
+    z-index:-1;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    height:80px;
+
+    position:sticky;
+    top:0;
+
+    z-index:100;
+
+    border-bottom:1px solid var(--line);
+
+    background:rgba(3,5,10,.76);
+
+    backdrop-filter:blur(22px);
+}
+
+.nav{
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    gap:25px;
+}
+
+.logo{
+    position:relative;
+
+    display:flex;
+    align-items:center;
+
+    gap:7px;
+
+    font-weight:1000;
+
+    letter-spacing:-1px;
+
+    padding-bottom:10px;
+}
+
+.logo-impacto{
+    color:var(--blue);
+    font-size:25px;
+}
+
+.logo-pro{
+    color:var(--pink);
+    font-size:25px;
+}
+
+.logo small{
+    position:absolute;
+
+    bottom:0;
+    left:0;
+
+    font-size:7px;
+
+    letter-spacing:2.2px;
+
+    color:#65768c;
+
+    white-space:nowrap;
+}
+
+.menu{
+    display:flex;
+    align-items:center;
+
+    gap:27px;
+}
+
+.menu a{
+    position:relative;
+
+    color:#b8c5d8;
+
+    font-size:13px;
+    font-weight:800;
+}
+
+.menu a::after{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-10px;
+
+    width:0;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--pink)
+        );
+
+    transition:.25s;
+}
+
+.menu a:hover{
+    color:white;
+}
+
+.menu a:hover::after{
+    width:100%;
+}
+
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+
+.btn{
+    border:none;
+
+    border-radius:13px;
+
+    padding:13px 19px;
+
+    font-weight:900;
+
+    cursor:pointer;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:8px;
+
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.btn-neon{
+    color:white;
+
+    background:
+        linear-gradient(
+            110deg,
+            #006cff,
+            var(--blue) 43%,
+            var(--pink)
+        );
+
+    box-shadow:
+        0 10px 35px rgba(0,135,255,.18),
+        0 0 30px rgba(255,37,143,.10);
+}
+
+.btn-neon:hover{
+    box-shadow:
+        0 17px 45px rgba(0,185,255,.23),
+        0 0 45px rgba(255,37,143,.16);
+}
+
+.btn-dark{
+    background:rgba(255,255,255,.04);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    color:white;
+}
+
+.btn-big{
+    padding:16px 23px;
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:calc(100vh - 80px);
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:70px 0;
+}
+
+.hero::before{
+    content:"";
+
+    width:420px;
+    height:420px;
+
+    position:absolute;
+
+    left:-160px;
+    top:0;
+
+    border-radius:50%;
+
+    background:rgba(0,185,255,.12);
+
+    filter:blur(70px);
+}
+
+.hero::after{
+    content:"";
+
+    width:450px;
+    height:450px;
+
+    position:absolute;
+
+    right:-180px;
+    top:60px;
+
+    border-radius:50%;
+
+    background:rgba(255,37,143,.11);
+
+    filter:blur(80px);
+}
+
+.hero-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.05fr
+        .95fr;
+
+    gap:65px;
+
+    align-items:center;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.tag{
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    color:#a9bad0;
+
+    font-weight:900;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+.tag::before{
+    content:"";
+
+    width:27px;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--pink)
+        );
+}
+
+.hero h1{
+    margin:20px 0;
+
+    max-width:780px;
+
+    font-size:
+        clamp(
+            55px,
+            7vw,
+            96px
+        );
+
+    letter-spacing:-5px;
+
+    line-height:.91;
+}
+
+.gradient{
+    background:
+        linear-gradient(
+            90deg,
+            #1acaff,
+            #72a7ff,
+            #ff3b9d,
+            #ff86c7
+        );
+
+    background-clip:text;
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+}
+
+.hero-description{
+    max-width:710px;
+
+    color:#a6b3c6;
+
+    font-size:17px;
+
+    line-height:1.8;
+}
+
+.hero-description strong{
+    color:white;
+}
+
+.hero-buttons{
+    margin-top:30px;
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+}
+
+/* =====================================================
+   HERO FEATURES
+===================================================== */
+
+.hero-features{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:13px;
+
+    margin-top:35px;
+}
+
+.hero-feature{
+    border-top:
+        1px solid
+        rgba(255,255,255,.11);
+
+    padding-top:15px;
+}
+
+.hero-feature span{
+    color:#62748b;
+
+    font-size:9px;
+
+    font-weight:900;
+}
+
+.hero-feature strong{
+    display:block;
+
+    margin:6px 0;
+
+    font-size:13px;
+}
+
+.hero-feature small{
+    color:#738399;
+
+    line-height:1.5;
+
+    font-size:10px;
+}
+
+/* =====================================================
+   HERO PRODUCT
+===================================================== */
+
+.product-universe{
+    height:610px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+}
+
+.orbit{
+    position:absolute;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    animation:
+        rotate 19s linear infinite;
+}
+
+.orbit.one{
+    width:520px;
+    height:520px;
+}
+
+.orbit.two{
+    width:420px;
+    height:420px;
+
+    border-color:
+        rgba(0,185,255,.13);
+
+    animation-duration:13s;
+
+    animation-direction:reverse;
+}
+
+@keyframes rotate{
+
+    to{
+        transform:rotate(360deg);
+    }
+
+}
+
+.product-box{
+    position:relative;
+
+    width:420px;
+
+    padding:24px;
+
+    border-radius:35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    background:
+        linear-gradient(
+            150deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 50px 90px rgba(0,0,0,.5);
+}
+
+.product-box-top{
+    font-size:13px;
+
+    font-weight:1000;
+
+    letter-spacing:1.5px;
+}
+
+.product-box-top span{
+    color:var(--pink);
+}
+
+.towel-stage{
+    height:330px;
+
+    display:flex;
+
+    align-items:flex-end;
+    justify-content:center;
+
+    gap:13px;
+}
+
+.towel{
+    width:105px;
+
+    border-radius:
+        23px
+        23px
+        14px
+        14px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 30px 40px rgba(0,0,0,.38),
+        inset 0 0 0 1px rgba(255,255,255,.13);
+
+    animation:
+        float 5s ease-in-out infinite;
+}
+
+.towel::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.25),
+            transparent 32%,
+            rgba(0,0,0,.13)
+        );
+}
+
+.towel-blue{
+    height:235px;
+
+    background:
+        linear-gradient(
+            #3dd1ff,
+            #0670ff
+        );
+}
+
+.towel-pink{
+    height:275px;
+
+    background:
+        linear-gradient(
+            #ff87c8,
+            #ff218f
+        );
+
+    animation-delay:-1.5s;
+}
+
+.towel-black{
+    height:215px;
+
+    background:
+        linear-gradient(
+            #525963,
+            #0c0f15
+        );
+
+    animation-delay:-2.5s;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+}
+
+.product-info{
+    padding-top:17px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.product-info small{
+    color:#718097;
+
+    font-size:9px;
+
+    letter-spacing:1.5px;
+}
+
+.product-info strong{
+    display:block;
+
+    margin-top:6px;
+}
+
+/* =====================================================
+   FLOATING CARDS
+===================================================== */
+
+.float-card{
+    width:190px;
+
+    position:absolute;
+
+    padding:14px;
+
+    border-radius:16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    background:
+        rgba(5,9,15,.75);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 25px 50px rgba(0,0,0,.45);
+}
+
+.float-card strong{
+    font-size:12px;
+
+    display:block;
+}
+
+.float-card small{
+    color:#718097;
+
+    font-size:9px;
+}
+
+.float-one{
+    right:-10px;
+    top:115px;
+}
+
+.float-two{
+    left:-10px;
+    bottom:110px;
+}
+
+/* =====================================================
+   MARQUEE
+===================================================== */
+
+.marquee{
+    overflow:hidden;
+
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+
+    background:#060910;
+}
+
+.marquee-content{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    padding:17px;
+
+    font-size:10px;
+
+    font-weight:1000;
+
+    letter-spacing:2px;
+
+    color:#becadb;
+}
+
+.marquee-content b{
+    color:var(--pink);
+}
+
+/* =====================================================
+   GENERIC SECTIONS
+===================================================== */
+
+.section{
+    padding:110px 0;
+}
+
+.section-label{
+    color:#a8b7cb;
+
+    font-weight:900;
+
+    letter-spacing:2px;
+
+    font-size:10px;
+}
+
+.section-title{
+    margin:12px 0 20px;
+
+    font-size:
+        clamp(
+            42px,
+            5vw,
+            68px
+        );
+
+    line-height:.98;
+
+    letter-spacing:-3px;
+
+    max-width:900px;
+}
+
+.section-description{
+    color:#8493aa;
+
+    font-size:16px;
+
+    line-height:1.7;
+
+    max-width:680px;
+}
+
+/* =====================================================
+   BENTO
+===================================================== */
+
+.bento{
+    margin-top:45px;
+
+    display:grid;
+
+    grid-template-columns:
+        1.2fr
+        .8fr
+        .8fr;
+
+    grid-template-rows:
+        280px
+        280px;
+
+    gap:15px;
+}
+
+.bento-card{
+    padding:25px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        linear-gradient(
+            150deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.01)
+        );
+}
+
+.bento-card::after{
+    content:"";
+
+    width:250px;
+    height:250px;
+
+    position:absolute;
+
+    right:-100px;
+    top:-100px;
+
+    border-radius:50%;
+
+    filter:blur(30px);
+
+    opacity:.25;
+}
+
+.blue-card::after{
+    background:var(--blue);
+}
+
+.pink-card::after{
+    background:var(--pink);
+}
+
+.dark-card::after{
+    background:white;
+}
+
+.mix-card::after{
+    background:
+        linear-gradient(
+            var(--blue),
+            var(--pink)
+        );
+}
+
+.bento-big{
+    grid-row:span 2;
+}
+
+.bento-wide{
+    grid-column:span 2;
+}
+
+.card-number{
+    color:#65758a;
+
+    font-size:9px;
+
+    font-weight:900;
+}
+
+.card-icon{
+    width:52px;
+    height:52px;
+
+    margin-top:20px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:17px;
+
+    background:
+        rgba(255,255,255,.06);
+
+    font-size:20px;
+}
+
+.bento-content{
+    position:absolute;
+
+    left:25px;
+    right:25px;
+    bottom:25px;
+
+    z-index:2;
+}
+
+.bento-content small{
+    color:#74849a;
+
+    letter-spacing:1.5px;
+
+    font-size:8px;
+
+    font-weight:1000;
+}
+
+.bento-content h3{
+    margin:8px 0;
+
+    font-size:26px;
+
+    letter-spacing:-1px;
+}
+
+.bento-content p{
+    color:#8897ac;
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.collection{
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(255,255,255,.015),
+            transparent
+        );
+}
+
+.products-heading{
+    display:grid;
+
+    grid-template-columns:
+        1.2fr
+        .8fr;
+
+    gap:40px;
+
+    align-items:end;
+}
+
+.products-heading p{
+    color:#8493aa;
+
+    line-height:1.7;
+}
+
+.products{
+    margin-top:45px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+}
+
+.product-card{
+    overflow:hidden;
+
+    border-radius:25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    background:#080d15;
+
+    transition:.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-7px);
+
+    border-color:
+        rgba(0,185,255,.28);
+}
+
+.product-picture{
+    height:300px;
+
+    position:relative;
+
+    display:grid;
+
+    place-items:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,255,255,.07),
+            transparent 50%
+        ),
+        #080d14;
+}
+
+.product-picture::before{
+    content:"";
+
+    width:130px;
+    height:20px;
+
+    position:absolute;
+
+    bottom:40px;
+
+    background:
+        rgba(255,255,255,.18);
+
+    filter:blur(15px);
+
+    border-radius:50%;
+}
+
+.product-towel{
+    width:150px;
+    height:190px;
+
+    border-radius:
+        25px
+        25px
+        15px
+        15px;
+
+    position:relative;
+
+    z-index:2;
+
+    box-shadow:
+        0 35px 50px rgba(0,0,0,.45);
+}
+
+.product-data{
+    padding:21px;
+}
+
+.stock{
+    display:inline-block;
+
+    padding:6px 9px;
+
+    border-radius:999px;
+
+    border:
+        1px solid
+        rgba(49,226,180,.2);
+
+    background:
+        rgba(49,226,180,.08);
+
+    color:var(--green);
+
+    font-size:9px;
+
+    font-weight:1000;
+}
+
+.product-data h3{
+    margin:13px 0;
+
+    font-size:20px;
+}
+
+.product-bottom{
+    display:flex;
+
+    align-items:center;
+    justify-content:space-between;
+
+    gap:10px;
+}
+
+.price{
+    font-size:25px;
+
+    font-weight:1000;
+}
+
+/* =====================================================
+   SYSTEM
+===================================================== */
+
+.system{
+    position:relative;
+
+    overflow:hidden;
+
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(0,185,255,.07),
+            transparent 40%
+        ),
+        #04070c;
+}
+
+.center{
+    text-align:center;
+
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.system-universe{
+    height:620px;
+
+    margin-top:40px;
+
+    position:relative;
+
+    display:grid;
+
+    place-items:center;
+}
+
+.system-core{
+    width:240px;
+    height:240px;
+
+    position:relative;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,185,255,.13),
+            rgba(255,37,143,.06),
+            #060a11 72%
+        );
+
+    box-shadow:
+        0 0 80px rgba(0,185,255,.09);
+}
+
+.system-core::before,
+.system-core::after{
+    content:"";
+
+    position:absolute;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    animation:
+        rotate 17s linear infinite;
+}
+
+.system-core::before{
+    inset:-75px;
+}
+
+.system-core::after{
+    inset:-140px;
+
+    border-style:dashed;
+
+    animation-direction:reverse;
+
+    animation-duration:23s;
+}
+
+.system-logo{
+    text-align:center;
+
+    font-size:27px;
+
+    font-weight:1000;
+
+    line-height:.9;
+}
+
+.system-logo span{
+    color:var(--pink);
+}
+
+.system-logo small{
+    display:block;
+
+    margin-top:10px;
+
+    font-size:8px;
+
+    color:#74849b;
+
+    letter-spacing:2px;
+}
+
+.system-node{
+    width:175px;
+
+    position:absolute;
+
+    padding:16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:17px;
+
+    background:
+        rgba(9,14,23,.88);
+
+    backdrop-filter:blur(15px);
+}
+
+.system-node strong{
+    display:block;
+
+    font-size:13px;
+}
+
+.system-node small{
+    color:#78889d;
+
+    font-size:10px;
+}
+
+.node1{
+    left:5%;
+    top:20%;
+}
+
+.node2{
+    left:2%;
+    bottom:18%;
+}
+
+.node3{
+    right:5%;
+    top:20%;
+}
+
+.node4{
+    right:2%;
+    bottom:18%;
+}
+
+.system-features{
+    display:grid;
+
+    grid-template-columns:
+        repeat(6,1fr);
+
+    gap:10px;
+}
+
+.system-feature{
+    border-top:
+        1px solid
+        rgba(255,255,255,.1);
+
+    padding:18px 10px;
+}
+
+.system-feature span{
+    color:#5c6d83;
+
+    font-size:8px;
+
+    font-weight:900;
+}
+
+.system-feature h4{
+    margin:8px 0;
+
+    font-size:13px;
+}
+
+.system-feature p{
+    color:#738298;
+
+    font-size:10px;
+
+    line-height:1.5;
+}
+
+.system-button{
+    margin-top:35px;
+
+    text-align:center;
+}
+
+/* =====================================================
+   WHOLESALE
+===================================================== */
+
+.wholesale{
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:32px;
+
+    padding:48px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0,185,255,.08),
+            rgba(255,37,143,.065),
+            rgba(255,255,255,.015)
+        );
+}
+
+.wholesale::after{
+    content:"";
+
+    width:350px;
+    height:350px;
+
+    position:absolute;
+
+    top:-170px;
+    right:-100px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,37,143,.16);
+
+    filter:blur(60px);
+}
+
+.wholesale-grid{
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        auto;
+
+    gap:40px;
+
+    align-items:end;
+
+    position:relative;
+
+    z-index:2;
+}
+
+.wholesale h2{
+    margin:10px 0 15px;
+
+    font-size:
+        clamp(
+            40px,
+            5vw,
+            65px
+        );
+
+    line-height:1;
+
+    letter-spacing:-3px;
+}
+
+.wholesale p{
+    max-width:650px;
+
+    color:#8797ac;
+
+    line-height:1.7;
+}
+
+.wholesale-buttons{
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+}
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.2fr
+        .8fr;
+
+    gap:50px;
+
+    align-items:end;
+}
+
+.contact h2{
+    margin:12px 0;
+
+    font-size:
+        clamp(
+            43px,
+            5vw,
+            65px
+        );
+
+    line-height:1;
+
+    letter-spacing:-3px;
+}
+
+.contact p{
+    color:#8292a8;
+
+    max-width:620px;
+
+    line-height:1.7;
+}
+
+.contact-buttons{
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:14px;
+}
+
+.text-link{
+    color:#8091a7;
+
+    font-size:12px;
+
+    font-weight:900;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+    padding:35px 0;
+
+    color:#617187;
+}
+
+.footer-grid{
+    display:grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        auto;
+
+    gap:30px;
+
+    align-items:center;
+}
+
+.footer-grid p{
+    text-align:center;
+
+    font-size:11px;
+}
+
+.footer-grid small{
+    font-size:9px;
+
+    letter-spacing:1.5px;
+}
+
+/* =====================================================
+   CART
+===================================================== */
+
+.cart-modal{
+    position:fixed;
+
+    inset:0;
+
+    z-index:500;
+
+    background:
+        rgba(0,0,0,.82);
+
+    backdrop-filter:blur(10px);
+
+    display:grid;
+
+    place-items:center;
+}
+
+.hidden{
+    display:none !important;
+}
+
+.cart{
+    width:min(560px,92%);
+
+    max-height:80vh;
+
+    overflow:auto;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    border-radius:25px;
+
+    padding:25px;
+
+    background:#080d15;
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.6);
+}
+
+.cart-header{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:20px;
+}
+
+.cart-line{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:15px 0;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.cart-line small{
+    display:block;
+
+    color:#718098;
+
+    margin-top:4px;
+}
+
+.cart-total{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:20px;
+
+    font-size:20px;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(25px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+
+    transform:none;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:1050px){
+
+    .menu{
+        display:none;
+    }
+
+    .hero-grid,
+    .products-heading,
+    .wholesale-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding-top:50px;
+    }
+
+    .product-universe{
+        min-height:560px;
+    }
+
+    .bento{
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:auto;
+    }
+
+    .bento-big,
+    .bento-wide{
+        grid-row:auto;
+        grid-column:auto;
+        min-height:300px;
+    }
+
+    .system-features{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:760px){
+
+    .container{
+        width:min(94%,650px);
+    }
+
+    header{
+        height:70px;
+    }
+
+    .nav-actions .btn-dark{
+        display:none;
+    }
+
+    .hero{
+        min-height:auto;
+    }
+
+    .hero h1{
+        font-size:50px;
+
+        letter-spacing:-3px;
+    }
+
+    .hero-grid{
+        gap:20px;
+    }
+
+    .hero-features{
+        grid-template-columns:1fr;
+    }
+
+    .product-universe{
+        height:500px;
+    }
+
+    .product-box{
+        width:min(380px,92vw);
+    }
+
+    .orbit.one{
+        width:420px;
+        height:420px;
+    }
+
+    .orbit.two{
+        width:340px;
+        height:340px;
+    }
+
+    .float-card{
+        display:none;
+    }
+
+    .towel{
+        width:88px;
+    }
+
+    .bento,
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .system-universe{
+        height:570px;
+    }
+
+    .system-node{
+        width:145px;
+
+        padding:13px;
+    }
+
+    .node1,
+    .node2{
+        left:0;
+    }
+
+    .node3,
+    .node4{
+        right:0;
+    }
+
+    .system-features{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .section{
+        padding:80px 0;
+    }
+
+    .section-title{
+        font-size:43px;
+    }
+
+    .wholesale{
+        padding:32px 22px;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+
+        text-align:center;
+    }
+
+    .footer-grid p{
+        text-align:center;
+    }
+
+    .logo-footer{
+        justify-content:center;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="grid-background"></div>
+<div class="mouse-light" id="mouseLight"></div>
+
+<!-- =====================================================
+HEADER
+===================================================== -->
+
+<header>
+
+<div class="container nav">
+
+<a href="#inicio" class="logo">
+
+<span class="logo-impacto">
+IMPACTO
+</span>
+
+<span class="logo-pro">
+PRO
+</span>
+
+<small>
+PROFESSIONAL TOWELS
+</small>
+
+</a>
+
+<nav class="menu">
+
+<a href="#inicio">
+Início
+</a>
+
+<a href="#experiencia">
+Experiência
+</a>
+
+<a href="#produtos">
+Produtos
+</a>
+
+<a href="#sistema">
+Sistema
+</a>
+
+<a href="#atacado">
+Atacado
+</a>
+
+<a href="#contato">
+Contato
+</a>
+
+</nav>
+
+<div class="nav-actions">
+
+<a
+href="sistema.html"
+class="btn btn-dark">
+Sistema
+</a>
+
+<button
+class="btn btn-neon"
+onclick="openCart()">
+
+Carrinho
+
+<span id="cartCount">
+0
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- =====================================================
+HERO
+===================================================== -->
+
+<section
+class="hero"
+id="inicio">
+
+<div class="container hero-grid">
+
+<div class="reveal">
+
+<div class="tag">
+TOALHAS PROFISSIONAIS • PERFORMANCE • ESTILO
+</div>
+
+<h1>
+
+Não é só uma toalha.
+
+<span class="gradient">
+É a imagem do seu atendimento.
+</span>
+
+</h1>
+
+<p class="hero-description">
+
+A
+
+<strong>
+Impacto Pro
+</strong>
+
+transforma um produto essencial da rotina profissional
+em parte da experiência da sua marca.
+
+Toalhas para
+
+<strong>
+salões, barbearias, estética e revendedores
+</strong>
+
+com presença, identidade e uma operação pronta
+para crescer.
+
+</p>
+
+<div class="hero-buttons">
+
+<a
+href="#produtos"
+class="btn btn-neon btn-big">
+
+Explorar coleção →
+
+</a>
+
+<a
+href="#sistema"
+class="btn btn-dark btn-big">
+
+Conhecer ecossistema
+
+</a>
+
+</div>
+
+<div class="hero-features">
+
+<div class="hero-feature">
+
+<span>
+01
+</span>
+
+<strong>
+Venda online
+</strong>
+
+<small>
+Uma experiência digital criada para impressionar.
+</small>
+
+</div>
+
+<div class="hero-feature">
+
+<span>
+02
+</span>
+
+<strong>
+Venda local
+</strong>
+
+<small>
+PDV conectado ao mesmo estoque.
+</small>
+
+</div>
+
+<div class="hero-feature">
+
+<span>
+03
+</span>
+
+<strong>
+Gestão completa
+</strong>
+
+<small>
+Caixa, despesas, produtos e relatórios.
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- HERO VISUAL -->
+
+<div class="product-universe reveal">
+
+<div class="orbit one"></div>
+<div class="orbit two"></div>
+
+<div class="product-box">
+
+<div class="product-box-top">
+
+IMPACTO
+
+<span>
+PRO
+</span>
+
+</div>
+
+<div class="towel-stage">
+
+<div class="towel towel-blue"></div>
+
+<div class="towel towel-pink"></div>
+
+<div class="towel towel-black"></div>
+
+</div>
+
+<div class="product-info">
+
+<small>
+COLEÇÃO PROFISSIONAL
+</small>
+
+<strong>
+Três cores. Uma identidade forte.
+</strong>
+
+</div>
+
+</div>
+
+<div class="float-card float-one">
+
+<strong>
+⚡ Visual premium
+</strong>
+
+<small>
+feito para marcar presença
+</small>
+
+</div>
+
+<div class="float-card float-two">
+
+<strong>
+↗ Operação integrada
+</strong>
+
+<small>
+site + estoque + pedidos
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+MARQUEE
+===================================================== -->
+
+<section class="marquee">
+
+<div class="marquee-content">
+
+<span>
+IMPACTO PRO
+</span>
+
+<b>✦</b>
+
+<span>
+TOALHAS PROFISSIONAIS
+</span>
+
+<b>✦</b>
+
+<span>
+VENDA ONLINE
+</span>
+
+<b>✦</b>
+
+<span>
+ATACADO
+</span>
+
+<b>✦</b>
+
+<span>
+SISTEMA INTEGRADO
+</span>
+
+<b>✦</b>
+
+<span>
+ESTOQUE INTELIGENTE
+</span>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+EXPERIENCE
+===================================================== -->
+
+<section
+class="section"
+id="experiencia">
+
+<div class="container">
+
+<div class="reveal">
+
+<span class="section-label">
+01 • EXPERIÊNCIA IMPACTO
+</span>
+
+<h2 class="section-title">
+
+Uma marca feita para parecer
+
+<span class="gradient">
+grande desde o primeiro clique.
+</span>
+
+</h2>
+
+<p class="section-description">
+
+Da identidade visual até a gestão interna,
+toda a experiência Impacto Pro foi desenhada
+como um único ecossistema.
+
+</p>
+
+</div>
+
+<div class="bento reveal">
+
+<article class="bento-card bento-big blue-card">
+
+<span class="card-number">
+01
+</span>
+
+<div class="card-icon">
+↗
+</div>
+
+<div class="bento-content">
+
+<small>
+EXPERIÊNCIA DIGITAL
+</small>
+
+<h3>
+Uma vitrine que vende antes mesmo do clique.
+</h3>
+
+<p>
+
+Design forte, navegação direta e apresentação
+de produtos com linguagem visual premium.
+
+</p>
+
+</div>
+
+</article>
+
+<article class="bento-card pink-card">
+
+<span class="card-number">
+02
+</span>
+
+<div class="card-icon">
+◎
+</div>
+
+<div class="bento-content">
+
+<small>
+IDENTIDADE
+</small>
+
+<h3>
+Azul. Rosa. Preto.
+</h3>
+
+<p>
+Uma combinação visual criada para ser memorável.
+</p>
+
+</div>
+
+</article>
+
+<article class="bento-card dark-card">
+
+<span class="card-number">
+03
+</span>
+
+<div class="card-icon">
+▦
+</div>
+
+<div class="bento-content">
+
+<small>
+OPERAÇÃO
+</small>
+
+<h3>
+Venda local + online.
+</h3>
+
+<p>
+Do balcão ao checkout dentro do mesmo fluxo.
+</p>
+
+</div>
+
+</article>
+
+<article class="bento-card bento-wide mix-card">
+
+<span class="card-number">
+04
+</span>
+
+<div class="card-icon">
+⚡
+</div>
+
+<div class="bento-content">
+
+<small>
+GESTÃO
+</small>
+
+<h3>
+Mais controle. Mais leitura. Mais decisão.
+</h3>
+
+<p>
+
+Estoque, vendas, despesas, usuários,
+pedidos e relatórios conectados dentro
+da mesma operação.
+
+</p>
+
+</div>
+
+</article>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+PRODUCTS
+===================================================== -->
+
+<section
+class="section collection"
+id="produtos">
+
+<div class="container">
+
+<div class="products-heading reveal">
+
+<div>
+
+<span class="section-label">
+02 • COLEÇÃO IMPACTO PRO
+</span>
+
+<h2 class="section-title">
+
+Escolha sua cor.
+
+<span class="gradient">
+Defina sua presença.
+</span>
+
+</h2>
+
+</div>
+
+<p>
+
+Azul para transmitir confiança.
+
+Rosa para gerar destaque.
+
+Preto para reforçar sofisticação.
+
+Escolha sua combinação e leve a identidade
+Impacto Pro para sua operação.
+
+</p>
+
+</div>
+
+<div
+class="products reveal"
+id="productGrid">
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+SYSTEM
+===================================================== -->
+
+<section
+class="section system"
+id="sistema">
+
+<div class="container">
+
+<div class="center reveal">
+
+<span class="section-label">
+03 • ECOSSISTEMA IMPACTO PRO
+</span>
+
+<h2 class="section-title center">
+
+A loja é só a superfície.
+
+<span class="gradient">
+Por trás existe uma operação inteira.
+</span>
+
+</h2>
+
+<p class="section-description center">
+
+Um sistema criado para transformar vendas em informação
+e informação em controle.
+
+</p>
+
+</div>
+
+<div class="system-universe reveal">
+
+<div class="system-node node1">
+
+<strong>
+PDV
+</strong>
+
+<small>
+Venda local
+</small>
+
+</div>
+
+<div class="system-node node2">
+
+<strong>
+ESTOQUE
+</strong>
+
+<small>
+Entradas e saídas
+</small>
+
+</div>
+
+<div class="system-node node3">
+
+<strong>
+ONLINE
+</strong>
+
+<small>
+Pedidos do site
+</small>
+
+</div>
+
+<div class="system-node node4">
+
+<strong>
+FINANCEIRO
+</strong>
+
+<small>
+Despesas e caixa
+</small>
+
+</div>
+
+<div class="system-core">
+
+<div class="system-logo">
+
+IMPACTO
+
+<br>
+
+<span>
+PRO
+</span>
+
+<small>
+SYSTEM
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="system-features reveal">
+
+<div class="system-feature">
+
+<span>
+01
+</span>
+
+<h4>
+Dashboard
+</h4>
+
+<p>
+Indicadores rápidos para visualizar a empresa.
+</p>
+
+</div>
+
+<div class="system-feature">
+
+<span>
+02
+</span>
+
+<h4>
+Vendas
+</h4>
+
+<p>
+Venda física e online em um só lugar.
+</p>
+
+</div>
+
+<div class="system-feature">
+
+<span>
+03
+</span>
+
+<h4>
+Estoque
+</h4>
+
+<p>
+Movimentações, baixas e reposições.
+</p>
+
+</div>
+
+<div class="system-feature">
+
+<span>
+04
+</span>
+
+<h4>
+Financeiro
+</h4>
+
+<p>
+Entradas, saídas, despesas e caixa.
+</p>
+
+</div>
+
+<div class="system-feature">
+
+<span>
+05
+</span>
+
+<h4>
+Relatórios
+</h4>
+
+<p>
+Análise detalhada do desempenho.
+</p>
+
+</div>
+
+<div class="system-feature">
+
+<span>
+06
+</span>
+
+<h4>
+Usuários
+</h4>
+
+<p>
+Administrador e vendedor com permissões.
+</p>
+
+</div>
+
+</div>
+
+<div class="system-button reveal">
+
+<a
+href="sistema.html"
+class="btn btn-neon btn-big">
+
+Entrar no sistema →
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+WHOLESALE
+===================================================== -->
+
+<section
+class="section"
+id="atacado">
+
+<div class="container">
+
+<div class="wholesale reveal">
+
+<div class="wholesale-grid">
+
+<div>
+
+<span class="section-label">
+04 • IMPACTO PRO B2B
+</span>
+
+<h2>
+
+Quanto maior sua operação,
+
+<span class="gradient">
+maior precisa ser sua vantagem.
+</span>
+
+</h2>
+
+<p>
+
+Condições especiais para salões,
+barbearias, equipes, profissionais,
+lojistas e revendedores.
+
+Monte seus kits, compre em volume
+e tenha condições comerciais específicas.
+
+</p>
+
+</div>
+
+<div class="wholesale-buttons">
+
+<button
+class="btn btn-neon"
+onclick="wholesale()">
+
+Solicitar tabela
+
+</button>
+
+<a
+href="#contato"
+class="btn btn-dark">
+
+Falar com comercial
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+CONTACT
+===================================================== -->
+
+<section
+class="section contact"
+id="contato">
+
+<div class="container contact-grid">
+
+<div class="reveal">
+
+<span class="section-label">
+05 • CONTATO
+</span>
+
+<h2>
+
+Seu atendimento também pode começar com
+
+<span class="gradient">
+impacto.
+</span>
+
+</h2>
+
+<p>
+
+Entre em contato para pedidos,
+atacado, revenda,
+informações comerciais ou suporte.
+
+</p>
+
+</div>
+
+<div class="contact-buttons reveal">
+
+<button
+class="btn btn-neon btn-big"
+onclick="whatsapp()">
+
+Chamar no WhatsApp →
+
+</button>
+
+<a
+href="sistema.html"
+class="text-link">
+
+Acessar sistema administrativo ↗
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- =====================================================
+FOOTER
+===================================================== -->
+
+<footer>
+
+<div class="container footer-grid">
+
+<div class="logo logo-footer">
+
+<span class="logo-impacto">
+IMPACTO
+</span>
+
+<span class="logo-pro">
+PRO
+</span>
+
+</div>
+
+<p>
+
+Toalhas profissionais.
+Presença forte.
+Operação inteligente.
+
+</p>
+
+<small>
+© 2026 IMPACTO PRO
+</small>
+
+</div>
+
+</footer>
+
+<!-- =====================================================
+CART
+===================================================== -->
+
+<div
+class="cart-modal hidden"
+id="cartModal">
+
+<div class="cart">
+
+<div class="cart-header">
+
+<h2>
+Seu carrinho
+</h2>
+
+<button
+class="btn btn-dark"
+onclick="closeCart()">
+
+Fechar
+
+</button>
+
+</div>
+
+<div id="cartItems"></div>
+
+<div class="cart-total">
+
+<strong>
+Total
+</strong>
+
+<strong id="cartTotal">
+R$ 0,00
+</strong>
+
+</div>
+
+<button
+class="btn btn-neon"
+style="width:100%;margin-top:20px"
+onclick="checkout()">
+
+Finalizar pedido
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* =====================================================
+PRODUCT DATABASE
+===================================================== */
+
+const DEFAULT_PRODUCTS = [
+
+{
+    id:"azul",
+    name:"Toalha Impacto Pro Azul",
+    price:19.90,
+    stock:120,
+    color:"linear-gradient(#3dd1ff,#0670ff)"
+},
+
+{
+    id:"rosa",
+    name:"Toalha Impacto Pro Rosa",
+    price:19.90,
+    stock:95,
+    color:"linear-gradient(#ff87c8,#ff218f)"
+},
+
+{
+    id:"preta",
+    name:"Toalha Impacto Pro Preta",
+    price:21.90,
+    stock:140,
+    color:"linear-gradient(#555b65,#0c0f15)"
+}
+
+];
+
+
+/* =====================================================
+STORAGE
+===================================================== */
+
+function getProducts(){
+
+    const products =
+        localStorage.getItem(
+            "impacto_products"
+        );
+
+    return products
+        ? JSON.parse(products)
+        : DEFAULT_PRODUCTS;
+
+}
+
+
+function getCart(){
+
+    return JSON.parse(
+        localStorage.getItem(
+            "impacto_cart"
+        ) || "[]"
+    );
+
+}
+
+
+function setCart(cart){
+
+    localStorage.setItem(
+        "impacto_cart",
+        JSON.stringify(cart)
+    );
+
+    updateCartCounter();
+
+}
+
+
+/* =====================================================
+MONEY
+===================================================== */
+
+function money(value){
+
+    return Number(value).toLocaleString(
+        "pt-BR",
+        {
+            style:"currency",
+            currency:"BRL"
+        }
+    );
+
+}
+
+
+/* =====================================================
+PRODUCT RENDER
+===================================================== */
+
+function renderProducts(){
+
+    const container =
+        document.getElementById(
+            "productGrid"
+        );
+
+    const products =
+        getProducts();
+
+    container.innerHTML =
+        products.map(product => {
+
+            return `
+
+            <article class="product-card">
+
+                <div class="product-picture">
+
+                    <div
+                        class="product-towel"
+                        style="
+                        background:
+                        ${product.color};
+                        ">
+                    </div>
+
+                </div>
+
+                <div class="product-data">
+
+                    <span class="stock">
+
+                        ${
+                            product.stock > 0
+                            ? "EM ESTOQUE"
+                            : "INDISPONÍVEL"
+                        }
+
+                    </span>
+
+                    <h3>
+
+                        ${product.name}
+
+                    </h3>
+
+                    <div class="product-bottom">
+
+                        <div class="price">
+
+                            ${money(product.price)}
+
+                        </div>
+
+                        <button
+                            class="btn btn-neon"
+                            onclick="
+                            addToCart(
+                                '${product.id}'
+                            )
+                            ">
+
+                            Adicionar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            `;
+
+        }).join("");
+
+}
+
+
+/* =====================================================
+ADD CART
+===================================================== */
+
+function addToCart(id){
+
+    const cart =
+        getCart();
+
+    const existing =
+        cart.find(
+            item =>
+                item.id === id
+        );
+
+    if(existing){
+
+        existing.quantity++;
+
+    }
+    else{
+
+        cart.push({
+
+            id:id,
+            quantity:1
+
+        });
+
+    }
+
+    setCart(cart);
+
+    openCart();
+
+}
+
+
+/* =====================================================
+COUNTER
+===================================================== */
+
+function updateCartCounter(){
+
+    const cart =
+        getCart();
+
+    const total =
+        cart.reduce(
+            (sum,item) =>
+                sum + item.quantity,
+            0
+        );
+
+    document.getElementById(
+        "cartCount"
+    ).textContent = total;
+
+}
+
+
+/* =====================================================
+OPEN CART
+===================================================== */
+
+function openCart(){
+
+    document
+        .getElementById(
+            "cartModal"
+        )
+        .classList
+        .remove(
+            "hidden"
+        );
+
+    renderCart();
+
+}
+
+
+/* =====================================================
+CLOSE CART
+===================================================== */
+
+function closeCart(){
+
+    document
+        .getElementById(
+            "cartModal"
+        )
+        .classList
+        .add(
+            "hidden"
+        );
+
+}
+
+
+/* =====================================================
+RENDER CART
+===================================================== */
+
+function renderCart(){
+
+    const products =
+        getProducts();
+
+    const cart =
+        getCart();
+
+    const container =
+        document.getElementById(
+            "cartItems"
+        );
+
+    let total = 0;
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <p
+                style="
+                color:#78889d;
+                padding:20px 0;
+                ">
+
+                Seu carrinho está vazio.
+
+            </p>
+
+        `;
+
+        document.getElementById(
+            "cartTotal"
+        ).textContent =
+            money(0);
+
+        return;
+
+    }
+
+    container.innerHTML =
+        cart.map(item => {
+
+            const product =
+                products.find(
+                    product =>
+                        product.id === item.id
+                );
+
+            if(!product){
+                return "";
+            }
+
+            const subtotal =
+                product.price *
+                item.quantity;
+
+            total += subtotal;
+
+            return `
+
+            <div class="cart-line">
+
+                <div>
+
+                    <strong>
+
+                        ${product.name}
+
+                    </strong>
+
+                    <small>
+
+                        Quantidade:
+                        ${item.quantity}
+
+                    </small>
+
+                </div>
+
+                <strong>
+
+                    ${money(subtotal)}
+
+                </strong>
+
+            </div>
+
+            `;
+
+        }).join("");
+
+    document.getElementById(
+        "cartTotal"
+    ).textContent =
+        money(total);
+
+}
+
+
+/* =====================================================
+CHECKOUT
+===================================================== */
+
+function checkout(){
+
+    const cart =
+        getCart();
+
+    if(cart.length === 0){
+
+        alert(
+            "Adicione produtos ao carrinho."
+        );
+
+        return;
+
+    }
+
+    const products =
+        getProducts();
+
+    const total =
+        cart.reduce(
+            (sum,item) => {
+
+                const product =
+                    products.find(
+                        product =>
+                            product.id === item.id
+                    );
+
+                return (
+                    sum +
+                    (
+                        product
+                        ? product.price *
+                          item.quantity
+                        : 0
+                    )
+                );
+
+            },
+            0
+        );
+
+    const orders =
+        JSON.parse(
+            localStorage.getItem(
+                "impacto_orders"
+            ) || "[]"
+        );
+
+    orders.unshift({
+
+        id:
+            "WEB-" +
+            Date.now()
+            .toString()
+            .slice(-6),
+
+        date:
+            new Date()
+            .toISOString(),
+
+        channel:
+            "Online",
+
+        status:
+            "Novo",
+
+        total:
+            total,
+
+        items:
+            cart
+
+    });
+
+    localStorage.setItem(
+
+        "impacto_orders",
+
+        JSON.stringify(
+            orders
+        )
+
+    );
+
+    setCart([]);
+
+    closeCart();
+
+    alert(
+
+        "Pedido realizado com sucesso! " +
+
+        "Ele já foi enviado para " +
+
+        "o sistema Impacto Pro."
+
+    );
+
+}
+
+
+/* =====================================================
+WHOLESALE
+===================================================== */
+
+function wholesale(){
+
+    alert(
+
+        "Módulo de atacado preparado. " +
+
+        "Na próxima etapa podemos conectar " +
+
+        "esse botão ao WhatsApp e ao CRM."
+
+    );
+
+}
+
+
+/* =====================================================
+WHATSAPP
+===================================================== */
+
+function whatsapp(){
+
+    alert(
+
+        "Adicione o número oficial da Impacto Pro " +
+
+        "para ativar o atendimento via WhatsApp."
+
+    );
+
+}
+
+
+/* =====================================================
+REVEAL ANIMATION
+===================================================== */
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                            .classList
+                            .add(
+                                "visible"
+                            );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+document
+    .querySelectorAll(
+        ".reveal"
+    )
+    .forEach(
+        element =>
+            observer.observe(
+                element
+            )
+    );
+
+
+/* =====================================================
+MOUSE LIGHT
+===================================================== */
+
+const light =
+    document.getElementById(
+        "mouseLight"
+    );
+
+window.addEventListener(
+    "pointermove",
+
+    event => {
+
+        light.style.left =
+            event.clientX +
+            "px";
+
+        light.style.top =
+            event.clientY +
+            "px";
+
+    }
+
+);
+
+
+/* =====================================================
+INITIALIZE
+===================================================== */
+
+renderProducts();
+
+updateCartCounter();
+
+</script>
+
+</body>
+</html>
+```
