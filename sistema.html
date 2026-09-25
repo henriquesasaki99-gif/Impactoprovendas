@@ -1,0 +1,5857 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="theme-color" content="#eaf8ff">
+
+<title>Impacto Pro | Sistema de Vendas</title>
+
+<style>
+
+:root{
+  --bg:#eaf8ff;
+  --bg2:#f8fdff;
+  --card:#fff;
+  --black:#101216;
+  --black2:#20242c;
+  --pink:#ff2d94;
+  --pink2:#ff79bd;
+  --blue:#94ddff;
+  --blue2:#49b9ed;
+  --green:#159b70;
+  --yellow:#b77c00;
+  --red:#d83d57;
+  --muted:#687889;
+  --line:rgba(17,19,24,.11);
+  --shadow:0 22px 55px rgba(40,95,120,.13)
+}
+
+*{
+  box-sizing:border-box
+}
+
+html{
+  scroll-behavior:smooth
+}
+
+body{
+  margin:0;
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:linear-gradient(180deg,#f4fcff,#eaf8ff 50%,#f6fcff);
+  color:var(--black)
+}
+
+button,
+input,
+select,
+textarea{
+  font:inherit
+}
+
+button{
+  cursor:pointer
+}
+
+a{
+  color:inherit;
+  text-decoration:none
+}
+
+.hidden{
+  display:none!important
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+.app{
+  display:grid;
+  grid-template-columns:255px 1fr;
+  min-height:100vh
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar{
+  position:sticky;
+  top:0;
+  height:100vh;
+  padding:22px;
+  background:linear-gradient(180deg,#101216,#20242c);
+  color:#fff;
+  border-right:1px solid rgba(255,255,255,.06);
+  overflow:auto
+}
+
+.brand{
+  font-weight:1000;
+  font-size:24px;
+  letter-spacing:-1px;
+  margin-bottom:4px
+}
+
+.brand span{
+  color:var(--pink)
+}
+
+.brand-sub{
+  font-size:8px;
+  letter-spacing:2px;
+  color:#9aa8b9;
+  margin-bottom:28px
+}
+
+.menu{
+  display:grid;
+  gap:7px
+}
+
+.menu button{
+  border:0;
+  background:transparent;
+  color:#cdd6df;
+  text-align:left;
+  padding:12px 13px;
+  border-radius:12px;
+  font-weight:850;
+  font-size:13px
+}
+
+.menu button:hover,
+.menu button.active{
+  background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,45,148,.18));
+  color:#fff
+}
+
+.side-footer{
+  margin-top:24px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.08);
+  font-size:10px;
+  color:#8e9cad;
+  line-height:1.6
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main{
+  padding:24px
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:22px
+}
+
+.topbar h1{
+  margin:0;
+  font-size:31px;
+  letter-spacing:-1px
+}
+
+.top-actions{
+  display:flex;
+  gap:9px;
+  align-items:center
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.btn{
+  border:0;
+  border-radius:13px;
+  padding:11px 15px;
+  font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  transition:.2s
+}
+
+.btn:hover{
+  transform:translateY(-1px)
+}
+
+.btn-primary{
+  background:linear-gradient(115deg,var(--black),#292d35,var(--pink));
+  color:#fff
+}
+
+.btn-secondary{
+  background:#fff;
+  color:var(--black);
+  border:1px solid var(--line)
+}
+
+.btn-pink{
+  background:linear-gradient(135deg,var(--pink),var(--pink2));
+  color:#fff
+}
+
+.btn-danger{
+  background:#fff0f3;
+  color:var(--red);
+  border:1px solid rgba(216,61,87,.18)
+}
+
+.btn-sm{
+  padding:7px 10px;
+  border-radius:10px;
+  font-size:11px
+}
+
+
+/* =========================================================
+   PAGES
+========================================================= */
+
+.page{
+  display:none
+}
+
+.page.active{
+  display:block
+}
+
+
+/* =========================================================
+   KPI
+========================================================= */
+
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px
+}
+
+.kpi{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:var(--shadow)
+}
+
+.kpi small{
+  color:var(--muted);
+  font-size:11px;
+  font-weight:800
+}
+
+.kpi strong{
+  display:block;
+  font-size:28px;
+  margin-top:7px;
+  letter-spacing:-1px
+}
+
+.kpi .note{
+  font-size:10px;
+  margin-top:5px;
+  color:var(--green)
+}
+
+
+/* =========================================================
+   GRID / CARD
+========================================================= */
+
+.grid{
+  display:grid;
+  gap:16px
+}
+
+.grid-2{
+  grid-template-columns:1.15fr .85fr
+}
+
+.grid-3{
+  grid-template-columns:repeat(3,1fr)
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:20px;
+  box-shadow:var(--shadow)
+}
+
+.card h2,
+.card h3{
+  margin-top:0
+}
+
+.card-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:14px
+}
+
+.card-title h3{
+  margin:0
+}
+
+.muted{
+  color:var(--muted)
+}
+
+.section-gap{
+  margin-top:16px
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.table-wrap{
+  overflow:auto
+}
+
+.table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:720px
+}
+
+.table th,
+.table td{
+  text-align:left;
+  padding:11px;
+  border-bottom:1px solid var(--line);
+  font-size:12px;
+  vertical-align:middle
+}
+
+.table th{
+  color:#637386;
+  font-size:10px;
+  letter-spacing:.4px
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status{
+  display:inline-flex;
+  padding:5px 8px;
+  border-radius:999px;
+  font-size:9px;
+  font-weight:950
+}
+
+.status.ok{
+  color:#0a7c57;
+  background:#e4f8f1
+}
+
+.status.warn{
+  color:#956400;
+  background:#fff6db
+}
+
+.status.danger{
+  color:#b9233f;
+  background:#fff0f3
+}
+
+.status.info{
+  color:#176c95;
+  background:#e4f5ff
+}
+
+
+/* =========================================================
+   FORMS
+========================================================= */
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px
+}
+
+.field label{
+  display:block;
+  font-size:10px;
+  font-weight:900;
+  color:#667688;
+  margin-bottom:6px
+}
+
+.input{
+  width:100%;
+  padding:11px 12px;
+  border-radius:11px;
+  border:1px solid var(--line);
+  background:#f9fdff;
+  color:var(--black);
+  outline:none
+}
+
+.input:focus{
+  border-color:rgba(255,45,148,.4);
+  box-shadow:0 0 0 3px rgba(255,45,148,.08)
+}
+
+textarea.input{
+  min-height:92px;
+  resize:vertical
+}
+
+.full{
+  grid-column:1/-1
+}
+
+.actions-row{
+  display:flex;
+  gap:9px;
+  flex-wrap:wrap;
+  margin-top:14px
+}
+
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.chart{
+  height:240px;
+  display:flex;
+  align-items:flex-end;
+  gap:12px;
+  padding:18px 8px 30px
+}
+
+.bar{
+  flex:1;
+  min-width:28px;
+  background:linear-gradient(180deg,var(--pink),var(--black));
+  border-radius:10px 10px 4px 4px;
+  position:relative
+}
+
+.bar span{
+  position:absolute;
+  bottom:-22px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:9px;
+  color:#6b7b8c
+}
+
+.empty{
+  padding:22px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  border:1px dashed var(--line);
+  border-radius:14px
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.login{
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  padding:20px;
+  background:
+    radial-gradient(circle at 10% 10%,rgba(148,221,255,.55),transparent 30%),
+    radial-gradient(circle at 90% 10%,rgba(255,45,148,.16),transparent 30%),
+    #eaf8ff
+}
+
+.login-box{
+  width:min(430px,94vw);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:28px;
+  box-shadow:0 35px 90px rgba(50,90,110,.18)
+}
+
+.login-box h1{
+  margin:0 0 6px
+}
+
+.login-box p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6
+}
+
+.notice{
+  padding:11px 12px;
+  border-radius:12px;
+  background:#eef9ff;
+  border:1px solid #cfeefe;
+  color:#315b70;
+  font-size:11px;
+  line-height:1.55;
+  margin:14px 0
+}
+
+.login-logo{
+  font-size:26px;
+  font-weight:1000
+}
+
+.login-logo span{
+  color:var(--pink)
+}
+
+
+/* =========================================================
+   MISC
+========================================================= */
+
+.mobile-toggle{
+  display:none
+}
+
+.mobile-overlay{
+  display:none
+}
+
+.metric-positive{
+  color:var(--green)
+}
+
+.metric-negative{
+  color:var(--red)
+}
+
+.pill{
+  display:inline-flex;
+  padding:6px 9px;
+  border-radius:999px;
+  background:#f0f7fb;
+  font-size:10px;
+  font-weight:900
+}
+
+.warning-box{
+  padding:12px 14px;
+  border-radius:14px;
+  background:#fff8e8;
+  border:1px solid #f1dfaa;
+  color:#7d5a0c;
+  font-size:11px;
+  line-height:1.55
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+  .kpis{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .grid-2,
+  .grid-3{
+    grid-template-columns:1fr
+  }
+
+  .app{
+    grid-template-columns:1fr
+  }
+
+  .sidebar{
+    position:fixed;
+    left:-280px;
+    top:0;
+    width:255px;
+    z-index:300;
+    transition:.25s
+  }
+
+  .sidebar.open{
+    left:0
+  }
+
+  .mobile-toggle{
+    display:inline-flex
+  }
+
+  .mobile-overlay.open{
+    display:block;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    z-index:250
+  }
+
+  .main{
+    padding:16px
+  }
+
+  .topbar{
+    align-items:flex-start
+  }
+
+  .top-actions{
+    flex-wrap:wrap;
+    justify-content:flex-end
+  }
+
+}
+
+@media(max-width:680px){
+
+  .kpis,
+  .form-grid{
+    grid-template-columns:1fr
+  }
+
+  .topbar h1{
+    font-size:25px
+  }
+
+  .main{
+    padding:12px
+  }
+
+  .card{
+    padding:16px
+  }
+
+  .top-actions .site-link{
+    display:none
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     LOGIN
+========================================================= -->
+
+<div id="loginScreen" class="login">
+
+  <div class="login-box">
+
+    <div class="login-logo">
+      IMPACTO <span>PRO</span>
+    </div>
+
+    <h1>
+      Sistema de Vendas
+    </h1>
+
+    <p>
+      Acesso administrativo da Impacto Pro.
+      Nesta etapa os dados são compartilhados
+      com o site pelo navegador.
+    </p>
+
+    <div class="notice">
+
+      <strong>Acesso inicial:</strong>
+
+      <br>
+
+      Administrador:
+      <b>admin</b> /
+      <b>admin</b>
+
+      <br>
+
+      Vendedor:
+      <b>vendedor</b> /
+      <b>1234</b>
+
+    </div>
+
+    <div class="field">
+
+      <label>
+        USUÁRIO
+      </label>
+
+      <input
+      id="loginUser"
+      class="input"
+      value="admin">
+
+    </div>
+
+    <div
+    class="field"
+    style="margin-top:10px">
+
+      <label>
+        SENHA
+      </label>
+
+      <input
+      id="loginPass"
+      class="input"
+      type="password"
+      value="admin">
+
+    </div>
+
+    <button
+    class="btn btn-primary"
+    style="width:100%;margin-top:14px"
+    onclick="login()">
+
+      Entrar no sistema
+
+    </button>
+
+    <p
+    id="loginError"
+    class="metric-negative"
+    style="display:none;margin-top:12px">
+
+      Usuário ou senha inválidos.
+
+    </p>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     APP
+========================================================= -->
+
+<div
+id="app"
+class="app hidden">
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside
+id="sidebar"
+class="sidebar">
+
+  <div class="brand">
+    IMPACTO <span>PRO</span>
+  </div>
+
+  <div class="brand-sub">
+    SISTEMA DE VENDAS
+  </div>
+
+  <div
+  class="menu"
+  id="menu">
+
+    <button
+    class="active"
+    data-page="dashboard">
+      ▦ Dashboard
+    </button>
+
+    <button
+    data-page="pdv">
+      🛒 Venda local / PDV
+    </button>
+
+    <button
+    data-page="pedidos">
+      ◎ Pedidos online
+    </button>
+
+    <button
+    data-page="produtos">
+      ▤ Produtos e estoque
+    </button>
+
+    <button
+    data-page="kits">
+      ◈ KITs
+    </button>
+
+    <button
+    data-page="movimentacoes">
+      ↕ Entrada / saída
+    </button>
+
+    <button
+    data-page="financeiro">
+      R$ Financeiro
+    </button>
+
+    <button
+    data-page="relatorios">
+      ▥ Relatórios
+    </button>
+
+    <button
+    data-page="usuarios"
+    data-admin-only="1">
+      ♙ Usuários
+    </button>
+
+    <button
+    data-page="configuracoes"
+    data-admin-only="1">
+      ⚙ Configurações
+    </button>
+
+  </div>
+
+  <div class="side-footer">
+
+    Etapa 2:
+    gestão local compartilhada com o site.
+
+    <br><br>
+
+    Etapa 3:
+    banco online,
+    pagamentos
+    e sincronização entre dispositivos.
+
+  </div>
+
+</aside>
+
+
+<div
+id="mobileOverlay"
+class="mobile-overlay"
+onclick="toggleSidebar()">
+</div>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main">
+
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+  <div
+  style="
+  display:flex;
+  gap:10px;
+  align-items:center;
+  ">
+
+    <button
+    class="btn btn-secondary mobile-toggle"
+    onclick="toggleSidebar()">
+
+      ☰
+
+    </button>
+
+    <div>
+
+      <h1 id="pageTitle">
+        Dashboard
+      </h1>
+
+      <div
+      class="muted"
+      id="welcomeText">
+
+        Visão geral da operação
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="top-actions">
+
+    <a
+    class="btn btn-secondary site-link"
+    href="index.html"
+    target="_blank">
+
+      Abrir site ↗
+
+    </a>
+
+    <span
+    class="pill"
+    id="currentRole">
+
+      Administrador
+
+    </span>
+
+    <button
+    class="btn btn-secondary"
+    onclick="logout()">
+
+      Sair
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     DASHBOARD
+========================================================= -->
+
+<section
+id="page-dashboard"
+class="page active">
+
+  <div class="kpis">
+
+    <div class="kpi">
+
+      <small>
+        FATURAMENTO
+      </small>
+
+      <strong id="kpiRevenue">
+        R$ 0,00
+      </strong>
+
+      <div class="note">
+        vendas concluídas
+      </div>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        PEDIDOS ONLINE
+      </small>
+
+      <strong id="kpiOrders">
+        0
+      </strong>
+
+      <div class="note">
+        pedidos registrados
+      </div>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        ESTOQUE TOTAL
+      </small>
+
+      <strong id="kpiStock">
+        0
+      </strong>
+
+      <div class="note">
+        unidades disponíveis
+      </div>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        LUCRO ESTIMADO
+      </small>
+
+      <strong id="kpiProfit">
+        R$ 0,00
+      </strong>
+
+      <div class="note">
+        vendas - custos - despesas
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="grid grid-2 section-gap">
+
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <h3>
+          Vendas recentes
+        </h3>
+
+        <span class="pill">
+          Geral
+        </span>
+
+      </div>
+
+      <div class="table-wrap">
+
+        <table class="table">
+
+          <thead>
+
+            <tr>
+
+              <th>
+                VENDA
+              </th>
+
+              <th>
+                DATA
+              </th>
+
+              <th>
+                CANAL
+              </th>
+
+              <th>
+                PAGAMENTO
+              </th>
+
+              <th>
+                TOTAL
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="recentSales">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <h3>
+          Estoque
+        </h3>
+
+        <span class="pill">
+          Monitoramento
+        </span>
+
+      </div>
+
+      <div id="stockSummary">
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="grid grid-2 section-gap">
+
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <h3>
+          Vendas por canal
+        </h3>
+
+      </div>
+
+      <div id="dashboardChannels">
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <h3>
+          Despesas recentes
+        </h3>
+
+      </div>
+
+      <div id="dashboardExpenses">
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PDV
+========================================================= -->
+
+<section
+id="page-pdv"
+class="page">
+
+  <div class="grid grid-2">
+
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div>
+
+          <h3>
+            Produtos
+          </h3>
+
+          <div class="muted">
+            Selecione os itens da venda
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="pdvProducts">
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="card-title">
+
+        <div>
+
+          <h3>
+            Carrinho PDV
+          </h3>
+
+          <div class="muted">
+            Venda local
+          </div>
+
+        </div>
+
+      </div>
+
+      <div id="pdvCart">
+      </div>
+
+
+      <div
+      style="
+      display:flex;
+      justify-content:space-between;
+      font-size:21px;
+      font-weight:1000;
+      margin-top:18px;
+      ">
+
+        <span>
+          Total
+        </span>
+
+        <span id="pdvTotal">
+          R$ 0,00
+        </span>
+
+      </div>
+
+
+      <div class="field"
+      style="margin-top:15px">
+
+        <label>
+          FORMA DE PAGAMENTO
+        </label>
+
+        <select
+        class="input"
+        id="pdvPayment">
+
+          <option>
+            PIX
+          </option>
+
+          <option>
+            Dinheiro
+          </option>
+
+          <option>
+            Débito
+          </option>
+
+          <option>
+            Crédito
+          </option>
+
+          <option>
+            Voucher
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button
+      class="btn btn-primary"
+      style="
+      width:100%;
+      margin-top:14px;
+      "
+      onclick="finishPDV()">
+
+        Finalizar venda
+
+      </button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PEDIDOS ONLINE
+========================================================= -->
+
+<section
+id="page-pedidos"
+class="page">
+
+  <div class="card">
+
+    <div class="card-title">
+
+      <div>
+
+        <h3>
+          Pedidos recebidos do site
+        </h3>
+
+        <div class="muted">
+          Pedidos criados no carrinho online
+        </div>
+
+      </div>
+
+      <button
+      class="btn btn-secondary"
+      onclick="renderOrders()">
+
+        Atualizar
+
+      </button>
+
+    </div>
+
+
+    <div class="table-wrap">
+
+      <table class="table">
+
+        <thead>
+
+          <tr>
+
+            <th>
+              PEDIDO
+            </th>
+
+            <th>
+              DATA
+            </th>
+
+            <th>
+              STATUS
+            </th>
+
+            <th>
+              TOTAL
+            </th>
+
+            <th>
+              ITENS
+            </th>
+
+            <th>
+              AÇÃO
+            </th>
+
+          </tr>
+
+        </thead>
+
+        <tbody id="ordersTable">
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PRODUTOS
+========================================================= -->
+
+<section
+id="page-produtos"
+class="page">
+
+  <div class="grid grid-2">
+
+
+    <div class="card">
+
+      <h3>
+        Cadastro / edição de produto
+      </h3>
+
+      <input
+      type="hidden"
+      id="productEditId">
+
+      <div class="form-grid">
+
+
+        <div class="field">
+
+          <label>
+            NOME
+          </label>
+
+          <input
+          class="input"
+          id="productName">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            CÓDIGO
+          </label>
+
+          <input
+          class="input"
+          id="productId"
+          placeholder="Ex.: azul">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            PREÇO DE VENDA
+          </label>
+
+          <input
+          type="number"
+          step="0.01"
+          class="input"
+          id="productPrice">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            CUSTO UNITÁRIO
+          </label>
+
+          <input
+          type="number"
+          step="0.01"
+          class="input"
+          id="productCost">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            ESTOQUE
+          </label>
+
+          <input
+          type="number"
+          class="input"
+          id="productStock">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            ESTOQUE MÍNIMO
+          </label>
+
+          <input
+          type="number"
+          class="input"
+          id="productMin"
+          value="20">
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            COR / GRADIENTE
+          </label>
+
+          <input
+          class="input"
+          id="productColor"
+          placeholder="linear-gradient(...)">
+
+        </div>
+
+
+      </div>
+
+
+      <div class="actions-row">
+
+        <button
+        class="btn btn-primary"
+        onclick="saveProduct()">
+
+          Salvar produto
+
+        </button>
+
+        <button
+        class="btn btn-secondary"
+        onclick="clearProductForm()">
+
+          Limpar
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Produtos cadastrados
+      </h3>
+
+      <div id="productCards">
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     KITS
+========================================================= -->
+
+<section
+id="page-kits"
+class="page">
+
+  <div class="grid grid-2">
+
+
+    <div class="card">
+
+      <h3>
+        Configuração de KIT
+      </h3>
+
+      <div class="form-grid">
+
+
+        <div class="field">
+
+          <label>
+            KIT
+          </label>
+
+          <select
+          class="input"
+          id="kitId">
+
+            <option value="kit20">
+              KIT 20 TOALHAS
+            </option>
+
+            <option value="kit50">
+              KIT 50 TOALHAS
+            </option>
+
+            <option value="kit100">
+              KIT 100 TOALHAS
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            QUANTIDADE
+          </label>
+
+          <input
+          class="input"
+          id="kitQty"
+          readonly>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            PREÇO
+          </label>
+
+          <input
+          type="number"
+          step="0.01"
+          class="input"
+          id="kitPrice"
+          placeholder="Valor a definir">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            VISÍVEL NO SITE
+          </label>
+
+          <select
+          class="input"
+          id="kitActive">
+
+            <option value="true">
+              Sim
+            </option>
+
+            <option value="false">
+              Não
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            DESCRIÇÃO
+          </label>
+
+          <textarea
+          class="input"
+          id="kitDescription">
+          </textarea>
+
+        </div>
+
+
+      </div>
+
+
+      <button
+      class="btn btn-primary"
+      style="margin-top:14px"
+      onclick="saveKit()">
+
+        Salvar KIT
+
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        KITs configurados
+      </h3>
+
+      <div id="kitsList">
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     MOVIMENTAÇÕES
+========================================================= -->
+
+<section
+id="page-movimentacoes"
+class="page">
+
+  <div class="grid grid-2">
+
+
+    <div class="card">
+
+      <h3>
+        Entrada / saída de estoque
+      </h3>
+
+      <div class="form-grid">
+
+
+        <div class="field full">
+
+          <label>
+            PRODUTO
+          </label>
+
+          <select
+          class="input"
+          id="moveProduct">
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            TIPO
+          </label>
+
+          <select
+          class="input"
+          id="moveType">
+
+            <option value="entrada">
+              Entrada
+            </option>
+
+            <option value="saida">
+              Saída
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            QUANTIDADE
+          </label>
+
+          <input
+          type="number"
+          class="input"
+          id="moveQty">
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            MOTIVO / OBSERVAÇÃO
+          </label>
+
+          <input
+          class="input"
+          id="moveReason"
+          placeholder="Ex.: Entrada da produção">
+
+        </div>
+
+
+      </div>
+
+
+      <button
+      class="btn btn-primary"
+      style="margin-top:14px"
+      onclick="saveMovement()">
+
+        Registrar movimentação
+
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Histórico recente
+      </h3>
+
+      <div class="table-wrap">
+
+        <table class="table">
+
+          <thead>
+
+            <tr>
+
+              <th>
+                DATA
+              </th>
+
+              <th>
+                PRODUTO
+              </th>
+
+              <th>
+                TIPO
+              </th>
+
+              <th>
+                QTD
+              </th>
+
+              <th>
+                MOTIVO
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="movesTable">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FINANCEIRO
+========================================================= -->
+
+<section
+id="page-financeiro"
+class="page">
+
+  <div class="grid grid-2">
+
+
+    <div class="card">
+
+      <h3>
+        Registrar despesa
+      </h3>
+
+      <div class="form-grid">
+
+
+        <div class="field">
+
+          <label>
+            DATA
+          </label>
+
+          <input
+          type="date"
+          class="input"
+          id="expenseDate">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            CATEGORIA
+          </label>
+
+          <select
+          class="input"
+          id="expenseCategory">
+
+            <option>
+              Produção
+            </option>
+
+            <option>
+              Frete
+            </option>
+
+            <option>
+              Embalagem
+            </option>
+
+            <option>
+              Marketing
+            </option>
+
+            <option>
+              Administrativo
+            </option>
+
+            <option>
+              Outros
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            DESCRIÇÃO
+          </label>
+
+          <input
+          class="input"
+          id="expenseDescription">
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            VALOR
+          </label>
+
+          <input
+          type="number"
+          step="0.01"
+          class="input"
+          id="expenseValue">
+
+        </div>
+
+
+      </div>
+
+
+      <button
+      class="btn btn-primary"
+      style="margin-top:14px"
+      onclick="saveExpense()">
+
+        Registrar despesa
+
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Despesas
+      </h3>
+
+      <div class="table-wrap">
+
+        <table class="table">
+
+          <thead>
+
+            <tr>
+
+              <th>
+                DATA
+              </th>
+
+              <th>
+                DESCRIÇÃO
+              </th>
+
+              <th>
+                CATEGORIA
+              </th>
+
+              <th>
+                VALOR
+              </th>
+
+              <th>
+                AÇÃO
+              </th>
+
+            </tr>
+
+          </thead>
+
+          <tbody id="expensesTable">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     RELATÓRIOS
+========================================================= -->
+
+<section
+id="page-relatorios"
+class="page">
+
+  <div class="card">
+
+    <div class="card-title">
+
+      <div>
+
+        <h3>
+          Relatório por período
+        </h3>
+
+        <div class="muted">
+          Vendas, despesas e resultado estimado
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-grid">
+
+      <div class="field">
+
+        <label>
+          DATA INICIAL
+        </label>
+
+        <input
+        type="date"
+        class="input"
+        id="reportStart">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          DATA FINAL
+        </label>
+
+        <input
+        type="date"
+        class="input"
+        id="reportEnd">
+
+      </div>
+
+    </div>
+
+
+    <button
+    class="btn btn-primary"
+    style="margin-top:14px"
+    onclick="renderReports()">
+
+      Atualizar relatório
+
+    </button>
+
+  </div>
+
+
+  <div class="kpis section-gap">
+
+    <div class="kpi">
+
+      <small>
+        VENDAS
+      </small>
+
+      <strong id="reportRevenue">
+        R$ 0,00
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        DESPESAS
+      </small>
+
+      <strong id="reportExpenses">
+        R$ 0,00
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        CUSTO DOS PRODUTOS
+      </small>
+
+      <strong id="reportCosts">
+        R$ 0,00
+      </strong>
+
+    </div>
+
+
+    <div class="kpi">
+
+      <small>
+        RESULTADO
+      </small>
+
+      <strong id="reportProfit">
+        R$ 0,00
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <div class="grid grid-2 section-gap">
+
+
+    <div class="card">
+
+      <h3>
+        Vendas por canal
+      </h3>
+
+      <div id="channelReport">
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Quantidade por produto
+      </h3>
+
+      <div id="productReport">
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     USUÁRIOS
+========================================================= -->
+
+<section
+id="page-usuarios"
+class="page">
+
+  <div class="grid grid-2">
+
+
+    <div class="card">
+
+      <h3>
+        Novo usuário
+      </h3>
+
+      <div class="form-grid">
+
+
+        <div class="field">
+
+          <label>
+            NOME
+          </label>
+
+          <input
+          class="input"
+          id="userName">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            LOGIN
+          </label>
+
+          <input
+          class="input"
+          id="userLogin">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            SENHA
+          </label>
+
+          <input
+          class="input"
+          type="password"
+          id="userPassword">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            PERFIL
+          </label>
+
+          <select
+          class="input"
+          id="userRole">
+
+            <option value="seller">
+              Vendedor
+            </option>
+
+            <option value="admin">
+              Administrador
+            </option>
+
+          </select>
+
+        </div>
+
+
+      </div>
+
+
+      <button
+      class="btn btn-primary"
+      style="margin-top:14px"
+      onclick="saveUser()">
+
+        Criar usuário
+
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Usuários cadastrados
+      </h3>
+
+      <div id="usersList">
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CONFIGURAÇÕES
+========================================================= -->
+
+<section
+id="page-configuracoes"
+class="page">
+
+  <div class="grid grid-2">
+
+
+    <div class="card">
+
+      <h3>
+        Configurações comerciais
+      </h3>
+
+      <div class="form-grid">
+
+
+        <div class="field full">
+
+          <label>
+            NOME DA EMPRESA
+          </label>
+
+          <input
+          class="input"
+          id="settingCompany">
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            WHATSAPP
+          </label>
+
+          <input
+          class="input"
+          id="settingWhatsapp"
+          placeholder="5513999999999">
+
+        </div>
+
+
+        <div class="field full">
+
+          <label>
+            CHAVE PIX
+          </label>
+
+          <input
+          class="input"
+          id="settingPix">
+
+        </div>
+
+
+        <div class="field">
+
+          <label>
+            ESTOQUE MÍNIMO PADRÃO
+          </label>
+
+          <input
+          type="number"
+          class="input"
+          id="settingMinStock">
+
+        </div>
+
+
+      </div>
+
+
+      <button
+      class="btn btn-primary"
+      style="margin-top:14px"
+      onclick="saveSettings()">
+
+        Salvar configurações
+
+      </button>
+
+    </div>
+
+
+    <div class="card">
+
+      <h3>
+        Backup
+      </h3>
+
+      <p class="muted"
+      style="font-size:12px;line-height:1.6">
+
+        Exporte os dados locais para um arquivo JSON.
+        Na integração futura,
+        os dados ficarão em banco online.
+
+      </p>
+
+
+      <div class="actions-row">
+
+        <button
+        class="btn btn-secondary"
+        onclick="exportData()">
+
+          Exportar backup
+
+        </button>
+
+
+        <button
+        class="btn btn-danger"
+        onclick="resetDemo()">
+
+          Restaurar demonstração
+
+        </button>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+const $ = id =>
+  document.getElementById(id);
+
+function read(key,fallback){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(key)
+    ) ?? fallback;
+
+  }
+  catch(error){
+
+    return fallback;
+
+  }
+
+}
+
+function write(key,value){
+
+  localStorage.setItem(
+    key,
+    JSON.stringify(value)
+  );
+
+}
+
+function money(value){
+
+  return Number(value || 0)
+  .toLocaleString(
+    "pt-BR",
+    {
+      style:"currency",
+      currency:"BRL"
+    }
+  );
+
+}
+
+function nowISO(){
+
+  return new Date()
+  .toISOString();
+
+}
+
+function dateBR(date){
+
+  if(!date){
+    return "-";
+  }
+
+  return new Date(date)
+  .toLocaleString("pt-BR");
+
+}
+
+
+/* =========================================================
+   DEFAULT DATA
+========================================================= */
+
+const DEFAULT_USERS = [
+
+  {
+    id:"U1",
+    name:"Administrador",
+    login:"admin",
+    password:"admin",
+    role:"admin"
+  },
+
+  {
+    id:"U2",
+    name:"Vendedor",
+    login:"vendedor",
+    password:"1234",
+    role:"seller"
+  }
+
+];
+
+
+const DEFAULT_PRODUCTS = [
+
+  {
+    id:"azul",
+    name:"Toalha Impacto Pro Azul",
+    price:19.90,
+    cost:0,
+    stock:120,
+    minStock:20,
+    color:"linear-gradient(#8fe3ff,#48b7e9)"
+  },
+
+  {
+    id:"rosa",
+    name:"Toalha Impacto Pro Rosa",
+    price:19.90,
+    cost:0,
+    stock:95,
+    minStock:20,
+    color:"linear-gradient(#ff8dca,#ff2d94)"
+  },
+
+  {
+    id:"preta",
+    name:"Toalha Impacto Pro Preta",
+    price:21.90,
+    cost:0,
+    stock:140,
+    minStock:20,
+    color:"linear-gradient(#454b55,#101216)"
+  }
+
+];
+
+
+const DEFAULT_KITS = [
+
+  {
+    id:"kit20",
+    name:"KIT 20 TOALHAS",
+    qty:20,
+    price:null,
+    active:true,
+    description:"Kit com 20 toalhas."
+  },
+
+  {
+    id:"kit50",
+    name:"KIT 50 TOALHAS",
+    qty:50,
+    price:null,
+    active:true,
+    description:"Kit com 50 toalhas."
+  },
+
+  {
+    id:"kit100",
+    name:"KIT 100 TOALHAS",
+    qty:100,
+    price:null,
+    active:true,
+    description:"Kit com 100 toalhas."
+  }
+
+];
+
+
+const DEFAULT_SETTINGS = {
+
+  company:"Impacto Pro Vendas",
+  whatsapp:"",
+  pix:"",
+  minStock:20
+
+};
+
+
+/* =========================================================
+   INIT
+========================================================= */
+
+function initData(){
+
+  if(
+    !localStorage.getItem(
+      "impacto_users"
+    )
+  ){
+
+    write(
+      "impacto_users",
+      DEFAULT_USERS
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "impacto_products"
+    )
+  ){
+
+    write(
+      "impacto_products",
+      DEFAULT_PRODUCTS
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "impacto_kits"
+    )
+  ){
+
+    write(
+      "impacto_kits",
+      DEFAULT_KITS
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "impacto_orders"
+    )
+  ){
+
+    write(
+      "impacto_orders",
+      []
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "impacto_sales"
+    )
+  ){
+
+    write(
+      "impacto_sales",
+      []
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "impacto_expenses"
+    )
+  ){
+
+    write(
+      "impacto_expenses",
+      []
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "impacto_movements"
+    )
+  ){
+
+    write(
+      "impacto_movements",
+      []
+    );
+
+  }
+
+  if(
+    !localStorage.getItem(
+      "impacto_settings"
+    )
+  ){
+
+    write(
+      "impacto_settings",
+      DEFAULT_SETTINGS
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   CURRENT USER
+========================================================= */
+
+let currentUser = null;
+
+let pdvCart = [];
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+function login(){
+
+  const login =
+    $("loginUser")
+    .value
+    .trim();
+
+  const password =
+    $("loginPass")
+    .value;
+
+  const users =
+    read(
+      "impacto_users",
+      DEFAULT_USERS
+    );
+
+  const user =
+    users.find(
+      u =>
+        u.login === login &&
+        u.password === password
+    );
+
+  if(!user){
+
+    $("loginError")
+    .style
+    .display =
+      "block";
+
+    return;
+
+  }
+
+  currentUser = user;
+
+  $("loginError")
+  .style
+  .display =
+    "none";
+
+  $("loginScreen")
+  .classList
+  .add(
+    "hidden"
+  );
+
+  $("app")
+  .classList
+  .remove(
+    "hidden"
+  );
+
+  $("currentRole")
+  .textContent =
+    user.role === "admin"
+    ? "Administrador"
+    : "Vendedor";
+
+  $("welcomeText")
+  .textContent =
+    "Olá, " +
+    user.name;
+
+  applyPermissions();
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout(){
+
+  currentUser = null;
+
+  $("app")
+  .classList
+  .add(
+    "hidden"
+  );
+
+  $("loginScreen")
+  .classList
+  .remove(
+    "hidden"
+  );
+
+}
+
+
+/* =========================================================
+   PERMISSIONS
+========================================================= */
+
+function applyPermissions(){
+
+  document
+  .querySelectorAll(
+    "[data-admin-only='1']"
+  )
+  .forEach(
+    item => {
+
+      item.style.display =
+        currentUser?.role === "admin"
+        ? ""
+        : "none";
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   PAGE NAVIGATION
+========================================================= */
+
+document
+.querySelectorAll(
+  "#menu button"
+)
+.forEach(
+  button => {
+
+    button.addEventListener(
+      "click",
+      () => {
+
+        openPage(
+          button.dataset.page
+        );
+
+      }
+    );
+
+  }
+);
+
+
+function openPage(pageName){
+
+  document
+  .querySelectorAll(
+    ".page"
+  )
+  .forEach(
+    page =>
+      page.classList.remove(
+        "active"
+      )
+  );
+
+  const page =
+    $(
+      "page-" +
+      pageName
+    );
+
+  if(page){
+
+    page.classList.add(
+      "active"
+    );
+
+  }
+
+  document
+  .querySelectorAll(
+    "#menu button"
+  )
+  .forEach(
+    button =>
+      button.classList.toggle(
+        "active",
+        button.dataset.page ===
+        pageName
+      )
+  );
+
+  const labels = {
+
+    dashboard:"Dashboard",
+
+    pdv:"Venda local / PDV",
+
+    pedidos:"Pedidos online",
+
+    produtos:"Produtos e estoque",
+
+    kits:"KITs",
+
+    movimentacoes:"Entrada / saída",
+
+    financeiro:"Financeiro",
+
+    relatorios:"Relatórios",
+
+    usuarios:"Usuários",
+
+    configuracoes:"Configurações"
+
+  };
+
+  $("pageTitle")
+  .textContent =
+    labels[pageName] ||
+    pageName;
+
+  if(
+    window.innerWidth <=
+    1100
+  ){
+
+    toggleSidebar(false);
+
+  }
+
+}
+
+
+/* =========================================================
+   SIDEBAR MOBILE
+========================================================= */
+
+function toggleSidebar(force){
+
+  const sidebar =
+    $("sidebar");
+
+  const overlay =
+    $("mobileOverlay");
+
+  const open =
+    typeof force === "boolean"
+    ? force
+    : !sidebar.classList.contains(
+        "open"
+      );
+
+  sidebar.classList.toggle(
+    "open",
+    open
+  );
+
+  overlay.classList.toggle(
+    "open",
+    open
+  );
+
+}
+
+
+/* =========================================================
+   DATA GETTERS
+========================================================= */
+
+function getProducts(){
+
+  return read(
+    "impacto_products",
+    DEFAULT_PRODUCTS
+  );
+
+}
+
+function saveProducts(products){
+
+  write(
+    "impacto_products",
+    products
+  );
+
+}
+
+function getKits(){
+
+  return read(
+    "impacto_kits",
+    DEFAULT_KITS
+  );
+
+}
+
+function getOrders(){
+
+  return read(
+    "impacto_orders",
+    []
+  );
+
+}
+
+function getSales(){
+
+  return read(
+    "impacto_sales",
+    []
+  );
+
+}
+
+function getExpenses(){
+
+  return read(
+    "impacto_expenses",
+    []
+  );
+
+}
+
+function getMoves(){
+
+  return read(
+    "impacto_movements",
+    []
+  );
+
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+function renderDashboard(){
+
+  const sales =
+    getSales();
+
+  const orders =
+    getOrders();
+
+  const products =
+    getProducts();
+
+  const expenses =
+    getExpenses();
+
+  const revenue =
+    sales.reduce(
+      (
+        total,
+        sale
+      ) =>
+        total +
+        Number(
+          sale.total || 0
+        ),
+      0
+    );
+
+  const expensesTotal =
+    expenses.reduce(
+      (
+        total,
+        expense
+      ) =>
+        total +
+        Number(
+          expense.value || 0
+        ),
+      0
+    );
+
+  let costTotal = 0;
+
+  sales.forEach(
+    sale => {
+
+      (
+        sale.items || []
+      )
+      .forEach(
+        item => {
+
+          const product =
+            products.find(
+              p =>
+                p.id ===
+                item.id
+            );
+
+          costTotal +=
+            Number(
+              product?.cost || 0
+            ) *
+            Number(
+              item.qty || 0
+            );
+
+        }
+      );
+
+    }
+  );
+
+  const profit =
+    revenue -
+    expensesTotal -
+    costTotal;
+
+  const stock =
+    products.reduce(
+      (
+        total,
+        product
+      ) =>
+        total +
+        Number(
+          product.stock || 0
+        ),
+      0
+    );
+
+  $("kpiRevenue")
+  .textContent =
+    money(
+      revenue
+    );
+
+  $("kpiOrders")
+  .textContent =
+    orders.length;
+
+  $("kpiStock")
+  .textContent =
+    stock;
+
+  $("kpiProfit")
+  .textContent =
+    money(
+      profit
+    );
+
+
+  renderRecentSales();
+
+  renderStockSummary();
+
+  renderDashboardChannels();
+
+  renderDashboardExpenses();
+
+}
+
+
+/* =========================================================
+   RECENT SALES
+========================================================= */
+
+function renderRecentSales(){
+
+  const sales =
+    getSales()
+    .slice(
+      0,
+      10
+    );
+
+  const container =
+    $("recentSales");
+
+  if(
+    sales.length === 0
+  ){
+
+    container.innerHTML = `
+
+      <tr>
+
+        <td
+        colspan="5"
+        class="muted">
+
+          Nenhuma venda registrada.
+
+        </td>
+
+      </tr>
+
+    `;
+
+    return;
+
+  }
+
+  container.innerHTML =
+    sales.map(
+      sale => `
+
+      <tr>
+
+        <td>
+          ${sale.id}
+        </td>
+
+        <td>
+          ${dateBR(sale.date)}
+        </td>
+
+        <td>
+          ${sale.channel || "-"}
+        </td>
+
+        <td>
+          ${sale.payment || "-"}
+        </td>
+
+        <td>
+          <strong>
+            ${money(sale.total)}
+          </strong>
+        </td>
+
+      </tr>
+
+      `
+    )
+    .join("");
+
+}
+
+
+/* =========================================================
+   STOCK SUMMARY
+========================================================= */
+
+function renderStockSummary(){
+
+  const products =
+    getProducts();
+
+  $("stockSummary")
+  .innerHTML =
+    products.map(
+      product => {
+
+        let statusClass =
+          "ok";
+
+        let statusText =
+          "Estoque OK";
+
+        if(
+          product.stock <= 0
+        ){
+
+          statusClass =
+            "danger";
+
+          statusText =
+            "Sem estoque";
+
+        }
+        else if(
+          product.stock <=
+          product.minStock
+        ){
+
+          statusClass =
+            "warn";
+
+          statusText =
+            "Estoque baixo";
+
+        }
+
+        return `
+
+        <div
+        style="
+        padding:11px 0;
+        border-bottom:1px solid var(--line);
+        ">
+
+          <div
+          style="
+          display:flex;
+          justify-content:space-between;
+          gap:10px;
+          ">
+
+            <strong>
+              ${product.name}
+            </strong>
+
+            <span
+            class="status ${statusClass}">
+
+              ${statusText}
+
+            </span>
+
+          </div>
+
+          <div
+          class="muted"
+          style="
+          margin-top:5px;
+          font-size:10px;
+          ">
+
+            ${product.stock}
+            unidades
+
+          </div>
+
+        </div>
+
+        `;
+
+      }
+    )
+    .join("");
+
+}
+
+
+/* =========================================================
+   DASHBOARD CHANNELS
+========================================================= */
+
+function renderDashboardChannels(){
+
+  const sales =
+    getSales();
+
+  const channels = {};
+
+  sales.forEach(
+    sale => {
+
+      const channel =
+        sale.channel ||
+        "Outro";
+
+      channels[channel] =
+        (
+          channels[channel] ||
+          0
+        ) +
+        Number(
+          sale.total || 0
+        );
+
+    }
+  );
+
+  const entries =
+    Object.entries(
+      channels
+    );
+
+  $("dashboardChannels")
+  .innerHTML =
+    entries.length
+    ? entries.map(
+        ([name,value]) => `
+
+        <div
+        style="
+        display:flex;
+        justify-content:space-between;
+        gap:10px;
+        padding:10px 0;
+        border-bottom:1px solid var(--line);
+        ">
+
+          <span>
+            ${name}
+          </span>
+
+          <strong>
+            ${money(value)}
+          </strong>
+
+        </div>
+
+        `
+      )
+      .join("")
+    : `
+      <div class="empty">
+        Sem vendas registradas.
+      </div>
+      `;
+
+}
+
+
+/* =========================================================
+   DASHBOARD EXPENSES
+========================================================= */
+
+function renderDashboardExpenses(){
+
+  const expenses =
+    getExpenses()
+    .slice(
+      0,
+      8
+    );
+
+  $("dashboardExpenses")
+  .innerHTML =
+    expenses.length
+    ? expenses.map(
+        expense => `
+
+        <div
+        style="
+        display:flex;
+        justify-content:space-between;
+        gap:10px;
+        padding:10px 0;
+        border-bottom:1px solid var(--line);
+        ">
+
+          <div>
+
+            <strong>
+              ${expense.description}
+            </strong>
+
+            <div
+            class="muted"
+            style="font-size:10px">
+
+              ${expense.category}
+
+            </div>
+
+          </div>
+
+          <strong>
+            ${money(expense.value)}
+          </strong>
+
+        </div>
+
+        `
+      )
+      .join("")
+    : `
+      <div class="empty">
+        Nenhuma despesa registrada.
+      </div>
+      `;
+
+}
+
+
+/* =========================================================
+   PDV PRODUCTS
+========================================================= */
+
+function renderPDVProducts(){
+
+  const products =
+    getProducts();
+
+  $("pdvProducts")
+  .innerHTML =
+    products.map(
+      product => `
+
+      <div
+      style="
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+      ">
+
+        <div>
+
+          <strong>
+            ${product.name}
+          </strong>
+
+          <div
+          class="muted"
+          style="font-size:10px">
+
+            ${money(product.price)}
+            •
+            estoque:
+            ${product.stock}
+
+          </div>
+
+        </div>
+
+        <button
+        class="btn btn-primary btn-sm"
+        onclick="addPDV('${product.id}')">
+
+          Adicionar
+
+        </button>
+
+      </div>
+
+      `
+    )
+    .join("");
+
+}
+
+
+/* =========================================================
+   PDV CART
+========================================================= */
+
+function addPDV(
+  productId
+){
+
+  const products =
+    getProducts();
+
+  const product =
+    products.find(
+      p =>
+        p.id ===
+        productId
+    );
+
+  if(!product){
+    return;
+  }
+
+  const existing =
+    pdvCart.find(
+      item =>
+        item.id ===
+        productId
+    );
+
+  if(existing){
+
+    if(
+      existing.qty <
+      product.stock
+    ){
+
+      existing.qty++;
+
+    }
+
+  }
+  else{
+
+    if(
+      product.stock <= 0
+    ){
+
+      alert(
+        "Produto sem estoque."
+      );
+
+      return;
+
+    }
+
+    pdvCart.push(
+      {
+        id:productId,
+        qty:1
+      }
+    );
+
+  }
+
+  renderPDVCart();
+
+}
+
+
+function changePDV(
+  productId,
+  amount
+){
+
+  const products =
+    getProducts();
+
+  const product =
+    products.find(
+      p =>
+        p.id ===
+        productId
+    );
+
+  const item =
+    pdvCart.find(
+      item =>
+        item.id ===
+        productId
+    );
+
+  if(
+    !product ||
+    !item
+  ){
+    return;
+  }
+
+  item.qty +=
+    amount;
+
+  if(
+    item.qty <= 0
+  ){
+
+    pdvCart =
+      pdvCart.filter(
+        item =>
+          item.id !==
+          productId
+      );
+
+  }
+  else if(
+    item.qty >
+    product.stock
+  ){
+
+    item.qty =
+      product.stock;
+
+  }
+
+  renderPDVCart();
+
+}
+
+
+function renderPDVCart(){
+
+  const products =
+    getProducts();
+
+  let total = 0;
+
+  if(
+    pdvCart.length === 0
+  ){
+
+    $("pdvCart")
+    .innerHTML = `
+
+      <div class="empty">
+        Carrinho vazio.
+      </div>
+
+    `;
+
+    $("pdvTotal")
+    .textContent =
+      money(0);
+
+    return;
+
+  }
+
+  $("pdvCart")
+  .innerHTML =
+    pdvCart.map(
+      item => {
+
+        const product =
+          products.find(
+            p =>
+              p.id ===
+              item.id
+          );
+
+        if(!product){
+          return "";
+        }
+
+        const subtotal =
+          Number(
+            product.price
+          ) *
+          Number(
+            item.qty
+          );
+
+        total +=
+          subtotal;
+
+        return `
+
+        <div
+        style="
+        padding:12px 0;
+        border-bottom:1px solid var(--line);
+        ">
+
+          <div
+          style="
+          display:flex;
+          justify-content:space-between;
+          gap:10px;
+          ">
+
+            <div>
+
+              <strong>
+                ${product.name}
+              </strong>
+
+              <div
+              class="muted"
+              style="font-size:10px">
+
+                ${money(product.price)}
+                por unidade
+
+              </div>
+
+            </div>
+
+            <strong>
+              ${money(subtotal)}
+            </strong>
+
+          </div>
+
+
+          <div
+          style="
+          display:flex;
+          align-items:center;
+          gap:7px;
+          margin-top:8px;
+          ">
+
+            <button
+            class="btn btn-secondary btn-sm"
+            onclick="changePDV('${product.id}',-1)">
+
+              −
+
+            </button>
+
+            <strong>
+              ${item.qty}
+            </strong>
+
+            <button
+            class="btn btn-secondary btn-sm"
+            onclick="changePDV('${product.id}',1)">
+
+              +
+
+            </button>
+
+          </div>
+
+        </div>
+
+        `;
+
+      }
+    )
+    .join("");
+
+  $("pdvTotal")
+  .textContent =
+    money(total);
+
+}
+
+
+/* =========================================================
+   FINISH PDV
+========================================================= */
+
+function finishPDV(){
+
+  if(
+    pdvCart.length === 0
+  ){
+
+    alert(
+      "Adicione produtos à venda."
+    );
+
+    return;
+
+  }
+
+  const products =
+    getProducts();
+
+  let total = 0;
+
+  for(
+    const item of
+    pdvCart
+  ){
+
+    const product =
+      products.find(
+        p =>
+          p.id ===
+          item.id
+      );
+
+    if(
+      !product ||
+      product.stock <
+      item.qty
+    ){
+
+      alert(
+        "Estoque insuficiente para concluir a venda."
+      );
+
+      return;
+
+    }
+
+  }
+
+  for(
+    const item of
+    pdvCart
+  ){
+
+    const product =
+      products.find(
+        p =>
+          p.id ===
+          item.id
+      );
+
+    total +=
+      product.price *
+      item.qty;
+
+    product.stock -=
+      item.qty;
+
+  }
+
+  saveProducts(
+    products
+  );
+
+  const sales =
+    getSales();
+
+  sales.unshift(
+    {
+
+      id:
+        "PDV-" +
+        Date.now()
+        .toString()
+        .slice(-6),
+
+      date:
+        nowISO(),
+
+      channel:
+        "Loja física",
+
+      total:
+        total,
+
+      items:
+        JSON.parse(
+          JSON.stringify(
+            pdvCart
+          )
+        ),
+
+      payment:
+        $("pdvPayment")
+        .value,
+
+      seller:
+        currentUser?.name ||
+        "Vendedor"
+
+    }
+  );
+
+  write(
+    "impacto_sales",
+    sales
+  );
+
+  pdvCart = [];
+
+  renderAll();
+
+  alert(
+    "Venda finalizada com sucesso."
+  );
+
+}
+
+
+/* =========================================================
+   ORDERS
+========================================================= */
+
+function renderOrders(){
+
+  const orders =
+    getOrders();
+
+  const products =
+    getProducts();
+
+  $("ordersTable")
+  .innerHTML =
+    orders.length
+    ? orders.map(
+        order => {
+
+          const itemText =
+            (
+              order.items ||
+              []
+            )
+            .map(
+              item => {
+
+                const product =
+                  products.find(
+                    p =>
+                      p.id ===
+                      item.id
+                  );
+
+                return (
+                  product?.name ||
+                  item.id
+                ) +
+                " x" +
+                item.qty;
+
+              }
+            )
+            .join("<br>");
+
+          const statusClass =
+            order.status ===
+            "Concluído"
+            ? "ok"
+            : "info";
+
+          return `
+
+          <tr>
+
+            <td>
+              <strong>
+                ${order.id}
+              </strong>
+            </td>
+
+            <td>
+              ${dateBR(order.date)}
+            </td>
+
+            <td>
+
+              <span
+              class="status ${statusClass}">
+
+                ${order.status || "Novo"}
+
+              </span>
+
+            </td>
+
+            <td>
+              <strong>
+                ${money(order.total)}
+              </strong>
+            </td>
+
+            <td>
+              ${itemText || "-"}
+            </td>
+
+            <td>
+
+              ${
+                order.status ===
+                "Concluído"
+                ? `
+                <span class="muted">
+                  Finalizado
+                </span>
+                `
+                : `
+                <button
+                class="btn btn-primary btn-sm"
+                onclick="completeOrder('${order.id}')">
+
+                  Concluir
+
+                </button>
+                `
+              }
+
+            </td>
+
+          </tr>
+
+          `;
+
+        }
+      )
+      .join("")
+    : `
+
+      <tr>
+
+        <td
+        colspan="6"
+        class="muted">
+
+          Nenhum pedido online recebido.
+
+        </td>
+
+      </tr>
+
+    `;
+
+}
+
+
+/* =========================================================
+   COMPLETE ONLINE ORDER
+========================================================= */
+
+function completeOrder(
+  orderId
+){
+
+  const orders =
+    getOrders();
+
+  const order =
+    orders.find(
+      order =>
+        order.id ===
+        orderId
+    );
+
+  if(!order){
+    return;
+  }
+
+  if(
+    order.status ===
+    "Concluído"
+  ){
+
+    alert(
+      "Este pedido já foi concluído."
+    );
+
+    return;
+
+  }
+
+  const products =
+    getProducts();
+
+  for(
+    const item of
+    order.items || []
+  ){
+
+    const product =
+      products.find(
+        p =>
+          p.id ===
+          item.id
+      );
+
+    if(
+      !product ||
+      product.stock <
+      item.qty
+    ){
+
+      alert(
+        "Estoque insuficiente para concluir este pedido."
+      );
+
+      return;
+
+    }
+
+  }
+
+  for(
+    const item of
+    order.items || []
+  ){
+
+    const product =
+      products.find(
+        p =>
+          p.id ===
+          item.id
+      );
+
+    product.stock -=
+      item.qty;
+
+  }
+
+  order.status =
+    "Concluído";
+
+  saveProducts(
+    products
+  );
+
+  write(
+    "impacto_orders",
+    orders
+  );
+
+  const sales =
+    getSales();
+
+  sales.unshift(
+    {
+
+      id:
+        order.id,
+
+      date:
+        nowISO(),
+
+      channel:
+        "Online",
+
+      total:
+        order.total,
+
+      items:
+        order.items,
+
+      payment:
+        order.payment ||
+        "Online",
+
+      seller:
+        "Site"
+
+    }
+  );
+
+  write(
+    "impacto_sales",
+    sales
+  );
+
+  renderAll();
+
+  alert(
+    "Pedido concluído e estoque baixado."
+  );
+
+}
+
+
+/* =========================================================
+   PRODUCT CARDS
+========================================================= */
+
+function renderProductCards(){
+
+  $("productCards")
+  .innerHTML =
+    getProducts()
+    .map(
+      product => `
+
+      <div
+      style="
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+      ">
+
+        <div>
+
+          <strong>
+            ${product.name}
+          </strong>
+
+          <div
+          class="muted"
+          style="font-size:10px">
+
+            ${money(product.price)}
+            •
+            custo
+            ${money(product.cost)}
+            •
+            estoque
+            ${product.stock}
+
+          </div>
+
+        </div>
+
+
+        <div
+        style="
+        display:flex;
+        gap:6px;
+        ">
+
+          <button
+          class="btn btn-secondary btn-sm"
+          onclick="editProduct('${product.id}')">
+
+            Editar
+
+          </button>
+
+          <button
+          class="btn btn-danger btn-sm"
+          onclick="deleteProduct('${product.id}')">
+
+            Excluir
+
+          </button>
+
+        </div>
+
+      </div>
+
+      `
+    )
+    .join("");
+
+}
+
+
+/* =========================================================
+   SAVE PRODUCT
+========================================================= */
+
+function saveProduct(){
+
+  const editId =
+    $("productEditId")
+    .value
+    .trim();
+
+  const id =
+    $("productId")
+    .value
+    .trim()
+    .toLowerCase()
+    .replace(
+      /\s+/g,
+      "-"
+    );
+
+  const name =
+    $("productName")
+    .value
+    .trim();
+
+  if(
+    !id ||
+    !name
+  ){
+
+    alert(
+      "Informe nome e código."
+    );
+
+    return;
+
+  }
+
+  const products =
+    getProducts();
+
+  const product = {
+
+    id:id,
+
+    name:name,
+
+    price:
+      Number(
+        $("productPrice")
+        .value ||
+        0
+      ),
+
+    cost:
+      Number(
+        $("productCost")
+        .value ||
+        0
+      ),
+
+    stock:
+      Number(
+        $("productStock")
+        .value ||
+        0
+      ),
+
+    minStock:
+      Number(
+        $("productMin")
+        .value ||
+        20
+      ),
+
+    color:
+      $("productColor")
+      .value ||
+      "linear-gradient(#ccc,#999)"
+
+  };
+
+  const index =
+    products.findIndex(
+      product =>
+        product.id ===
+        (
+          editId ||
+          id
+        )
+    );
+
+  if(
+    index >= 0
+  ){
+
+    products[index] =
+      product;
+
+  }
+  else{
+
+    products.push(
+      product
+    );
+
+  }
+
+  saveProducts(
+    products
+  );
+
+  clearProductForm();
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   EDIT PRODUCT
+========================================================= */
+
+function editProduct(
+  id
+){
+
+  const product =
+    getProducts()
+    .find(
+      product =>
+        product.id ===
+        id
+    );
+
+  if(!product){
+    return;
+  }
+
+  $("productEditId")
+  .value =
+    product.id;
+
+  $("productName")
+  .value =
+    product.name;
+
+  $("productId")
+  .value =
+    product.id;
+
+  $("productPrice")
+  .value =
+    product.price;
+
+  $("productCost")
+  .value =
+    product.cost ||
+    0;
+
+  $("productStock")
+  .value =
+    product.stock;
+
+  $("productMin")
+  .value =
+    product.minStock ??
+    20;
+
+  $("productColor")
+  .value =
+    product.color ||
+    "";
+
+}
+
+
+/* =========================================================
+   CLEAR PRODUCT
+========================================================= */
+
+function clearProductForm(){
+
+  [
+    "productEditId",
+    "productName",
+    "productId",
+    "productPrice",
+    "productCost",
+    "productStock",
+    "productColor"
+  ]
+  .forEach(
+    id =>
+      $(id).value = ""
+  );
+
+  $("productMin")
+  .value =
+    20;
+
+}
+
+
+/* =========================================================
+   DELETE PRODUCT
+========================================================= */
+
+function deleteProduct(
+  id
+){
+
+  if(
+    !confirm(
+      "Excluir este produto?"
+    )
+  ){
+    return;
+  }
+
+  saveProducts(
+    getProducts()
+    .filter(
+      product =>
+        product.id !==
+        id
+    )
+  );
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   KIT FORM
+========================================================= */
+
+function syncKitForm(){
+
+  const kit =
+    getKits()
+    .find(
+      kit =>
+        kit.id ===
+        $("kitId")
+        .value
+    );
+
+  $("kitQty")
+  .value =
+    kit?.qty ||
+    0;
+
+  $("kitPrice")
+  .value =
+    kit?.price ??
+    "";
+
+  $("kitActive")
+  .value =
+    String(
+      kit?.active !== false
+    );
+
+  $("kitDescription")
+  .value =
+    kit?.description ||
+    "";
+
+}
+
+$("kitId")
+.addEventListener(
+  "change",
+  syncKitForm
+);
+
+
+/* =========================================================
+   SAVE KIT
+========================================================= */
+
+function saveKit(){
+
+  const kits =
+    getKits();
+
+  const id =
+    $("kitId")
+    .value;
+
+  const index =
+    kits.findIndex(
+      kit =>
+        kit.id ===
+        id
+    );
+
+  const qty =
+    id === "kit20"
+    ? 20
+    : id === "kit50"
+    ? 50
+    : 100;
+
+  const kit = {
+
+    id:id,
+
+    name:
+      "KIT " +
+      qty +
+      " TOALHAS",
+
+    qty:qty,
+
+    price:
+      $("kitPrice")
+      .value === ""
+      ? null
+      : Number(
+          $("kitPrice")
+          .value
+        ),
+
+    active:
+      $("kitActive")
+      .value ===
+      "true",
+
+    description:
+      $("kitDescription")
+      .value
+
+  };
+
+  if(
+    index >= 0
+  ){
+
+    kits[index] =
+      kit;
+
+  }
+  else{
+
+    kits.push(
+      kit
+    );
+
+  }
+
+  write(
+    "impacto_kits",
+    kits
+  );
+
+  renderKits();
+
+  alert(
+    "KIT atualizado."
+  );
+
+}
+
+
+/* =========================================================
+   RENDER KITS
+========================================================= */
+
+function renderKits(){
+
+  $("kitsList")
+  .innerHTML =
+    getKits()
+    .map(
+      kit => `
+
+      <div
+      style="
+      padding:13px 0;
+      border-bottom:1px solid var(--line);
+      ">
+
+        <div
+        style="
+        display:flex;
+        justify-content:space-between;
+        gap:10px;
+        ">
+
+          <strong>
+            ${kit.name}
+          </strong>
+
+          <span
+          class="status ${kit.active ? "ok" : "warn"}">
+
+            ${kit.active ? "Ativo" : "Oculto"}
+
+          </span>
+
+        </div>
+
+        <div
+        class="muted"
+        style="
+        font-size:10px;
+        margin-top:5px;
+        ">
+
+          ${
+            kit.price == null
+            ? "Valor a definir"
+            : money(kit.price)
+          }
+
+          •
+
+          ${kit.qty}
+          toalhas
+
+        </div>
+
+      </div>
+
+      `
+    )
+    .join("");
+
+  syncKitForm();
+
+}
+
+
+/* =========================================================
+   MOVE PRODUCTS
+========================================================= */
+
+function renderMoveProducts(){
+
+  $("moveProduct")
+  .innerHTML =
+    getProducts()
+    .map(
+      product => `
+
+      <option value="${product.id}">
+        ${product.name}
+      </option>
+
+      `
+    )
+    .join("");
+
+}
+
+
+/* =========================================================
+   SAVE MOVEMENT
+========================================================= */
+
+function saveMovement(){
+
+  const id =
+    $("moveProduct")
+    .value;
+
+  const qty =
+    Number(
+      $("moveQty")
+      .value ||
+      0
+    );
+
+  const type =
+    $("moveType")
+    .value;
+
+  if(
+    !id ||
+    qty <= 0
+  ){
+
+    alert(
+      "Informe produto e quantidade."
+    );
+
+    return;
+
+  }
+
+  const products =
+    getProducts();
+
+  const product =
+    products.find(
+      p =>
+        p.id ===
+        id
+    );
+
+  if(
+    type === "saida" &&
+    product.stock <
+    qty
+  ){
+
+    alert(
+      "Estoque insuficiente."
+    );
+
+    return;
+
+  }
+
+  product.stock +=
+    type === "entrada"
+    ? qty
+    : -qty;
+
+  saveProducts(
+    products
+  );
+
+  const moves =
+    getMoves();
+
+  moves.unshift(
+    {
+
+      id:
+        "MOV-" +
+        Date.now(),
+
+      date:
+        nowISO(),
+
+      productId:
+        id,
+
+      productName:
+        product.name,
+
+      type:
+        type,
+
+      qty:
+        qty,
+
+      reason:
+        $("moveReason")
+        .value
+
+    }
+  );
+
+  write(
+    "impacto_movements",
+    moves
+  );
+
+  $("moveQty")
+  .value =
+    "";
+
+  $("moveReason")
+  .value =
+    "";
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   RENDER MOVEMENTS
+========================================================= */
+
+function renderMoves(){
+
+  $("movesTable")
+  .innerHTML =
+    getMoves()
+    .slice(
+      0,
+      100
+    )
+    .map(
+      move => `
+
+      <tr>
+
+        <td>
+          ${dateBR(move.date)}
+        </td>
+
+        <td>
+          ${move.productName}
+        </td>
+
+        <td>
+
+          <span
+          class="status ${
+            move.type ===
+            "entrada"
+            ? "ok"
+            : "warn"
+          }">
+
+            ${move.type}
+
+          </span>
+
+        </td>
+
+        <td>
+          ${move.qty}
+        </td>
+
+        <td>
+          ${move.reason || "-"}
+        </td>
+
+      </tr>
+
+      `
+    )
+    .join("") ||
+    `
+
+    <tr>
+
+      <td
+      colspan="5"
+      class="muted">
+
+        Sem movimentações.
+
+      </td>
+
+    </tr>
+
+    `;
+
+}
+
+
+/* =========================================================
+   SAVE EXPENSE
+========================================================= */
+
+function saveExpense(){
+
+  const value =
+    Number(
+      $("expenseValue")
+      .value ||
+      0
+    );
+
+  if(!value){
+
+    alert(
+      "Informe o valor."
+    );
+
+    return;
+
+  }
+
+  const expenses =
+    getExpenses();
+
+  expenses.unshift(
+    {
+
+      id:
+        "DES-" +
+        Date.now(),
+
+      date:
+        $("expenseDate")
+        .value ||
+        new Date()
+        .toISOString()
+        .slice(
+          0,
+          10
+        ),
+
+      description:
+        $("expenseDescription")
+        .value ||
+        "Despesa",
+
+      category:
+        $("expenseCategory")
+        .value,
+
+      value:
+        value
+
+    }
+  );
+
+  write(
+    "impacto_expenses",
+    expenses
+  );
+
+  $("expenseDescription")
+  .value =
+    "";
+
+  $("expenseValue")
+  .value =
+    "";
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   DELETE EXPENSE
+========================================================= */
+
+function deleteExpense(
+  id
+){
+
+  write(
+    "impacto_expenses",
+    getExpenses()
+    .filter(
+      expense =>
+        expense.id !==
+        id
+    )
+  );
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   RENDER EXPENSES
+========================================================= */
+
+function renderExpenses(){
+
+  $("expensesTable")
+  .innerHTML =
+    getExpenses()
+    .map(
+      expense => `
+
+      <tr>
+
+        <td>
+          ${expense.date}
+        </td>
+
+        <td>
+          ${expense.description}
+        </td>
+
+        <td>
+          ${expense.category}
+        </td>
+
+        <td>
+          ${money(expense.value)}
+        </td>
+
+        <td>
+
+          <button
+          class="btn btn-danger btn-sm"
+          onclick="deleteExpense('${expense.id}')">
+
+            Excluir
+
+          </button>
+
+        </td>
+
+      </tr>
+
+      `
+    )
+    .join("") ||
+    `
+
+    <tr>
+
+      <td
+      colspan="5"
+      class="muted">
+
+        Nenhuma despesa.
+
+      </td>
+
+    </tr>
+
+    `;
+
+}
+
+
+/* =========================================================
+   REPORT DATE RANGE
+========================================================= */
+
+function inRange(
+  date,
+  start,
+  end
+){
+
+  const current =
+    new Date(
+      date
+    );
+
+  return (
+    !start ||
+    current >=
+    new Date(
+      start +
+      "T00:00:00"
+    )
+  ) &&
+  (
+    !end ||
+    current <=
+    new Date(
+      end +
+      "T23:59:59"
+    )
+  );
+
+}
+
+
+/* =========================================================
+   REPORTS
+========================================================= */
+
+function renderReports(){
+
+  const start =
+    $("reportStart")
+    .value;
+
+  const end =
+    $("reportEnd")
+    .value;
+
+  const sales =
+    getSales()
+    .filter(
+      sale =>
+        inRange(
+          sale.date,
+          start,
+          end
+        )
+    );
+
+  const expenses =
+    getExpenses()
+    .filter(
+      expense =>
+        inRange(
+          expense.date,
+          start,
+          end
+        )
+    );
+
+  const products =
+    getProducts();
+
+  const revenue =
+    sales.reduce(
+      (
+        total,
+        sale
+      ) =>
+        total +
+        Number(
+          sale.total ||
+          0
+        ),
+      0
+    );
+
+  const expensesValue =
+    expenses.reduce(
+      (
+        total,
+        expense
+      ) =>
+        total +
+        Number(
+          expense.value ||
+          0
+        ),
+      0
+    );
+
+  const cost =
+    sales.reduce(
+      (
+        total,
+        sale
+      ) =>
+        total +
+        (
+          sale.items ||
+          []
+        )
+        .reduce(
+          (
+            subtotal,
+            item
+          ) =>
+            subtotal +
+            Number(
+              products.find(
+                product =>
+                  product.id ===
+                  item.id
+              )?.cost ||
+              0
+            ) *
+            Number(
+              item.qty ||
+              0
+            ),
+          0
+        ),
+      0
+    );
+
+  $("reportRevenue")
+  .textContent =
+    money(
+      revenue
+    );
+
+  $("reportExpenses")
+  .textContent =
+    money(
+      expensesValue
+    );
+
+  $("reportCosts")
+  .textContent =
+    money(
+      cost
+    );
+
+  $("reportProfit")
+  .textContent =
+    money(
+      revenue -
+      expensesValue -
+      cost
+    );
+
+
+  const channels = {};
+
+  sales.forEach(
+    sale => {
+
+      const channel =
+        sale.channel ||
+        "Outro";
+
+      channels[channel] =
+        (
+          channels[channel] ||
+          0
+        ) +
+        Number(
+          sale.total ||
+          0
+        );
+
+    }
+  );
+
+
+  $("channelReport")
+  .innerHTML =
+    Object.entries(
+      channels
+    )
+    .map(
+      ([channel,value]) => `
+
+      <div
+      style="
+      display:flex;
+      justify-content:space-between;
+      padding:10px 0;
+      border-bottom:1px solid var(--line);
+      ">
+
+        <span>
+          ${channel}
+        </span>
+
+        <strong>
+          ${money(value)}
+        </strong>
+
+      </div>
+
+      `
+    )
+    .join("") ||
+    `
+
+    <div class="empty">
+      Sem vendas.
+    </div>
+
+    `;
+
+
+  const productCount =
+    {};
+
+  sales.forEach(
+    sale =>
+      (
+        sale.items ||
+        []
+      )
+      .forEach(
+        item => {
+
+          productCount[item.id] =
+            (
+              productCount[item.id] ||
+              0
+            ) +
+            Number(
+              item.qty ||
+              0
+            );
+
+        }
+      )
+  );
+
+
+  $("productReport")
+  .innerHTML =
+    Object.entries(
+      productCount
+    )
+    .map(
+      ([id,qty]) => `
+
+      <div
+      style="
+      display:flex;
+      justify-content:space-between;
+      padding:10px 0;
+      border-bottom:1px solid var(--line);
+      ">
+
+        <span>
+
+          ${
+            products.find(
+              product =>
+                product.id ===
+                id
+            )?.name ||
+            id
+          }
+
+        </span>
+
+        <strong>
+          ${qty} un.
+        </strong>
+
+      </div>
+
+      `
+    )
+    .join("") ||
+    `
+
+    <div class="empty">
+      Sem produtos vendidos.
+    </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   USERS
+========================================================= */
+
+function saveUser(){
+
+  if(
+    currentUser.role !==
+    "admin"
+  ){
+    return;
+  }
+
+  const name =
+    $("userName")
+    .value
+    .trim();
+
+  const login =
+    $("userLogin")
+    .value
+    .trim();
+
+  const password =
+    $("userPassword")
+    .value;
+
+  if(
+    !name ||
+    !login ||
+    !password
+  ){
+
+    alert(
+      "Preencha os campos."
+    );
+
+    return;
+
+  }
+
+  const users =
+    read(
+      "impacto_users",
+      DEFAULT_USERS
+    );
+
+  if(
+    users.some(
+      user =>
+        user.login ===
+        login
+    )
+  ){
+
+    alert(
+      "Login já existe."
+    );
+
+    return;
+
+  }
+
+  users.push(
+    {
+
+      id:
+        "U-" +
+        Date.now(),
+
+      name:
+        name,
+
+      login:
+        login,
+
+      password:
+        password,
+
+      role:
+        $("userRole")
+        .value
+
+    }
+  );
+
+  write(
+    "impacto_users",
+    users
+  );
+
+  $("userName")
+  .value =
+    "";
+
+  $("userLogin")
+  .value =
+    "";
+
+  $("userPassword")
+  .value =
+    "";
+
+  renderUsers();
+
+}
+
+
+/* =========================================================
+   DELETE USER
+========================================================= */
+
+function deleteUser(
+  id
+){
+
+  if(
+    currentUser.role !==
+    "admin"
+  ){
+    return;
+  }
+
+  if(
+    id ===
+    currentUser.id
+  ){
+
+    alert(
+      "Você não pode excluir seu próprio usuário."
+    );
+
+    return;
+
+  }
+
+  write(
+    "impacto_users",
+    read(
+      "impacto_users",
+      DEFAULT_USERS
+    )
+    .filter(
+      user =>
+        user.id !==
+        id
+    )
+  );
+
+  renderUsers();
+
+}
+
+
+/* =========================================================
+   RENDER USERS
+========================================================= */
+
+function renderUsers(){
+
+  $("usersList")
+  .innerHTML =
+    read(
+      "impacto_users",
+      DEFAULT_USERS
+    )
+    .map(
+      user => `
+
+      <div
+      style="
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      padding:12px 0;
+      border-bottom:1px solid var(--line);
+      ">
+
+        <div>
+
+          <strong>
+            ${user.name}
+          </strong>
+
+          <div
+          class="muted"
+          style="font-size:10px">
+
+            ${user.login}
+            •
+
+            ${
+              user.role ===
+              "admin"
+              ? "Administrador"
+              : "Vendedor"
+            }
+
+          </div>
+
+        </div>
+
+        <button
+        class="btn btn-danger btn-sm"
+        onclick="deleteUser('${user.id}')">
+
+          Excluir
+
+        </button>
+
+      </div>
+
+      `
+    )
+    .join("");
+
+}
+
+
+/* =========================================================
+   SETTINGS
+========================================================= */
+
+function loadSettings(){
+
+  const settings =
+    read(
+      "impacto_settings",
+      DEFAULT_SETTINGS
+    );
+
+  $("settingCompany")
+  .value =
+    settings.company ||
+    "";
+
+  $("settingWhatsapp")
+  .value =
+    settings.whatsapp ||
+    "";
+
+  $("settingPix")
+  .value =
+    settings.pix ||
+    "";
+
+  $("settingMinStock")
+  .value =
+    settings.minStock ??
+    20;
+
+}
+
+
+function saveSettings(){
+
+  if(
+    currentUser.role !==
+    "admin"
+  ){
+    return;
+  }
+
+  write(
+    "impacto_settings",
+    {
+
+      company:
+        $("settingCompany")
+        .value,
+
+      whatsapp:
+        $("settingWhatsapp")
+        .value,
+
+      pix:
+        $("settingPix")
+        .value,
+
+      minStock:
+        Number(
+          $("settingMinStock")
+          .value ||
+          20
+        )
+
+    }
+  );
+
+  alert(
+    "Configurações salvas."
+  );
+
+}
+
+
+/* =========================================================
+   BACKUP
+========================================================= */
+
+function exportData(){
+
+  const data = {
+
+    products:
+      getProducts(),
+
+    kits:
+      getKits(),
+
+    orders:
+      getOrders(),
+
+    sales:
+      getSales(),
+
+    expenses:
+      getExpenses(),
+
+    movements:
+      getMoves(),
+
+    users:
+      read(
+        "impacto_users",
+        DEFAULT_USERS
+      ),
+
+    settings:
+      read(
+        "impacto_settings",
+        DEFAULT_SETTINGS
+      )
+
+  };
+
+  const blob =
+    new Blob(
+      [
+        JSON.stringify(
+          data,
+          null,
+          2
+        )
+      ],
+      {
+        type:
+          "application/json"
+      }
+    );
+
+  const url =
+    URL.createObjectURL(
+      blob
+    );
+
+  const link =
+    document.createElement(
+      "a"
+    );
+
+  link.href =
+    url;
+
+  link.download =
+    "impacto-pro-backup.json";
+
+  link.click();
+
+  URL.revokeObjectURL(
+    url
+  );
+
+}
+
+
+/* =========================================================
+   RESET DEMO
+========================================================= */
+
+function resetDemo(){
+
+  if(
+    !confirm(
+      "Restaurar dados demonstrativos? Vendas e pedidos serão apagados."
+    )
+  ){
+    return;
+  }
+
+  write(
+    "impacto_products",
+    DEFAULT_PRODUCTS
+  );
+
+  write(
+    "impacto_kits",
+    DEFAULT_KITS
+  );
+
+  write(
+    "impacto_orders",
+    []
+  );
+
+  write(
+    "impacto_sales",
+    []
+  );
+
+  write(
+    "impacto_expenses",
+    []
+  );
+
+  write(
+    "impacto_movements",
+    []
+  );
+
+  renderAll();
+
+}
+
+
+/* =========================================================
+   RENDER ALL
+========================================================= */
+
+function renderAll(){
+
+  renderDashboard();
+
+  renderPDVProducts();
+
+  renderPDVCart();
+
+  renderOrders();
+
+  renderProductCards();
+
+  renderKits();
+
+  renderMoveProducts();
+
+  renderMoves();
+
+  renderExpenses();
+
+  renderReports();
+
+  renderUsers();
+
+  loadSettings();
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+initData();
+
+$("expenseDate")
+.value =
+  new Date()
+  .toISOString()
+  .slice(
+    0,
+    10
+  );
+
+syncKitForm();
+
+</script>
+
+</body>
+</html>
