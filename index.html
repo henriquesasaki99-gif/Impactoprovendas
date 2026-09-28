@@ -122,6 +122,14 @@ button{
     cursor:pointer;
 }
 
+button:disabled{
+
+    cursor:not-allowed;
+
+    opacity:.45;
+
+}
+
 img{
     max-width:100%;
 }
@@ -143,7 +151,7 @@ img{
 
 
 /* =========================================================
-   FUNDO
+   BACKGROUND
 ========================================================= */
 
 .grid-background{
@@ -395,6 +403,19 @@ header{
     border:
         1px solid
         var(--line);
+
+}
+
+.btn-danger{
+
+    color:var(--red);
+
+    background:
+        #fff1f4;
+
+    border:
+        1px solid
+        rgba(214,64,92,.18);
 
 }
 
@@ -2192,6 +2213,16 @@ footer{
 
     align-items:center;
 
+    gap:15px;
+
+}
+
+.cart-header-actions{
+
+    display:flex;
+
+    gap:7px;
+
 }
 
 .cart-item{
@@ -2230,15 +2261,17 @@ footer{
 
     gap:7px;
 
+    flex-wrap:wrap;
+
     margin-top:9px;
 
 }
 
 .quantity-button{
 
-    width:28px;
+    width:32px;
 
-    height:28px;
+    height:32px;
 
     border-radius:8px;
 
@@ -2247,6 +2280,8 @@ footer{
         var(--line);
 
     background:#f3f9fc;
+
+    font-weight:900;
 
 }
 
@@ -2674,6 +2709,18 @@ footer{
         width:120px;
     }
 
+    .cart-header{
+
+        align-items:flex-start;
+
+    }
+
+    .cart-header-actions{
+
+        flex-direction:column;
+
+    }
+
 }
 
 </style>
@@ -2686,10 +2733,6 @@ footer{
 
 <div class="grid-background"></div>
 
-
-<!-- =========================================================
-     HEADER
-========================================================= -->
 
 <header>
 
@@ -2799,10 +2842,6 @@ onclick="toggleMobileMenu()">
 </header>
 
 
-<!-- =========================================================
-     MOBILE MENU
-========================================================= -->
-
 <div
 id="mobileMenu"
 class="mobile-menu">
@@ -2860,10 +2899,6 @@ href="sistema.html">
 
 <main>
 
-
-<!-- =========================================================
-     HERO
-========================================================= -->
 
 <section
 class="hero"
@@ -3060,10 +3095,6 @@ Ajuda a preservar a aparência
 </section>
 
 
-<!-- =========================================================
-     TICKER
-========================================================= -->
-
 <section class="ticker">
 
 <div class="ticker-track">
@@ -3102,10 +3133,6 @@ Ajuda a preservar a aparência
 
 </section>
 
-
-<!-- =========================================================
-     DIFFERENTIALS
-========================================================= -->
 
 <section
 class="section"
@@ -3252,10 +3279,6 @@ Mais aproveitamento por peça antes da reposição.
 </section>
 
 
-<!-- =========================================================
-     PRODUCTS
-========================================================= -->
-
 <section
 class="section collection"
 id="produtos">
@@ -3308,10 +3331,6 @@ id="productGrid">
 </section>
 
 
-<!-- =========================================================
-     KITS
-========================================================= -->
-
 <section
 class="section kit-section"
 id="kits">
@@ -3341,10 +3360,8 @@ KITs de 20,
 50
 e 100 toalhas.
 
-Valores
-e disponibilidade
-podem ser configurados
-pelo sistema.
+Os valores serão definidos
+na etapa administrativa.
 
 </p>
 
@@ -3386,10 +3403,6 @@ Consultar pelo WhatsApp →
 
 </section>
 
-
-<!-- =========================================================
-     RESISTANCE
-========================================================= -->
 
 <section
 class="section resistance-section"
@@ -3570,10 +3583,6 @@ MAIOR VIDA ÚTIL
 </section>
 
 
-<!-- =========================================================
-     AUDIENCE
-========================================================= -->
-
 <section
 class="section"
 id="publico">
@@ -3673,10 +3682,6 @@ Compras em quantidade e distribuição.
 </section>
 
 
-<!-- =========================================================
-     WHOLESALE
-========================================================= -->
-
 <section
 class="section"
 id="atacado">
@@ -3728,10 +3733,6 @@ Solicitar informações
 
 </section>
 
-
-<!-- =========================================================
-     CONTACT
-========================================================= -->
 
 <section
 class="section"
@@ -3791,10 +3792,6 @@ Chamar no WhatsApp →
 </main>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
 <footer>
 
 <div class="container footer-grid">
@@ -3824,10 +3821,6 @@ para alta utilização profissional.
 
 </footer>
 
-
-<!-- =========================================================
-     MOBILE BAR
-========================================================= -->
 
 <div class="mobile-buy-bar">
 
@@ -3871,6 +3864,17 @@ class="cart-modal hidden">
 Seu carrinho
 </h2>
 
+
+<div class="cart-header-actions">
+
+<button
+class="btn btn-danger"
+onclick="clearCart()">
+
+Esvaziar
+
+</button>
+
 <button
 class="btn btn-secondary"
 onclick="closeCart()">
@@ -3878,6 +3882,8 @@ onclick="closeCart()">
 Fechar
 
 </button>
+
+</div>
 
 </div>
 
@@ -3900,6 +3906,7 @@ R$ 0,00
 
 
 <button
+id="checkoutButton"
 class="btn btn-primary"
 style="
 width:100%;
@@ -3907,7 +3914,7 @@ margin-top:18px;
 "
 onclick="openCheckout()">
 
-Continuar compra →
+Realizar pedido →
 
 </button>
 
@@ -4162,10 +4169,6 @@ id="checkoutPaymentNotice">
 A forma definitiva de pagamento
 ainda será definida pela empresa.
 
-O pedido será registrado
-no sistema
-para atendimento da equipe.
-
 </div>
 
 
@@ -4190,7 +4193,7 @@ Confirmar pedido →
 <script>
 
 /* =========================================================
-   DEFAULT PRODUCTS
+   DEFAULTS
 ========================================================= */
 
 const DEFAULT_PRODUCTS = [
@@ -4339,14 +4342,38 @@ function read(
 
     try{
 
-        return JSON.parse(
+        const value =
             localStorage.getItem(
                 key
-            )
-        ) ?? fallback;
+            );
+
+
+        if(
+            value === null
+        ){
+
+            return fallback;
+
+        }
+
+
+        const parsed =
+            JSON.parse(
+                value
+            );
+
+
+        return parsed ?? fallback;
 
     }
     catch(error){
+
+        console.warn(
+            "Erro lendo:",
+            key,
+            error
+        );
+
 
         return fallback;
 
@@ -4389,7 +4416,7 @@ function money(value){
 
 
 /* =========================================================
-   PRODUCTS
+   PRODUCTS / KITS
 ========================================================= */
 
 function getProducts(){
@@ -4401,6 +4428,435 @@ function getProducts(){
 
 }
 
+
+function getKits(){
+
+    return read(
+        "impacto_kits",
+        DEFAULT_KITS
+    );
+
+}
+
+
+/* =========================================================
+   CART MIGRATION
+   CORRIGE CARRINHOS DE VERSÕES ANTIGAS
+========================================================= */
+
+function normalizeCart(
+    rawCart
+){
+
+    const products =
+        getProducts();
+
+    const kits =
+        getKits();
+
+
+    if(
+        !Array.isArray(
+            rawCart
+        )
+    ){
+
+        return [];
+
+    }
+
+
+    const merged =
+        new Map();
+
+
+    rawCart.forEach(
+        rawItem => {
+
+            if(
+                !rawItem ||
+                !rawItem.id
+            ){
+
+                return;
+
+            }
+
+
+            let type =
+                rawItem.type;
+
+
+            /*
+            =============================================
+            ITENS ANTIGOS NÃO TINHAM "type"
+            IDENTIFICAMOS AUTOMATICAMENTE
+            =============================================
+            */
+
+            if(
+                type !== "product" &&
+                type !== "kit"
+            ){
+
+                if(
+                    products.some(
+                        product =>
+                            product.id ===
+                            rawItem.id
+                    )
+                ){
+
+                    type =
+                        "product";
+
+                }
+                else if(
+                    kits.some(
+                        kit =>
+                            kit.id ===
+                            rawItem.id
+                    )
+                ){
+
+                    type =
+                        "kit";
+
+                }
+                else{
+
+                    /*
+                    Item que não existe mais:
+                    removemos automaticamente.
+                    */
+
+                    return;
+
+                }
+
+            }
+
+
+            /*
+            =============================================
+            KIT SEM PREÇO NÃO DEVE FICAR PRESO
+            NO CARRINHO
+            =============================================
+            */
+
+            if(
+                type ===
+                "kit"
+            ){
+
+                const kit =
+                    kits.find(
+                        kit =>
+                            kit.id ===
+                            rawItem.id
+                    );
+
+
+                if(
+                    !kit ||
+                    kit.price == null
+                ){
+
+                    return;
+
+                }
+
+            }
+
+
+            /*
+            =============================================
+            PRODUTO PRECISA EXISTIR
+            =============================================
+            */
+
+            if(
+                type ===
+                "product"
+            ){
+
+                const product =
+                    products.find(
+                        product =>
+                            product.id ===
+                            rawItem.id
+                    );
+
+
+                if(!product){
+
+                    return;
+
+                }
+
+            }
+
+
+            let qty =
+                Number(
+                    rawItem.qty ||
+                    1
+                );
+
+
+            if(
+                !Number.isFinite(
+                    qty
+                ) ||
+                qty <=
+                0
+            ){
+
+                return;
+
+            }
+
+
+            qty =
+                Math.floor(
+                    qty
+                );
+
+
+            /*
+            =============================================
+            LIMITA PRODUTO AO ESTOQUE
+            =============================================
+            */
+
+            if(
+                type ===
+                "product"
+            ){
+
+                const product =
+                    products.find(
+                        product =>
+                            product.id ===
+                            rawItem.id
+                    );
+
+
+                qty =
+                    Math.min(
+                        qty,
+                        Number(
+                            product.stock ||
+                            0
+                        )
+                    );
+
+
+                if(
+                    qty <=
+                    0
+                ){
+
+                    return;
+
+                }
+
+            }
+
+
+            const key =
+                type +
+                ":" +
+                rawItem.id;
+
+
+            /*
+            =============================================
+            JUNTA DUPLICADOS
+            EXEMPLO:
+            azul x5 + azul x1 = azul x6
+            =============================================
+            */
+
+            if(
+                merged.has(
+                    key
+                )
+            ){
+
+                const existing =
+                    merged.get(
+                        key
+                    );
+
+
+                existing.qty +=
+                    qty;
+
+
+                if(
+                    type ===
+                    "product"
+                ){
+
+                    const product =
+                        products.find(
+                            product =>
+                                product.id ===
+                                rawItem.id
+                        );
+
+
+                    existing.qty =
+                        Math.min(
+                            existing.qty,
+                            Number(
+                                product.stock ||
+                                0
+                            )
+                        );
+
+                }
+
+            }
+            else{
+
+                merged.set(
+                    key,
+                    {
+
+                        type:
+                            type,
+
+                        id:
+                            rawItem.id,
+
+                        qty:
+                            qty
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    return Array.from(
+        merged.values()
+    );
+
+}
+
+
+/* =========================================================
+   GET CART
+========================================================= */
+
+function getCart(){
+
+    const raw =
+        read(
+            "impacto_cart",
+            []
+        );
+
+
+    const normalized =
+        normalizeCart(
+            raw
+        );
+
+
+    /*
+    Sempre salva o novo formato.
+    Assim o carrinho antigo é corrigido definitivamente.
+    */
+
+    write(
+        "impacto_cart",
+        normalized
+    );
+
+
+    return normalized;
+
+}
+
+
+/* =========================================================
+   SAVE CART
+========================================================= */
+
+function saveCart(
+    cart
+){
+
+    const normalized =
+        normalizeCart(
+            cart
+        );
+
+
+    write(
+        "impacto_cart",
+        normalized
+    );
+
+
+    updateCartCount();
+
+}
+
+
+/* =========================================================
+   CLEAR CART
+========================================================= */
+
+function clearCart(){
+
+    if(
+        getCart().length ===
+        0
+    ){
+
+        return;
+
+    }
+
+
+    const confirmed =
+        confirm(
+            "Deseja realmente esvaziar o carrinho?"
+        );
+
+
+    if(
+        !confirmed
+    ){
+
+        return;
+
+    }
+
+
+    write(
+        "impacto_cart",
+        []
+    );
+
+
+    updateCartCount();
+
+    renderCart();
+
+}
+
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
 
 function renderProducts(){
 
@@ -4508,16 +4964,6 @@ function renderProducts(){
    KITS
 ========================================================= */
 
-function getKits(){
-
-    return read(
-        "impacto_kits",
-        DEFAULT_KITS
-    );
-
-}
-
-
 function renderKits(){
 
     const kits =
@@ -4620,40 +5066,16 @@ function renderKits(){
 
 
 /* =========================================================
-   CART
+   ADD PRODUCT
 ========================================================= */
-
-function getCart(){
-
-    return read(
-        "impacto_cart",
-        []
-    );
-
-}
-
-
-function saveCart(cart){
-
-    write(
-        "impacto_cart",
-        cart
-    );
-
-    updateCartCount();
-
-}
-
 
 function addToCart(
     productId
 ){
 
-    const products =
-        getProducts();
-
     const product =
-        products.find(
+        getProducts()
+        .find(
             product =>
                 product.id ===
                 productId
@@ -4694,10 +5116,19 @@ function addToCart(
 
         if(
             item.qty <
-            product.stock
+            Number(
+                product.stock
+            )
         ){
 
             item.qty++;
+
+        }
+        else{
+
+            alert(
+                "Quantidade máxima disponível em estoque atingida."
+            );
 
         }
 
@@ -4726,10 +5157,17 @@ function addToCart(
         cart
     );
 
+
+    renderCart();
+
     openCart();
 
 }
 
+
+/* =========================================================
+   ADD KIT
+========================================================= */
 
 function addKitToCart(
     kitId
@@ -4744,13 +5182,31 @@ function addKitToCart(
         );
 
 
+    if(!kit){
+
+        alert(
+            "KIT não encontrado."
+        );
+
+        return;
+
+    }
+
+
+    /*
+    KIT SEM PREÇO NÃO ENTRA NO CARRINHO.
+    NÃO BLOQUEIA MAIS A COMPRA DOS PRODUTOS.
+    */
+
     if(
-        !kit ||
-        kit.price == null
+        kit.price == null ||
+        Number(
+            kit.price
+        ) <= 0
     ){
 
-        openWhatsApp(
-            "kits"
+        alert(
+            "Este KIT ainda está com valor a definir. Entre em contato com a Impacto Pro para consultar."
         );
 
         return;
@@ -4801,10 +5257,16 @@ function addKitToCart(
         cart
     );
 
+    renderCart();
+
     openCart();
 
 }
 
+
+/* =========================================================
+   CHANGE QUANTITY
+========================================================= */
 
 function changeQuantity(
     type,
@@ -4814,6 +5276,7 @@ function changeQuantity(
 
     const cart =
         getCart();
+
 
     const item =
         cart.find(
@@ -4835,7 +5298,8 @@ function changeQuantity(
 
 
     if(
-        item.qty <= 0
+        item.qty <=
+        0
     ){
 
         removeFromCart(
@@ -4865,11 +5329,15 @@ function changeQuantity(
         if(
             product &&
             item.qty >
-            product.stock
+            Number(
+                product.stock
+            )
         ){
 
             item.qty =
-                product.stock;
+                Number(
+                    product.stock
+                );
 
         }
 
@@ -4880,10 +5348,15 @@ function changeQuantity(
         cart
     );
 
+
     renderCart();
 
 }
 
+
+/* =========================================================
+   REMOVE
+========================================================= */
 
 function removeFromCart(
     type,
@@ -4907,12 +5380,17 @@ function removeFromCart(
         cart
     );
 
+
     renderCart();
 
 }
 
 
-function renderCart(){
+/* =========================================================
+   CART DETAILS
+========================================================= */
+
+function getCartDetails(){
 
     const cart =
         getCart();
@@ -4922,6 +5400,148 @@ function renderCart(){
 
     const kits =
         getKits();
+
+
+    const result =
+        [];
+
+
+    cart.forEach(
+        item => {
+
+            if(
+                item.type ===
+                "product"
+            ){
+
+                const product =
+                    products.find(
+                        product =>
+                            product.id ===
+                            item.id
+                    );
+
+
+                if(!product){
+                    return;
+                }
+
+
+                result.push(
+                    {
+
+                        type:
+                            "product",
+
+                        id:
+                            product.id,
+
+                        name:
+                            product.name,
+
+                        qty:
+                            Number(
+                                item.qty
+                            ),
+
+                        price:
+                            Number(
+                                product.price
+                            )
+
+                    }
+                );
+
+
+                return;
+
+            }
+
+
+            if(
+                item.type ===
+                "kit"
+            ){
+
+                const kit =
+                    kits.find(
+                        kit =>
+                            kit.id ===
+                            item.id
+                    );
+
+
+                if(
+                    !kit ||
+                    kit.price == null
+                ){
+
+                    return;
+
+                }
+
+
+                result.push(
+                    {
+
+                        type:
+                            "kit",
+
+                        id:
+                            kit.id,
+
+                        name:
+                            kit.name,
+
+                        qty:
+                            Number(
+                                item.qty
+                            ),
+
+                        price:
+                            Number(
+                                kit.price
+                            ),
+
+                        towelQty:
+                            Number(
+                                kit.qty
+                            )
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+
+    return result;
+
+}
+
+
+/* =========================================================
+   RENDER CART
+========================================================= */
+
+function renderCart(){
+
+    /*
+    getCart() já corrige o formato antigo.
+    */
+
+    const cart =
+        getCart();
+
+
+    const products =
+        getProducts();
+
+    const kits =
+        getKits();
+
 
     const container =
         document.getElementById(
@@ -4960,18 +5580,32 @@ function renderCart(){
             );
 
 
+        document.getElementById(
+            "checkoutButton"
+        ).disabled =
+            true;
+
+
         return;
 
     }
+
+
+    document.getElementById(
+        "checkoutButton"
+    ).disabled =
+        false;
 
 
     container.innerHTML =
         cart.map(
             item => {
 
-                let name = "";
+                let name =
+                    "";
 
-                let price = 0;
+                let price =
+                    0;
 
 
                 if(
@@ -4987,15 +5621,23 @@ function renderCart(){
                         );
 
 
+                    if(
+                        !kit ||
+                        kit.price == null
+                    ){
+
+                        return "";
+
+                    }
+
+
                     name =
-                        kit?.name ||
-                        item.id;
+                        kit.name;
 
 
                     price =
                         Number(
-                            kit?.price ||
-                            0
+                            kit.price
                         );
 
                 }
@@ -5009,15 +5651,20 @@ function renderCart(){
                         );
 
 
+                    if(!product){
+
+                        return "";
+
+                    }
+
+
                     name =
-                        product?.name ||
-                        item.id;
+                        product.name;
 
 
                     price =
                         Number(
-                            product?.price ||
-                            0
+                            product.price
                         );
 
                 }
@@ -5025,7 +5672,9 @@ function renderCart(){
 
                 const subtotal =
                     price *
-                    item.qty;
+                    Number(
+                        item.qty
+                    );
 
 
                 total +=
@@ -5054,6 +5703,7 @@ function renderCart(){
 
                             <button
                             class="quantity-button"
+                            type="button"
                             onclick="
                             changeQuantity(
                                 '${item.type}',
@@ -5074,6 +5724,7 @@ function renderCart(){
 
                             <button
                             class="quantity-button"
+                            type="button"
                             onclick="
                             changeQuantity(
                                 '${item.type}',
@@ -5089,6 +5740,7 @@ function renderCart(){
 
                             <button
                             class="remove-button"
+                            type="button"
                             onclick="
                             removeFromCart(
                                 '${item.type}',
@@ -5128,6 +5780,10 @@ function renderCart(){
 }
 
 
+/* =========================================================
+   CART COUNT
+========================================================= */
+
 function updateCartCount(){
 
     const total =
@@ -5159,6 +5815,10 @@ function updateCartCount(){
 
 }
 
+
+/* =========================================================
+   OPEN / CLOSE CART
+========================================================= */
 
 function openCart(){
 
@@ -5205,8 +5865,17 @@ function closeCart(){
 
 function openCheckout(){
 
+    /*
+    Antes de abrir,
+    normaliza novamente o carrinho.
+    */
+
+    const cart =
+        getCart();
+
+
     if(
-        getCart().length ===
+        cart.length ===
         0
     ){
 
@@ -5215,6 +5884,80 @@ function openCheckout(){
         );
 
         return;
+
+    }
+
+
+    /*
+    Verifica somente os itens atuais válidos.
+    */
+
+    const items =
+        getCartDetails();
+
+
+    if(
+        items.length ===
+        0
+    ){
+
+        clearCartWithoutConfirm();
+
+
+        alert(
+            "O carrinho continha dados antigos ou inválidos e foi corrigido. Adicione os produtos novamente."
+        );
+
+
+        return;
+
+    }
+
+
+    const products =
+        getProducts();
+
+
+    for(
+        const item of
+        items
+    ){
+
+        if(
+            item.type ===
+            "product"
+        ){
+
+            const product =
+                products.find(
+                    product =>
+                        product.id ===
+                        item.id
+                );
+
+
+            if(
+                !product ||
+                Number(
+                    product.stock
+                ) <
+                Number(
+                    item.qty
+                )
+            ){
+
+                alert(
+                    "Estoque insuficiente para " +
+                    item.name +
+                    "."
+                );
+
+
+                return;
+
+            }
+
+        }
 
     }
 
@@ -5261,6 +6004,25 @@ function closeCheckout(){
 }
 
 
+function clearCartWithoutConfirm(){
+
+    write(
+        "impacto_cart",
+        []
+    );
+
+
+    updateCartCount();
+
+    renderCart();
+
+}
+
+
+/* =========================================================
+   DELIVERY
+========================================================= */
+
 function toggleAddress(){
 
     const delivery =
@@ -5283,93 +6045,13 @@ function toggleAddress(){
 }
 
 
+/* =========================================================
+   CHECKOUT ITEMS
+========================================================= */
+
 function getCheckoutItems(){
 
-    const cart =
-        getCart();
-
-    const products =
-        getProducts();
-
-    const kits =
-        getKits();
-
-
-    return cart.map(
-        item => {
-
-            if(
-                item.type ===
-                "kit"
-            ){
-
-                const kit =
-                    kits.find(
-                        kit =>
-                            kit.id ===
-                            item.id
-                    );
-
-
-                return {
-
-                    type:
-                        "kit",
-
-                    id:
-                        item.id,
-
-                    name:
-                        kit?.name ||
-                        item.id,
-
-                    qty:
-                        item.qty,
-
-                    price:
-                        Number(
-                            kit?.price ||
-                            0
-                        )
-
-                };
-
-            }
-
-
-            const product =
-                products.find(
-                    product =>
-                        product.id ===
-                        item.id
-                );
-
-
-            return {
-
-                type:
-                    "product",
-
-                id:
-                    item.id,
-
-                name:
-                    product?.name ||
-                    item.id,
-
-                qty:
-                    item.qty,
-
-                price:
-                    Number(
-                        product?.price ||
-                        0
-                    )
-
-            };
-
-        }
-    );
+    return getCartDetails();
 
 }
 
@@ -5396,6 +6078,10 @@ function getCheckoutTotal(){
 
 }
 
+
+/* =========================================================
+   CHECKOUT SUMMARY
+========================================================= */
 
 function renderCheckoutSummary(){
 
@@ -5482,6 +6168,10 @@ function renderCheckoutSummary(){
 }
 
 
+/* =========================================================
+   CHECKOUT NOTICE
+========================================================= */
+
 function renderCheckoutNotice(){
 
     const settings =
@@ -5516,6 +6206,7 @@ function renderCheckoutNotice(){
 
         `;
 
+
         return;
 
     }
@@ -5528,14 +6219,15 @@ function renderCheckoutNotice(){
 
         notice.innerHTML = `
 
-        A empresa definiu pagamento online,
-        porém o gateway ainda precisa ser integrado.
+        O pagamento online foi selecionado,
+        porém a plataforma de pagamento
+        ainda não foi integrada.
 
-        Por segurança,
-        o pedido será registrado como
-        <strong>Aguardando integração de pagamento</strong>.
+        O pedido será registrado
+        como aguardando pagamento.
 
         `;
+
 
         return;
 
@@ -5547,14 +6239,17 @@ function renderCheckoutNotice(){
     A forma definitiva de pagamento
     ainda não foi definida.
 
-    O pedido será registrado
-    no sistema como
-    <strong>Aguardando definição de pagamento</strong>.
+    O pedido será registrado no sistema
+    para atendimento da equipe.
 
     `;
 
 }
 
+
+/* =========================================================
+   VALIDATE CHECKOUT
+========================================================= */
 
 function validateCheckout(){
 
@@ -5582,6 +6277,7 @@ function validateCheckout(){
         alert(
             "Informe nome e telefone."
         );
+
 
         return false;
 
@@ -5627,8 +6323,9 @@ function validateCheckout(){
         ){
 
             alert(
-                "Preencha os dados principais de entrega."
+                "Preencha endereço, número e cidade."
             );
+
 
             return false;
 
@@ -5642,6 +6339,10 @@ function validateCheckout(){
 }
 
 
+/* =========================================================
+   FINISH CHECKOUT
+========================================================= */
+
 function finishCheckout(){
 
     if(
@@ -5653,8 +6354,27 @@ function finishCheckout(){
     }
 
 
+    /*
+    Sempre usamos os itens normalizados.
+    */
+
     const items =
         getCheckoutItems();
+
+
+    if(
+        items.length ===
+        0
+    ){
+
+        alert(
+            "Seu carrinho não possui itens válidos."
+        );
+
+
+        return;
+
+    }
 
 
     const products =
@@ -5681,14 +6401,19 @@ function finishCheckout(){
 
             if(
                 !product ||
-                product.stock <
-                item.qty
+                Number(
+                    product.stock
+                ) <
+                Number(
+                    item.qty
+                )
             ){
 
                 alert(
                     "Estoque insuficiente para " +
                     item.name
                 );
+
 
                 return;
 
@@ -5732,7 +6457,7 @@ function finishCheckout(){
     ){
 
         paymentStatus =
-            "Aguardando integração de pagamento";
+            "Aguardando pagamento online";
 
     }
 
@@ -5881,6 +6606,11 @@ function finishCheckout(){
     );
 
 
+    /*
+    Pedido registrado.
+    Agora limpamos totalmente o carrinho.
+    */
+
     write(
         "impacto_cart",
         []
@@ -5888,6 +6618,7 @@ function finishCheckout(){
 
 
     updateCartCount();
+
 
     closeCheckout();
 
@@ -5913,6 +6644,10 @@ function finishCheckout(){
 }
 
 
+/* =========================================================
+   ORDER WHATSAPP
+========================================================= */
+
 function openOrderWhatsApp(
     order
 ){
@@ -5936,9 +6671,7 @@ function openOrderWhatsApp(
 
 
     if(!number){
-
         return;
-
     }
 
 
@@ -5953,9 +6686,7 @@ function openOrderWhatsApp(
         .join("\n");
 
 
-    const text = `
-
-Olá!
+    const text = `Olá!
 
 Pedido: ${order.id}
 
@@ -5969,9 +6700,7 @@ Itens:
 ${items}
 
 Total:
-${money(order.total)}
-
-    `;
+${money(order.total)}`;
 
 
     window.open(
@@ -6018,6 +6747,7 @@ function openWhatsApp(
         alert(
             "O WhatsApp ainda precisa ser cadastrado na Área do Funcionário."
         );
+
 
         return;
 
@@ -6136,7 +6866,7 @@ document
 
 
 /* =========================================================
-   STORAGE UPDATE
+   CROSS TAB UPDATE
 ========================================================= */
 
 window.addEventListener(
@@ -6150,6 +6880,15 @@ window.addEventListener(
 
             renderProducts();
 
+            /*
+            Se estoque mudou,
+            normalizamos o carrinho novamente.
+            */
+
+            saveCart(
+                getCart()
+            );
+
         }
 
 
@@ -6159,6 +6898,10 @@ window.addEventListener(
         ){
 
             renderKits();
+
+            saveCart(
+                getCart()
+            );
 
         }
 
@@ -6177,8 +6920,43 @@ window.addEventListener(
 
 
 /* =========================================================
+   INITIAL CART REPAIR
+========================================================= */
+
+function repairExistingCart(){
+
+    const oldCart =
+        read(
+            "impacto_cart",
+            []
+        );
+
+
+    const repaired =
+        normalizeCart(
+            oldCart
+        );
+
+
+    write(
+        "impacto_cart",
+        repaired
+    );
+
+}
+
+
+/* =========================================================
    START
 ========================================================= */
+
+/*
+Esta linha é a principal correção
+para o problema mostrado na imagem.
+*/
+
+repairExistingCart();
+
 
 renderProducts();
 
