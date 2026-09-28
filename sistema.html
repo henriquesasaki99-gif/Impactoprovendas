@@ -578,7 +578,7 @@ a{
 
 
 /* =========================================================
-   TABLES
+   TABLE
 ========================================================= */
 
 .table-wrap{
@@ -589,7 +589,7 @@ a{
 
     width:100%;
 
-    min-width:720px;
+    min-width:850px;
 
     border-collapse:collapse;
 
@@ -607,6 +607,8 @@ a{
         var(--line);
 
     font-size:12px;
+
+    vertical-align:top;
 
 }
 
@@ -775,6 +777,18 @@ textarea.input{
     color:var(--muted);
 
     font-size:12px;
+
+}
+
+.order-details{
+
+    padding:10px 0;
+
+    font-size:11px;
+
+    color:#5f7081;
+
+    line-height:1.55;
 
 }
 
@@ -999,8 +1013,6 @@ id="app"
 class="app hidden">
 
 
-<!-- SIDEBAR -->
-
 <aside
 id="sidebar"
 class="sidebar">
@@ -1115,8 +1127,6 @@ class="mobile-overlay"
 onclick="toggleSidebar()">
 </div>
 
-
-<!-- MAIN -->
 
 <main class="main">
 
@@ -1426,7 +1436,7 @@ Finalizar venda
 
 
 <!-- =========================================================
-     PEDIDOS ONLINE
+     ONLINE ORDERS
 ========================================================= -->
 
 <section
@@ -1444,7 +1454,7 @@ Pedidos recebidos do site
 </h3>
 
 <div class="muted">
-Pedidos do carrinho online
+Clientes, entrega, itens e situação de pagamento
 </div>
 
 </div>
@@ -1470,13 +1480,17 @@ Atualizar
 
 <th>PEDIDO</th>
 
-<th>DATA</th>
+<th>CLIENTE</th>
 
-<th>STATUS</th>
+<th>ENTREGA</th>
+
+<th>PAGAMENTO</th>
 
 <th>ITENS</th>
 
 <th>TOTAL</th>
+
+<th>STATUS</th>
 
 <th>AÇÃO</th>
 
@@ -1497,7 +1511,7 @@ Atualizar
 
 
 <!-- =========================================================
-     PRODUTOS
+     PRODUCTS
 ========================================================= -->
 
 <section
@@ -1812,7 +1826,7 @@ KITs
 
 
 <!-- =========================================================
-     MOVIMENTAÇÕES
+     MOVEMENTS
 ========================================================= -->
 
 <section
@@ -1956,7 +1970,7 @@ Histórico
 
 
 <!-- =========================================================
-     FINANCEIRO
+     FINANCE
 ========================================================= -->
 
 <section
@@ -2099,7 +2113,7 @@ Despesas registradas
 
 
 <!-- =========================================================
-     RELATÓRIOS
+     REPORTS
 ========================================================= -->
 
 <section
@@ -2246,7 +2260,7 @@ Produtos vendidos
 
 
 <!-- =========================================================
-     USUÁRIOS
+     USERS
 ========================================================= -->
 
 <section
@@ -2360,7 +2374,7 @@ Usuários
 
 
 <!-- =========================================================
-     CONFIGURAÇÕES
+     SETTINGS
 ========================================================= -->
 
 <section
@@ -2420,6 +2434,33 @@ class="input">
 </div>
 
 
+<div class="field full">
+
+<label>
+FORMA DE FINALIZAÇÃO DO SITE
+</label>
+
+<select
+id="settingCheckoutMode"
+class="input">
+
+<option value="internal">
+Pedido interno — pagamento a definir
+</option>
+
+<option value="whatsapp">
+Finalizar atendimento pelo WhatsApp
+</option>
+
+<option value="online">
+Pagamento online — futura integração
+</option>
+
+</select>
+
+</div>
+
+
 </div>
 
 
@@ -2438,23 +2479,31 @@ Salvar configurações
 <div class="card">
 
 <h3>
-Backup local
+Situação da integração
 </h3>
 
-<p class="muted">
+<div
+id="checkoutModeStatus"
+class="empty">
+</div>
 
-Use o backup para salvar
-uma cópia dos dados desta etapa.
+<p
+class="muted"
+style="
+font-size:11px;
+line-height:1.6;
+margin-top:14px;
+">
+
+Quando o cliente definir
+Mercado Pago,
+PagSeguro,
+Stripe
+ou outra solução,
+a integração pode ser adicionada
+sem reconstruir o site inteiro.
 
 </p>
-
-<button
-class="btn btn-secondary"
-onclick="exportBackup()">
-
-Exportar backup
-
-</button>
 
 </div>
 
@@ -2709,7 +2758,10 @@ const DEFAULT_SETTINGS = {
         "",
 
     pix:
-        ""
+        "",
+
+    checkoutMode:
+        "internal"
 
 };
 
@@ -2981,7 +3033,7 @@ function logout(){
 
 
 /* =========================================================
-   PERMISSÕES
+   PERMISSIONS
 ========================================================= */
 
 function applyPermissions(){
@@ -3006,7 +3058,7 @@ function applyPermissions(){
 
 
 /* =========================================================
-   NAVEGAÇÃO
+   NAVIGATION
 ========================================================= */
 
 document
@@ -3308,7 +3360,7 @@ function renderDashboard(){
 
 
 /* =========================================================
-   VENDAS RECENTES
+   RECENT SALES
 ========================================================= */
 
 function renderRecentSales(){
@@ -3383,7 +3435,7 @@ function renderRecentSales(){
 
 
 /* =========================================================
-   ESTOQUE
+   STOCK
 ========================================================= */
 
 function renderStockSummary(){
@@ -3755,10 +3807,6 @@ function renderPDVCart(){
 }
 
 
-/* =========================================================
-   FINALIZAR PDV
-========================================================= */
-
 function finishPDV(){
 
     if(
@@ -3906,7 +3954,7 @@ function finishPDV(){
 
 
 /* =========================================================
-   PEDIDOS ONLINE
+   ONLINE ORDERS
 ========================================================= */
 
 function renderOrders(){
@@ -3947,6 +3995,7 @@ function renderOrders(){
 
                                 return (
                                     kit?.name ||
+                                    item.name ||
                                     item.id
                                 ) +
                                 " x" +
@@ -3965,6 +4014,7 @@ function renderOrders(){
 
                             return (
                                 product?.name ||
+                                item.name ||
                                 item.id
                             ) +
                             " x" +
@@ -3975,28 +4025,142 @@ function renderOrders(){
                     .join("<br>");
 
 
+                const customer =
+                    order.customer ||
+                    {};
+
+
+                const delivery =
+                    order.delivery ||
+                    {};
+
+
+                const addressText =
+                    delivery.type ===
+                    "retirada"
+                    ? "Retirada"
+                    : [
+
+                        delivery.address,
+
+                        delivery.number,
+
+                        delivery.district,
+
+                        delivery.city,
+
+                        delivery.state
+
+                    ]
+                    .filter(
+                        Boolean
+                    )
+                    .join(", ");
+
+
                 return `
 
                 <tr>
 
                     <td>
+
                         <strong>
                             ${order.id}
                         </strong>
+
+                        <div
+                        class="muted"
+                        style="font-size:9px">
+
+                            ${
+                                new Date(
+                                    order.date
+                                )
+                                .toLocaleString(
+                                    "pt-BR"
+                                )
+                            }
+
+                        </div>
+
                     </td>
+
 
                     <td>
 
-                        ${
-                            new Date(
-                                order.date
-                            )
-                            .toLocaleString(
-                                "pt-BR"
-                            )
-                        }
+                        <strong>
+                            ${customer.name || "-"}
+                        </strong>
+
+                        <div class="order-details">
+
+                            ${customer.phone || ""}
+
+                            <br>
+
+                            ${customer.email || ""}
+
+                        </div>
 
                     </td>
+
+
+                    <td>
+
+                        <strong>
+
+                            ${
+                                delivery.type ===
+                                "retirada"
+                                ? "Retirada"
+                                : "Entrega"
+                            }
+
+                        </strong>
+
+                        <div class="order-details">
+
+                            ${addressText || "-"}
+
+                            ${
+                                delivery.cep
+                                ? "<br>CEP: " +
+                                  delivery.cep
+                                : ""
+                            }
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="status warn">
+
+                            ${
+                                order.paymentStatus ||
+                                "Aguardando definição"
+                            }
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        ${items}
+                    </td>
+
+
+                    <td>
+
+                        <strong>
+                            ${money(order.total)}
+                        </strong>
+
+                    </td>
+
 
                     <td>
 
@@ -4008,21 +4172,12 @@ function renderOrders(){
                             : "info"
                         }">
 
-                            ${order.status}
+                            ${order.status || "Novo"}
 
                         </span>
 
                     </td>
 
-                    <td>
-                        ${items}
-                    </td>
-
-                    <td>
-                        <strong>
-                            ${money(order.total)}
-                        </strong>
-                    </td>
 
                     <td>
 
@@ -4057,7 +4212,7 @@ function renderOrders(){
         <tr>
 
             <td
-            colspan="6"
+            colspan="8"
             class="muted">
 
                 Nenhum pedido.
@@ -4072,7 +4227,7 @@ function renderOrders(){
 
 
 /* =========================================================
-   CONCLUIR PEDIDO
+   COMPLETE ORDER
 ========================================================= */
 
 function completeOrder(
@@ -4101,11 +4256,19 @@ function completeOrder(
     }
 
 
+    if(
+        !confirm(
+            "Confirmar este pedido como venda concluída?"
+        )
+    ){
+
+        return;
+
+    }
+
+
     const products =
         getProducts();
-
-    const kits =
-        getKits();
 
 
     for(
@@ -4116,57 +4279,8 @@ function completeOrder(
 
         if(
             item.type ===
-            "kit"
+            "product"
         ){
-
-            const kit =
-                kits.find(
-                    kit =>
-                        kit.id ===
-                        item.id
-                );
-
-
-            if(!kit){
-                continue;
-            }
-
-
-            const unitsNeeded =
-                kit.qty *
-                item.qty;
-
-
-            const totalAvailable =
-                products.reduce(
-                    (
-                        total,
-                        product
-                    ) =>
-                        total +
-                        Number(
-                            product.stock ||
-                            0
-                        ),
-                    0
-                );
-
-
-            if(
-                totalAvailable <
-                unitsNeeded
-            ){
-
-                alert(
-                    "Estoque total insuficiente para concluir o KIT."
-                );
-
-                return;
-
-            }
-
-        }
-        else{
 
             const product =
                 products.find(
@@ -4183,7 +4297,7 @@ function completeOrder(
             ){
 
                 alert(
-                    "Estoque insuficiente."
+                    "Estoque insuficiente para concluir o pedido."
                 );
 
                 return;
@@ -4226,6 +4340,10 @@ function completeOrder(
         "Concluído";
 
 
+    order.completedAt =
+        now();
+
+
     write(
         "impacto_products",
         products
@@ -4255,13 +4373,17 @@ function completeOrder(
                 "Online",
 
             payment:
-                "Online",
+                order.paymentStatus ||
+                "A definir",
 
             total:
                 order.total,
 
             items:
                 order.items,
+
+            customer:
+                order.customer,
 
             seller:
                 "Site"
@@ -4280,14 +4402,14 @@ function completeOrder(
 
 
     alert(
-        "Pedido concluído."
+        "Pedido concluído e registrado como venda."
     );
 
 }
 
 
 /* =========================================================
-   PRODUTOS CRUD
+   PRODUCTS CRUD
 ========================================================= */
 
 function renderProductList(){
@@ -4797,7 +4919,7 @@ function renderKits(){
 
 
 /* =========================================================
-   MOVIMENTAÇÃO
+   MOVEMENT
 ========================================================= */
 
 function renderMoveProducts(){
@@ -5009,7 +5131,7 @@ function renderMoves(){
 
 
 /* =========================================================
-   DESPESAS
+   EXPENSES
 ========================================================= */
 
 function saveExpense(){
@@ -5168,7 +5290,7 @@ function renderExpenses(){
 
 
 /* =========================================================
-   RELATÓRIO
+   REPORTS
 ========================================================= */
 
 function inRange(
@@ -5465,7 +5587,7 @@ function renderReports(){
 
 
 /* =========================================================
-   USUÁRIOS
+   USERS
 ========================================================= */
 
 function saveUser(){
@@ -5517,6 +5639,23 @@ function saveUser(){
         );
 
 
+    if(
+        users.some(
+            user =>
+                user.login ===
+                login
+        )
+    ){
+
+        alert(
+            "Este login já existe."
+        );
+
+        return;
+
+    }
+
+
     users.push(
         {
 
@@ -5542,6 +5681,16 @@ function saveUser(){
         "impacto_users",
         users
     );
+
+
+    $("userName").value =
+        "";
+
+    $("userLogin").value =
+        "";
+
+    $("userPassword").value =
+        "";
 
 
     renderUsers();
@@ -5603,7 +5752,7 @@ function renderUsers(){
 
 
 /* =========================================================
-   CONFIG
+   SETTINGS
 ========================================================= */
 
 function loadSettings(){
@@ -5627,6 +5776,13 @@ function loadSettings(){
         settings.pix ||
         "";
 
+    $("settingCheckoutMode").value =
+        settings.checkoutMode ||
+        "internal";
+
+
+    renderCheckoutModeStatus();
+
 }
 
 
@@ -5646,10 +5802,17 @@ function saveSettings(){
 
             pix:
                 $("settingPix")
+                .value,
+
+            checkoutMode:
+                $("settingCheckoutMode")
                 .value
 
         }
     );
+
+
+    renderCheckoutModeStatus();
 
 
     alert(
@@ -5659,89 +5822,37 @@ function saveSettings(){
 }
 
 
-/* =========================================================
-   BACKUP
-========================================================= */
+function renderCheckoutModeStatus(){
 
-function exportBackup(){
+    const settings =
+        read(
+            "impacto_settings",
+            DEFAULT_SETTINGS
+        );
 
-    const data = {
 
-        products:
-            getProducts(),
+    const mode =
+        settings.checkoutMode ||
+        "internal";
 
-        kits:
-            getKits(),
 
-        orders:
-            getOrders(),
+    const labels = {
 
-        sales:
-            getSales(),
+        internal:
+            "Pedido interno ativo. O site registra o pedido e o pagamento é definido posteriormente.",
 
-        expenses:
-            getExpenses(),
+        whatsapp:
+            "WhatsApp ativo. Após registrar o pedido, o cliente é direcionado ao atendimento.",
 
-        movements:
-            getMoves(),
-
-        users:
-            read(
-                "impacto_users",
-                DEFAULT_USERS
-            ),
-
-        settings:
-            read(
-                "impacto_settings",
-                DEFAULT_SETTINGS
-            )
+        online:
+            "Pagamento online selecionado, aguardando definição e integração do gateway."
 
     };
 
 
-    const blob =
-        new Blob(
-            [
-                JSON.stringify(
-                    data,
-                    null,
-                    2
-                )
-            ],
-            {
-                type:
-                    "application/json"
-            }
-        );
-
-
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
-    const link =
-        document.createElement(
-            "a"
-        );
-
-
-    link.href =
-        url;
-
-
-    link.download =
-        "impacto-pro-backup.json";
-
-
-    link.click();
-
-
-    URL.revokeObjectURL(
-        url
-    );
+    $("checkoutModeStatus")
+    .textContent =
+        labels[mode];
 
 }
 
