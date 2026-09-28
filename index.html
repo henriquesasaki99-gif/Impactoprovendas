@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 
 <meta charset="UTF-8">
@@ -14,52 +13,35 @@ name="theme-color"
 content="#eaf8ff">
 
 <title>
-Impacto Pro Vendas | Toalhas Profissionais de Alta Resistência
+Impacto Pro Vendas | Toalhas Profissionais
 </title>
 
 <meta
 name="description"
-content="Impacto Pro Vendas: toalhas de confecção própria desenvolvidas para alta utilização profissional, com resistência direcionada ao contato com pó descolorante, ajudando a reduzir manchas e aumentar a vida útil.">
+content="Toalhas Impacto Pro de confecção própria para alta utilização profissional, resistência direcionada ao contato com pó descolorante e maior vida útil.">
 
 <style>
-
-/* =========================================================
-   IMPACTO PRO VENDAS
-   ETAPA 1
-   SITE COMPLETO
-========================================================= */
 
 :root{
 
     --bg:#eaf8ff;
-
-    --bg-light:#f8fdff;
-
-    --bg-blue:#dff4ff;
+    --bg2:#f8fdff;
 
     --blue:#94ddff;
-
-    --blue-strong:#49b9ed;
-
-    --blue-dark:#186b93;
+    --blue2:#49b9ed;
 
     --black:#101216;
-
-    --black-soft:#20242c;
+    --black2:#252a33;
 
     --pink:#ff2d94;
-
-    --pink-light:#ff79bd;
-
-    --pink-soft:#ffc8e2;
+    --pink2:#ff79bd;
 
     --white:#ffffff;
 
     --text:#111318;
-
     --muted:#657586;
 
-    --green:#1a9d70;
+    --green:#159b70;
 
     --line:rgba(17,19,24,.11);
 
@@ -68,11 +50,6 @@ content="Impacto Pro Vendas: toalhas de confecção própria desenvolvidas para 
         rgba(28,82,110,.14);
 
 }
-
-
-/* =========================================================
-   RESET
-========================================================= */
 
 *{
     box-sizing:border-box;
@@ -161,7 +138,7 @@ img{
 
 
 /* =========================================================
-   FUNDO FUTURISTA
+   FUNDO
 ========================================================= */
 
 .grid-background{
@@ -192,56 +169,6 @@ img{
     background-size:
         58px 58px;
 
-    mask-image:
-        linear-gradient(
-            #000,
-            transparent 92%
-        );
-
-}
-
-.background-orb{
-
-    position:fixed;
-
-    z-index:-4;
-
-    border-radius:50%;
-
-    pointer-events:none;
-
-    filter:blur(80px);
-
-}
-
-.background-orb.blue-orb{
-
-    width:420px;
-
-    height:420px;
-
-    left:-170px;
-
-    top:18%;
-
-    background:
-        rgba(85,190,235,.20);
-
-}
-
-.background-orb.pink-orb{
-
-    width:390px;
-
-    height:390px;
-
-    right:-170px;
-
-    top:45%;
-
-    background:
-        rgba(255,45,148,.11);
-
 }
 
 
@@ -258,7 +185,7 @@ header{
     z-index:100;
 
     background:
-        rgba(244,252,255,.88);
+        rgba(244,252,255,.90);
 
     backdrop-filter:
         blur(22px);
@@ -279,7 +206,7 @@ header{
 
     justify-content:space-between;
 
-    gap:24px;
+    gap:18px;
 
 }
 
@@ -343,7 +270,7 @@ header{
 
     align-items:center;
 
-    gap:21px;
+    gap:17px;
 
 }
 
@@ -353,9 +280,11 @@ header{
 
     color:#263240;
 
-    font-size:13px;
+    font-size:12px;
 
     font-weight:850;
+
+    white-space:nowrap;
 
 }
 
@@ -367,7 +296,7 @@ header{
 
     left:0;
 
-    bottom:-10px;
+    bottom:-9px;
 
     width:0;
 
@@ -394,7 +323,7 @@ header{
 
     align-items:center;
 
-    gap:9px;
+    gap:8px;
 
 }
 
@@ -422,9 +351,7 @@ header{
 
     font-weight:900;
 
-    transition:
-        transform .22s,
-        box-shadow .22s;
+    transition:.22s;
 
 }
 
@@ -443,7 +370,7 @@ header{
         linear-gradient(
             115deg,
             var(--black),
-            #252a33 50%,
+            var(--black2) 50%,
             var(--pink)
         );
 
@@ -453,20 +380,12 @@ header{
 
 }
 
-.btn-primary:hover{
-
-    box-shadow:
-        0 18px 42px
-        rgba(255,45,148,.18);
-
-}
-
 .btn-secondary{
 
     color:var(--black);
 
     background:
-        rgba(255,255,255,.76);
+        rgba(255,255,255,.80);
 
     border:
         1px solid
@@ -482,7 +401,7 @@ header{
         linear-gradient(
             135deg,
             var(--pink),
-            var(--pink-light)
+            var(--pink2)
         );
 
 }
@@ -491,6 +410,65 @@ header{
 
     padding:
         15px 22px;
+
+}
+
+
+/* =========================================================
+   ÁREA FUNCIONÁRIO
+========================================================= */
+
+.employee-area{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--black);
+
+    background:#fff;
+
+    border:
+        1px solid
+        var(--line);
+
+    padding:
+        9px 12px;
+
+}
+
+.employee-icon{
+
+    width:29px;
+
+    height:29px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:9px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--black),
+            var(--pink)
+        );
+
+}
+
+.employee-text{
+
+    white-space:nowrap;
+
+    font-size:10px;
+
+    font-weight:950;
 
 }
 
@@ -503,8 +481,6 @@ header{
     height:42px;
 
     padding:0;
-
-    font-size:21px;
 
 }
 
@@ -523,16 +499,15 @@ header{
 
     z-index:200;
 
+    overflow:auto;
+
     padding:
         95px 7vw 40px;
 
     flex-direction:column;
 
     background:
-        rgba(238,249,255,.98);
-
-    backdrop-filter:
-        blur(25px);
+        rgba(238,249,255,.99);
 
 }
 
@@ -543,31 +518,37 @@ header{
 .mobile-menu a{
 
     padding:
-        17px 0;
-
-    color:var(--black);
+        16px 0;
 
     border-bottom:
         1px solid
         var(--line);
 
-    font-size:20px;
+    font-size:19px;
 
     font-weight:950;
 
 }
 
-.mobile-menu small{
+.employee-mobile{
 
-    display:block;
+    margin-top:15px;
 
-    margin-top:28px;
+    padding:15px!important;
 
-    color:#6e7e8e;
+    color:#fff!important;
 
-    font-size:10px;
+    border:0!important;
 
-    letter-spacing:1.5px;
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            120deg,
+            var(--black),
+            #282d35,
+            var(--pink)
+        );
 
 }
 
@@ -591,9 +572,7 @@ header{
 
     background:#fff;
 
-    color:var(--black);
-
-    font-size:26px;
+    font-size:25px;
 
 }
 
@@ -611,12 +590,10 @@ header{
 
     align-items:center;
 
-    position:relative;
-
-    overflow:hidden;
-
     padding:
         68px 0 78px;
+
+    overflow:hidden;
 
 }
 
@@ -659,8 +636,6 @@ header{
 
     height:2px;
 
-    border-radius:2px;
-
     background:
         linear-gradient(
             90deg,
@@ -674,8 +649,6 @@ header{
 
     margin:
         19px 0 23px;
-
-    color:var(--black);
 
     font-size:
         clamp(
@@ -698,20 +671,18 @@ header{
             var(--black),
             #393d47 38%,
             var(--pink) 73%,
-            var(--pink-light)
+            var(--pink2)
         );
 
-    background-clip:text;
-
     -webkit-background-clip:text;
+
+    background-clip:text;
 
     color:transparent;
 
 }
 
 .hero-description{
-
-    max-width:720px;
 
     color:#526273;
 
@@ -733,13 +704,13 @@ header{
 
     flex-wrap:wrap;
 
-    margin-top:29px;
+    margin-top:28px;
 
 }
 
 
 /* =========================================================
-   PROVAS DO HERO
+   HERO PROOF
 ========================================================= */
 
 .hero-proof{
@@ -767,9 +738,9 @@ header{
 
 .hero-proof span{
 
-    color:#7a8998;
-
     font-size:9px;
+
+    color:#7a8998;
 
     font-weight:950;
 
@@ -779,18 +750,13 @@ header{
 
     display:block;
 
-    margin:
-        6px 0;
-
-    color:var(--black);
+    margin:6px 0;
 
     font-size:13px;
 
 }
 
 .hero-proof small{
-
-    display:block;
 
     color:#69798a;
 
@@ -802,7 +768,7 @@ header{
 
 
 /* =========================================================
-   HERO FOTOGRÁFICO
+   HERO FOTOS
 ========================================================= */
 
 .hero-gallery{
@@ -835,7 +801,7 @@ header{
 
     border:
         7px solid
-        rgba(255,255,255,.76);
+        rgba(255,255,255,.80);
 
     background:#fff;
 
@@ -853,8 +819,6 @@ header{
 
     object-fit:cover;
 
-    display:block;
-
 }
 
 .hero-main-photo:after{
@@ -867,8 +831,7 @@ header{
 
     background:
         linear-gradient(
-            180deg,
-            rgba(0,0,0,0) 42%,
+            transparent 42%,
             rgba(11,14,19,.70)
         );
 
@@ -912,8 +875,6 @@ header{
 
     font-size:25px;
 
-    line-height:1.13;
-
 }
 
 .hero-side-photo{
@@ -932,7 +893,7 @@ header{
 
     border:
         6px solid
-        rgba(255,255,255,.92);
+        #fff;
 
     background:#fff;
 
@@ -949,8 +910,6 @@ header{
     height:100%;
 
     object-fit:cover;
-
-    display:block;
 
 }
 
@@ -995,6 +954,8 @@ header{
 
     border-radius:17px;
 
+    color:#fff;
+
     box-shadow:
         0 19px 40px
         rgba(18,45,60,.16);
@@ -1007,8 +968,6 @@ header{
 
     font-size:12px;
 
-    line-height:1.4;
-
 }
 
 .hero-badge small{
@@ -1019,8 +978,6 @@ header{
 
     font-size:9px;
 
-    opacity:.82;
-
 }
 
 .hero-badge.black{
@@ -1029,10 +986,7 @@ header{
 
     top:75px;
 
-    color:#fff;
-
-    background:
-        var(--black);
+    background:var(--black);
 
 }
 
@@ -1042,13 +996,11 @@ header{
 
     bottom:82px;
 
-    color:#fff;
-
     background:
         linear-gradient(
             135deg,
             var(--pink),
-            var(--pink-light)
+            var(--pink2)
         );
 
 }
@@ -1064,14 +1016,6 @@ header{
 
     color:#fff;
 
-    border-top:
-        1px solid
-        rgba(255,255,255,.06);
-
-    border-bottom:
-        1px solid
-        rgba(255,255,255,.06);
-
     background:
         linear-gradient(
             90deg,
@@ -1085,8 +1029,6 @@ header{
 .ticker-track{
 
     display:flex;
-
-    align-items:center;
 
     justify-content:center;
 
@@ -1140,8 +1082,6 @@ header{
     margin:
         12px 0 20px;
 
-    color:var(--black);
-
     font-size:
         clamp(
             41px,
@@ -1171,7 +1111,7 @@ header{
 
 
 /* =========================================================
-   DIFERENCIAIS BENTO
+   DIFERENCIAIS
 ========================================================= */
 
 .bento-grid{
@@ -1204,60 +1144,10 @@ header{
         1px solid
         var(--line);
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.92),
-            rgba(226,246,255,.72)
-        );
+    background:#fff;
 
     box-shadow:
-        0 24px 55px
-        rgba(35,103,135,.11);
-
-}
-
-.bento-card:after{
-
-    content:"";
-
-    position:absolute;
-
-    width:235px;
-
-    height:235px;
-
-    right:-95px;
-
-    top:-95px;
-
-    border-radius:50%;
-
-    filter:blur(18px);
-
-    opacity:.24;
-
-}
-
-.bento-card.blue:after{
-    background:var(--blue);
-}
-
-.bento-card.pink:after{
-    background:var(--pink);
-}
-
-.bento-card.black:after{
-    background:var(--black);
-}
-
-.bento-card.mix:after{
-
-    background:
-        linear-gradient(
-            var(--black),
-            var(--pink)
-        );
+        var(--shadow);
 
 }
 
@@ -1267,16 +1157,6 @@ header{
 
 .bento-wide{
     grid-column:span 2;
-}
-
-.bento-number{
-
-    color:#758596;
-
-    font-size:9px;
-
-    font-weight:950;
-
 }
 
 .bento-icon{
@@ -1289,13 +1169,9 @@ header{
 
     place-items:center;
 
-    margin-top:18px;
-
     border-radius:16px;
 
     color:#fff;
-
-    font-size:20px;
 
     background:
         linear-gradient(
@@ -1309,8 +1185,6 @@ header{
 .bento-copy{
 
     position:absolute;
-
-    z-index:3;
 
     left:24px;
 
@@ -1337,13 +1211,7 @@ header{
     margin:
         8px 0;
 
-    color:var(--black);
-
-    font-size:26px;
-
-    line-height:1.1;
-
-    letter-spacing:-1px;
+    font-size:25px;
 
 }
 
@@ -1369,9 +1237,9 @@ header{
     background:
         linear-gradient(
             180deg,
-            rgba(255,255,255,.12),
-            rgba(191,234,255,.34),
-            rgba(255,255,255,.12)
+            transparent,
+            rgba(148,221,255,.20),
+            transparent
         );
 
 }
@@ -1390,8 +1258,6 @@ header{
 }
 
 .split-heading p{
-
-    margin:0;
 
     color:#5f7081;
 
@@ -1425,20 +1291,7 @@ header{
     background:#fff;
 
     box-shadow:
-        0 20px 50px
-        rgba(41,96,120,.12);
-
-    transition:.27s;
-
-}
-
-.product-card:hover{
-
-    transform:
-        translateY(-7px);
-
-    border-color:
-        rgba(255,45,148,.30);
+        var(--shadow);
 
 }
 
@@ -1450,48 +1303,17 @@ header{
 
     place-items:center;
 
-    position:relative;
-
-    overflow:hidden;
-
     background:
-
         radial-gradient(
             circle at 50% 25%,
-            rgba(148,221,255,.52),
-            transparent 39%
+            rgba(148,221,255,.55),
+            transparent 40%
         ),
-
         #f0fbff;
 
 }
 
-.product-image:after{
-
-    content:"";
-
-    position:absolute;
-
-    bottom:36px;
-
-    width:128px;
-
-    height:19px;
-
-    border-radius:50%;
-
-    background:
-        rgba(16,18,22,.16);
-
-    filter:blur(14px);
-
-}
-
 .product-towel{
-
-    position:relative;
-
-    z-index:2;
 
     width:145px;
 
@@ -1521,12 +1343,8 @@ header{
 
     color:var(--green);
 
-    border:
-        1px solid
-        rgba(26,157,112,.20);
-
     background:
-        rgba(26,157,112,.08);
+        rgba(21,155,112,.08);
 
     font-size:9px;
 
@@ -1538,8 +1356,6 @@ header{
 
     margin:
         12px 0 8px;
-
-    color:var(--black);
 
     font-size:20px;
 
@@ -1573,8 +1389,6 @@ header{
 
 .product-price{
 
-    color:var(--black);
-
     font-size:25px;
 
     font-weight:1000;
@@ -1592,7 +1406,7 @@ header{
         linear-gradient(
             180deg,
             #f8fdff,
-            #e7f7ff,
+            #e8f7ff,
             #f8fdff
         );
 
@@ -1615,11 +1429,11 @@ header{
 
     position:relative;
 
-    overflow:hidden;
+    min-height:330px;
 
     padding:26px;
 
-    min-height:310px;
+    overflow:hidden;
 
     border-radius:28px;
 
@@ -1630,31 +1444,7 @@ header{
     background:#fff;
 
     box-shadow:
-        0 22px 55px
-        rgba(41,96,120,.12);
-
-}
-
-.kit-card:after{
-
-    content:"";
-
-    position:absolute;
-
-    width:200px;
-
-    height:200px;
-
-    right:-70px;
-
-    top:-80px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,45,148,.12);
-
-    filter:blur(15px);
+        var(--shadow);
 
 }
 
@@ -1680,23 +1470,15 @@ header{
 
     font-weight:950;
 
-    letter-spacing:1px;
-
 }
 
 .kit-number{
 
     margin-top:28px;
 
-    color:var(--black);
-
-    font-size:47px;
+    font-size:50px;
 
     font-weight:1000;
-
-    line-height:.9;
-
-    letter-spacing:-2px;
 
 }
 
@@ -1704,28 +1486,20 @@ header{
 
     display:block;
 
-    margin-top:7px;
-
     color:var(--pink);
 
     font-size:17px;
-
-    letter-spacing:0;
 
 }
 
 .kit-card h3{
 
     margin:
-        22px 0 8px;
-
-    font-size:21px;
+        20px 0 8px;
 
 }
 
 .kit-card p{
-
-    margin:0;
 
     color:#69798a;
 
@@ -1757,9 +1531,7 @@ header{
 
 .kit-price{
 
-    color:#59697a;
-
-    font-size:13px;
+    font-size:14px;
 
     font-weight:950;
 
@@ -1807,9 +1579,7 @@ header{
 
     margin:0;
 
-    max-width:720px;
-
-    color:#cbd4dd;
+    color:#ccd5de;
 
     line-height:1.7;
 
@@ -1817,30 +1587,20 @@ header{
 
 
 /* =========================================================
-   ALTA RESISTÊNCIA
+   RESISTÊNCIA
 ========================================================= */
 
 .resistance-section{
 
     overflow:hidden;
 
-    border-top:
-        1px solid
-        var(--line);
-
-    border-bottom:
-        1px solid
-        var(--line);
-
     background:
-
         radial-gradient(
             circle at center,
             rgba(148,221,255,.44),
             transparent 45%
         ),
-
-        var(--bg-blue);
+        #dff4ff;
 
 }
 
@@ -1869,8 +1629,7 @@ header{
         1px solid
         var(--line);
 
-    background:
-        rgba(255,255,255,.82);
+    background:#fff;
 
     box-shadow:
         var(--shadow);
@@ -1922,16 +1681,6 @@ header{
 
 }
 
-.resistance-item strong{
-
-    display:block;
-
-    margin-bottom:5px;
-
-    color:var(--black);
-
-}
-
 .resistance-item p{
 
     margin:0;
@@ -1946,7 +1695,7 @@ header{
 
 
 /* =========================================================
-   CÍRCULOS COM TEXTURA DE TOALHA ROSA
+   CÍRCULOS TECIDO
 ========================================================= */
 
 .resistance-visual{
@@ -1971,42 +1720,30 @@ header{
         rotateRing 18s
         linear infinite;
 
-    box-shadow:
-
-        0 0 0 1px
-        rgba(255,255,255,.35),
-
-        0 20px 45px
-        rgba(255,45,148,.14),
-
-        inset 0 2px 5px
-        rgba(255,255,255,.48),
-
-        inset 0 -5px 9px
-        rgba(120,0,55,.18);
-
     background:
-
-        repeating-radial-gradient(
-            circle at center,
-            rgba(255,255,255,.18) 0px,
-            rgba(255,255,255,.18) 1px,
-            rgba(255,45,148,.16) 2px,
-            rgba(255,45,148,.16) 4px
-        ),
 
         repeating-linear-gradient(
             45deg,
-            #ff69b2 0px,
-            #ff69b2 4px,
-            #f94a9f 5px,
-            #ff82c2 7px,
-            #ff5dab 9px
+            #ff77bc 0,
+            #ff77bc 4px,
+            #f64b9f 5px,
+            #ff8dc9 8px
         );
 
     border:
-        12px solid
+        13px solid
         #ff5eaa;
+
+    box-shadow:
+
+        0 20px 45px
+        rgba(255,45,148,.18),
+
+        inset 0 3px 5px
+        rgba(255,255,255,.45),
+
+        inset 0 -4px 8px
+        rgba(120,0,55,.18);
 
 }
 
@@ -2022,25 +1759,7 @@ header{
 
     border:
         2px dashed
-        rgba(255,255,255,.55);
-
-    opacity:.75;
-
-}
-
-.towel-ring:after{
-
-    content:"";
-
-    position:absolute;
-
-    inset:7px;
-
-    border-radius:50%;
-
-    border:
-        2px dotted
-        rgba(120,0,55,.22);
+        rgba(255,255,255,.60);
 
 }
 
@@ -2050,8 +1769,6 @@ header{
 
     height:410px;
 
-    border-width:14px;
-
 }
 
 .towel-ring.r2{
@@ -2060,13 +1777,7 @@ header{
 
     height:315px;
 
-    border-width:11px;
-
-    animation-direction:
-        reverse;
-
-    animation-duration:
-        13s;
+    animation-direction:reverse;
 
 }
 
@@ -2081,6 +1792,10 @@ header{
 
 .resistance-core{
 
+    position:relative;
+
+    z-index:3;
+
     width:220px;
 
     height:220px;
@@ -2093,33 +1808,19 @@ header{
 
     border-radius:50%;
 
-    color:var(--black);
-
-    border:
-        1px solid
-        var(--line);
-
     background:
         radial-gradient(
             circle,
             #fff,
-            #d9f2ff 63%,
-            #c9ecff
+            #d9f2ff
         );
 
     box-shadow:
-        0 0 75px
-        rgba(70,160,200,.18);
+        var(--shadow);
 
     font-size:24px;
 
     font-weight:1000;
-
-    line-height:.91;
-
-    position:relative;
-
-    z-index:3;
 
 }
 
@@ -2145,68 +1846,52 @@ header{
 
     position:absolute;
 
+    z-index:5;
+
     width:155px;
 
     padding:13px;
 
     border-radius:16px;
 
-    color:var(--black);
-
     border:
         1px solid
         var(--line);
 
-    background:
-        rgba(255,255,255,.93);
+    background:#fff;
 
     box-shadow:
-        0 15px 35px
-        rgba(40,100,125,.11);
+        var(--shadow);
 
     font-size:9px;
 
     font-weight:950;
 
-    z-index:5;
-
 }
 
 .resistance-tag.one{
-
     left:0;
-
     top:24%;
-
 }
 
 .resistance-tag.two{
-
     right:0;
-
     top:24%;
-
 }
 
 .resistance-tag.three{
-
     left:4%;
-
     bottom:20%;
-
 }
 
 .resistance-tag.four{
-
     right:4%;
-
     bottom:20%;
-
 }
 
 
 /* =========================================================
-   PARA QUEM É
+   PÚBLICO
 ========================================================= */
 
 .audience-grid{
@@ -2228,16 +1913,14 @@ header{
 
     border-radius:23px;
 
+    background:#fff;
+
     border:
         1px solid
         var(--line);
 
-    background:
-        rgba(255,255,255,.77);
-
     box-shadow:
-        0 18px 45px
-        rgba(43,92,115,.09);
+        var(--shadow);
 
 }
 
@@ -2266,18 +1949,7 @@ header{
 
 }
 
-.audience-card h3{
-
-    margin:
-        0 0 8px;
-
-    font-size:17px;
-
-}
-
 .audience-card p{
-
-    margin:0;
 
     color:#69798a;
 
@@ -2293,10 +1965,6 @@ header{
 ========================================================= */
 
 .wholesale-card{
-
-    position:relative;
-
-    overflow:hidden;
 
     display:grid;
 
@@ -2328,54 +1996,11 @@ header{
 
 }
 
-.wholesale-card:after{
-
-    content:"";
-
-    position:absolute;
-
-    width:310px;
-
-    height:310px;
-
-    right:-110px;
-
-    top:-135px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,45,148,.15);
-
-    filter:blur(55px);
-
-}
-
-.wholesale-card > div{
-
-    position:relative;
-
-    z-index:3;
-
-}
-
 .wholesale-card p{
-
-    max-width:720px;
 
     color:#647586;
 
     line-height:1.75;
-
-}
-
-.wholesale-actions{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
 
 }
 
@@ -2385,10 +2010,6 @@ header{
 ========================================================= */
 
 .final-cta{
-
-    overflow:hidden;
-
-    position:relative;
 
     border-radius:34px;
 
@@ -2407,34 +2028,7 @@ header{
 
 }
 
-.final-cta:before{
-
-    content:"";
-
-    position:absolute;
-
-    width:320px;
-
-    height:320px;
-
-    right:-100px;
-
-    top:-125px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,45,148,.28);
-
-    filter:blur(60px);
-
-}
-
 .final-content{
-
-    position:relative;
-
-    z-index:3;
 
     display:grid;
 
@@ -2447,18 +2041,10 @@ header{
 
 }
 
-.final-cta .section-code{
-    color:#bbc7d4;
-}
-
 .final-cta h2{
-
-    max-width:800px;
 
     margin:
         12px 0 16px;
-
-    color:#fff;
 
     font-size:
         clamp(
@@ -2469,19 +2055,13 @@ header{
 
     line-height:1;
 
-    letter-spacing:-2.7px;
-
 }
 
 .final-cta h2 span{
-    color:var(--pink-light);
+    color:var(--pink2);
 }
 
 .final-cta p{
-
-    max-width:670px;
-
-    margin:0;
 
     color:#c0cad5;
 
@@ -2505,9 +2085,6 @@ footer{
         1px solid
         var(--line);
 
-    background:
-        rgba(255,255,255,.43);
-
 }
 
 .footer-grid{
@@ -2527,9 +2104,9 @@ footer{
 
     margin:0;
 
-    color:#657687;
-
     text-align:center;
+
+    color:#657687;
 
     font-size:11px;
 
@@ -2540,8 +2117,6 @@ footer{
     color:#657687;
 
     font-size:9px;
-
-    letter-spacing:1.4px;
 
 }
 
@@ -2574,11 +2149,10 @@ footer{
 
 .cart-box{
 
-    width:
-        min(
-            580px,
-            100%
-        );
+    width:min(
+        580px,
+        100%
+    );
 
     max-height:83vh;
 
@@ -2587,10 +2161,6 @@ footer{
     padding:25px;
 
     border-radius:27px;
-
-    border:
-        1px solid
-        var(--line);
 
     background:#fff;
 
@@ -2604,18 +2174,10 @@ footer{
 
     display:flex;
 
-    align-items:center;
-
     justify-content:space-between;
 
-    gap:15px;
+    align-items:center;
 
-    margin-bottom:15px;
-
-}
-
-.cart-header h2{
-    margin:0;
 }
 
 .cart-item{
@@ -2640,9 +2202,9 @@ footer{
 
     display:block;
 
-    margin-top:4px;
-
     color:#6f7f90;
+
+    margin-top:4px;
 
 }
 
@@ -2664,15 +2226,7 @@ footer{
 
     height:28px;
 
-    display:grid;
-
-    place-items:center;
-
-    padding:0;
-
     border-radius:8px;
-
-    color:var(--black);
 
     border:
         1px solid
@@ -2684,17 +2238,15 @@ footer{
 
 .remove-button{
 
-    margin-left:7px;
-
     border:0;
-
-    color:var(--pink);
 
     background:transparent;
 
-    font-size:11px;
+    color:var(--pink);
 
-    font-weight:900;
+    font-size:10px;
+
+    font-weight:950;
 
 }
 
@@ -2704,51 +2256,29 @@ footer{
 
     justify-content:space-between;
 
-    gap:15px;
-
     margin-top:20px;
 
     font-size:20px;
 
 }
 
-.cart-note{
-
-    margin:
-        14px 0 0;
-
-    color:#748395;
-
-    font-size:10px;
-
-    line-height:1.6;
-
-}
-
 
 /* =========================================================
-   MOBILE BOTTOM BAR
+   MOBILE
 ========================================================= */
 
 .mobile-buy-bar{
     display:none;
 }
 
-
-/* =========================================================
-   ANIMAÇÃO
-========================================================= */
-
 .reveal{
 
     opacity:0;
 
     transform:
-        translateY(23px);
+        translateY(22px);
 
-    transition:
-        opacity .8s ease,
-        transform .8s ease;
+    transition:.8s;
 
 }
 
@@ -2761,11 +2291,7 @@ footer{
 }
 
 
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media(max-width:1040px){
+@media(max-width:1120px){
 
     .navlinks{
         display:none;
@@ -2782,14 +2308,6 @@ footer{
     .final-content,
     .custom-kit-box{
         grid-template-columns:1fr;
-    }
-
-    .hero{
-        padding-top:55px;
-    }
-
-    .hero-gallery{
-        min-height:570px;
     }
 
     .bento-grid{
@@ -2823,22 +2341,6 @@ footer{
             repeat(2,1fr);
     }
 
-    .footer-grid{
-
-        grid-template-columns:1fr;
-
-        text-align:center;
-
-    }
-
-    .footer-grid p{
-        text-align:center;
-    }
-
-    .footer-grid .logo{
-        justify-content:center;
-    }
-
     .mobile-buy-bar{
 
         position:fixed;
@@ -2849,11 +2351,7 @@ footer{
 
         right:12px;
 
-        bottom:
-            calc(
-                12px +
-                env(safe-area-inset-bottom)
-            );
+        bottom:12px;
 
         display:flex;
 
@@ -2863,15 +2361,8 @@ footer{
 
         border-radius:18px;
 
-        border:
-            1px solid
-            var(--line);
-
         background:
-            rgba(239,250,255,.94);
-
-        backdrop-filter:
-            blur(20px);
+            rgba(239,250,255,.95);
 
         box-shadow:
             var(--shadow);
@@ -2882,16 +2373,8 @@ footer{
         flex:1;
     }
 
-    footer{
-        padding-bottom:100px;
-    }
-
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
 
 @media(max-width:680px){
 
@@ -2899,22 +2382,12 @@ footer{
         width:94%;
     }
 
-    .nav{
-        min-height:70px;
-    }
-
-    .logo-impacto,
-    .logo-pro{
-        font-size:21px;
-    }
-
-    .nav-actions .desktop-cart{
+    .employee-area{
         display:none;
     }
 
-    .section{
-        padding:
-            78px 0;
+    .desktop-cart{
+        display:none;
     }
 
     .hero{
@@ -2943,11 +2416,7 @@ footer{
     }
 
     .hero-gallery{
-
         min-height:485px;
-
-        margin-top:12px;
-
     }
 
     .hero-main-photo{
@@ -2958,12 +2427,6 @@ footer{
 
         left:4.5%;
 
-        top:48%;
-
-        border-radius:28px;
-
-        border-width:5px;
-
     }
 
     .hero-side-photo{
@@ -2972,88 +2435,13 @@ footer{
 
         height:122px;
 
-        border-width:4px;
-
-        border-radius:20px;
-
-    }
-
-    .hero-side-photo.model{
-
-        right:0;
-
-        top:5px;
-
-    }
-
-    .hero-side-photo.logo-photo{
-
-        left:0;
-
-        bottom:8px;
-
-        padding:10px;
-
     }
 
     .hero-badge{
 
         max-width:170px;
 
-        padding:
-            10px 12px;
-
-    }
-
-    .hero-badge.black{
-
-        top:34px;
-
-        left:2%;
-
-    }
-
-    .hero-badge.pink{
-
-        right:2%;
-
-        bottom:35px;
-
-    }
-
-    .hero-main-overlay{
-
-        left:18px;
-
-        right:18px;
-
-        bottom:18px;
-
-    }
-
-    .hero-main-overlay strong{
-        font-size:18px;
-    }
-
-    .ticker-track{
-
-        justify-content:flex-start;
-
-        overflow-x:auto;
-
-        scrollbar-width:none;
-
-    }
-
-    .ticker-track::-webkit-scrollbar{
-        display:none;
-    }
-
-    .section-title{
-
-        font-size:41px;
-
-        letter-spacing:-2px;
+        padding:10px;
 
     }
 
@@ -3066,24 +2454,19 @@ footer{
 
     }
 
-    .bento-card{
-        min-height:290px;
+    .section{
+
+        padding:
+            78px 0;
+
     }
 
-    .product-image{
-        height:250px;
-    }
+    .section-title{
 
-    .kit-card{
-        min-height:300px;
-    }
+        font-size:41px;
 
-    .resistance-panel{
-        padding:22px;
-    }
+        letter-spacing:-2px;
 
-    .resistance-visual{
-        min-height:450px;
     }
 
     .towel-ring.r1{
@@ -3091,8 +2474,6 @@ footer{
         width:335px;
 
         height:335px;
-
-        border-width:12px;
 
     }
 
@@ -3102,8 +2483,6 @@ footer{
 
         height:255px;
 
-        border-width:9px;
-
     }
 
     .resistance-core{
@@ -3112,55 +2491,10 @@ footer{
 
         height:175px;
 
-        font-size:20px;
-
     }
 
     .resistance-tag{
-
-        width:122px;
-
-        padding:10px;
-
-        font-size:8px;
-
-    }
-
-    .wholesale-card{
-
-        padding:
-            31px 22px;
-
-    }
-
-    .final-cta{
-
-        padding:
-            38px 24px;
-
-    }
-
-    .mobile-buy-bar{
-
-        left:8px;
-
-        right:8px;
-
-        bottom:
-            calc(
-                8px +
-                env(safe-area-inset-bottom)
-            );
-
-    }
-
-    .mobile-buy-bar .btn{
-
-        padding:
-            12px 8px;
-
-        font-size:12px;
-
+        width:120px;
     }
 
 }
@@ -3175,10 +2509,6 @@ footer{
 
 <div class="grid-background"></div>
 
-<div class="background-orb blue-orb"></div>
-
-<div class="background-orb pink-orb"></div>
-
 
 <!-- =========================================================
      HEADER
@@ -3190,8 +2520,8 @@ footer{
 
 
 <a
-href="#inicio"
-class="logo">
+class="logo"
+href="#inicio">
 
 <span class="logo-impacto">
 IMPACTO
@@ -3261,10 +2591,24 @@ Carrinho
 </button>
 
 
+<a
+class="btn btn-secondary employee-area"
+href="sistema.html">
+
+<span class="employee-icon">
+👤
+</span>
+
+<span class="employee-text">
+Área do Funcionário
+</span>
+
+</a>
+
+
 <button
 class="btn btn-secondary menu-button"
-onclick="toggleMobileMenu()"
-aria-label="Abrir menu">
+onclick="toggleMobileMenu()">
 
 ☰
 
@@ -3283,9 +2627,8 @@ aria-label="Abrir menu">
 ========================================================= -->
 
 <div
-class="mobile-menu"
-id="mobileMenu">
-
+id="mobileMenu"
+class="mobile-menu">
 
 <button
 class="mobile-close"
@@ -3295,85 +2638,45 @@ onclick="toggleMobileMenu()">
 
 </button>
 
-
-<a
-href="#inicio"
-onclick="toggleMobileMenu()">
-
+<a href="#inicio" onclick="toggleMobileMenu()">
 Início
-
 </a>
 
-
-<a
-href="#diferenciais"
-onclick="toggleMobileMenu()">
-
+<a href="#diferenciais" onclick="toggleMobileMenu()">
 Diferenciais
-
 </a>
 
-
-<a
-href="#produtos"
-onclick="toggleMobileMenu()">
-
-Comprar toalhas
-
+<a href="#produtos" onclick="toggleMobileMenu()">
+Produtos
 </a>
 
-
-<a
-href="#kits"
-onclick="toggleMobileMenu()">
-
+<a href="#kits" onclick="toggleMobileMenu()">
 KITs
-
 </a>
 
-
-<a
-href="#resistencia"
-onclick="toggleMobileMenu()">
-
+<a href="#resistencia" onclick="toggleMobileMenu()">
 Alta resistência
-
 </a>
 
-
-<a
-href="#publico"
-onclick="toggleMobileMenu()">
-
+<a href="#publico" onclick="toggleMobileMenu()">
 Para quem é
-
 </a>
 
-
-<a
-href="#atacado"
-onclick="toggleMobileMenu()">
-
+<a href="#atacado" onclick="toggleMobileMenu()">
 Atacado
-
 </a>
 
+<a href="#contato" onclick="toggleMobileMenu()">
+Contato
+</a>
 
 <a
-href="#contato"
-onclick="toggleMobileMenu()">
+class="employee-mobile"
+href="sistema.html">
 
-Contato
+👤 Área do Funcionário
 
 </a>
-
-
-<small>
-
-IMPACTO PRO VENDAS • CONFECÇÃO PRÓPRIA
-
-</small>
-
 
 </div>
 
@@ -3389,17 +2692,13 @@ IMPACTO PRO VENDAS • CONFECÇÃO PRÓPRIA
 class="hero"
 id="inicio">
 
-
 <div class="container hero-grid">
 
 
 <div class="reveal">
 
-
 <div class="eyebrow">
-
 CONFECÇÃO PRÓPRIA • ALTA UTILIZAÇÃO • MAIS DURABILIDADE
-
 </div>
 
 
@@ -3408,9 +2707,7 @@ CONFECÇÃO PRÓPRIA • ALTA UTILIZAÇÃO • MAIS DURABILIDADE
 Alta utilização exige
 
 <span class="gradient-text">
-
 uma toalha feita para durar.
-
 </span>
 
 </h1>
@@ -3418,16 +2715,15 @@ uma toalha feita para durar.
 
 <p class="hero-description">
 
-A
+A <strong>Impacto Pro Vendas</strong>
+desenvolve toalhas profissionais
+para a rotina intensa de salões,
+barbearias
+e espaços de beleza.
 
-<strong>
-Impacto Pro Vendas
-</strong>
-
-desenvolve toalhas profissionais para a rotina intensa de salões,
-barbearias e espaços de beleza.
-
-Nosso grande diferencial é a resistência direcionada ao contato com
+Nosso grande diferencial
+é a resistência direcionada
+ao contato com
 
 <strong>
 pó descolorante
@@ -3441,7 +2737,6 @@ e aumentar a vida útil da toalha.
 
 
 <div class="hero-buttons">
-
 
 <a
 class="btn btn-primary btn-lg"
@@ -3460,173 +2755,125 @@ Conhecer o diferencial
 
 </a>
 
-
 </div>
 
 
 <div class="hero-proof">
 
-
 <div>
 
-<span>
-01
-</span>
+<span>01</span>
 
 <strong>
 Alta utilização
 </strong>
 
 <small>
-
 Feitas para rotinas profissionais intensas.
-
 </small>
 
 </div>
 
-
 <div>
 
-<span>
-02
-</span>
+<span>02</span>
 
 <strong>
-
 Resistência ao pó descolorante
-
 </strong>
 
 <small>
-
 Ajuda a reduzir manchas e desgaste visual precoce.
-
 </small>
 
 </div>
 
-
 <div>
 
-<span>
-03
-</span>
+<span>03</span>
 
 <strong>
 Maior vida útil
 </strong>
 
 <small>
-
-Mais tempo de uso e menos reposições constantes.
-
+Mais tempo de uso e menos reposições.
 </small>
 
 </div>
 
+</div>
 
 </div>
 
 
-</div>
-
-
-<!-- HERO COM FOTOS -->
+<!-- FOTOS -->
 
 <div class="hero-gallery reveal">
 
 
 <div class="hero-main-photo">
 
-
 <img
 src="impacto-modelo-praia.png"
-alt="Imagem demonstrativa da Impacto Pro">
-
+alt="Impacto Pro">
 
 <div class="hero-main-overlay">
 
-
 <small>
-
 IMPACTO PRO VENDAS
-
 </small>
 
-
 <strong>
-
 Alta resistência para acompanhar a rotina profissional.
-
 </strong>
 
-
 </div>
-
 
 </div>
 
 
 <div class="hero-side-photo model">
 
-
 <img
 src="impacto-modelo.png"
-alt="Imagem demonstrativa Impacto Pro">
-
+alt="Impacto Pro">
 
 </div>
 
 
 <div class="hero-side-photo logo-photo">
 
-
 <img
 src="impacto-logo.png"
-alt="Imagem de demonstração">
-
+alt="Impacto Pro">
 
 </div>
 
 
 <div class="hero-badge black">
 
-
 <strong>
-
 ⚡ Confecção própria
-
 </strong>
 
-
 <small>
-
 Desenvolvida para alta utilização
-
 </small>
-
 
 </div>
 
 
 <div class="hero-badge pink">
 
-
 <strong>
-
 ✦ Resistência ao pó descolorante
-
 </strong>
 
-
 <small>
-
 Ajuda a preservar a aparência
-
 </small>
 
-
 </div>
 
 
@@ -3634,7 +2881,6 @@ Ajuda a preservar a aparência
 
 
 </div>
-
 
 </section>
 
@@ -3645,65 +2891,39 @@ Ajuda a preservar a aparência
 
 <section class="ticker">
 
-
 <div class="ticker-track">
 
-
-<span>
-IMPACTO PRO
-</span>
+<span>IMPACTO PRO</span>
 
 <b>✦</b>
 
-<span>
-CONFECÇÃO PRÓPRIA
-</span>
+<span>CONFECÇÃO PRÓPRIA</span>
 
 <b>✦</b>
 
-<span>
-ALTA UTILIZAÇÃO
-</span>
+<span>ALTA UTILIZAÇÃO</span>
 
 <b>✦</b>
 
-<span>
-RESISTÊNCIA AO PÓ DESCOLORANTE
-</span>
+<span>RESISTÊNCIA AO PÓ DESCOLORANTE</span>
 
 <b>✦</b>
 
-<span>
-MAIOR VIDA ÚTIL
-</span>
+<span>MAIOR VIDA ÚTIL</span>
 
 <b>✦</b>
 
-<span>
-KIT 20
-</span>
+<span>KIT 20</span>
 
 <b>✦</b>
 
-<span>
-KIT 50
-</span>
+<span>KIT 50</span>
 
 <b>✦</b>
 
-<span>
-KIT 100
-</span>
-
-<b>✦</b>
-
-<span>
-ATACADO
-</span>
-
+<span>KIT 100</span>
 
 </div>
-
 
 </section>
 
@@ -3716,16 +2936,11 @@ ATACADO
 class="section"
 id="diferenciais">
 
-
 <div class="container">
 
-
 <span class="section-code">
-
 01 • POR QUE IMPACTO PRO?
-
 </span>
-
 
 <h2 class="section-title">
 
@@ -3734,17 +2949,12 @@ Feita para quem trabalha muito.
 <br>
 
 <span class="gradient-text">
-
 E precisa trocar menos.
-
 </span>
 
 </h2>
 
-
 <p class="section-description">
-
-Nosso foco é a toalha.
 
 Uma linha própria,
 pensada para negócios com alta rotatividade,
@@ -3758,199 +2968,111 @@ na rotina profissional de beleza.
 <div class="bento-grid reveal">
 
 
-<article
-class="bento-card bento-big blue">
-
-
-<span class="bento-number">
-01
-</span>
-
+<article class="bento-card bento-big">
 
 <div class="bento-icon">
 ⚡
 </div>
 
-
 <div class="bento-copy">
 
-
 <small>
-
 ALTA RESISTÊNCIA
-
 </small>
 
-
 <h3>
-
 Preparada para uma rotina profissional intensa.
-
 </h3>
 
-
 <p>
-
 Ideal para operações que utilizam muitas toalhas
-durante todo o dia
-e precisam manter padrão,
-apresentação
-e desempenho.
-
+durante todo o dia.
 </p>
 
-
 </div>
-
 
 </article>
 
 
-<article
-class="bento-card pink">
-
-
-<span class="bento-number">
-02
-</span>
-
+<article class="bento-card">
 
 <div class="bento-icon">
 ✦
 </div>
 
-
 <div class="bento-copy">
 
-
 <small>
-
 PÓ DESCOLORANTE
-
 </small>
 
-
 <h3>
-
 Menos manchas.
-
 </h3>
 
-
 <p>
-
-Resistência direcionada ao contato com pó descolorante
-ajuda a preservar a cor
-e a aparência da toalha.
-
+Resistência direcionada ao contato com pó descolorante.
 </p>
 
-
 </div>
-
 
 </article>
 
 
-<article
-class="bento-card black">
-
-
-<span class="bento-number">
-03
-</span>
-
+<article class="bento-card">
 
 <div class="bento-icon">
 ◎
 </div>
 
-
 <div class="bento-copy">
 
-
 <small>
-
 CONFECÇÃO PRÓPRIA
-
 </small>
 
-
 <h3>
-
 Produto Impacto Pro.
-
 </h3>
 
-
 <p>
-
-Linha própria com identidade,
-controle de padrão
-e evolução diretamente pela marca.
-
+Linha própria com identidade e padrão da marca.
 </p>
 
-
 </div>
-
 
 </article>
 
 
-<article
-class="bento-card bento-wide mix">
-
-
-<span class="bento-number">
-04
-</span>
-
+<article class="bento-card bento-wide">
 
 <div class="bento-icon">
 ↗
 </div>
 
-
 <div class="bento-copy">
 
-
 <small>
-
 VIDA ÚTIL
-
 </small>
 
-
 <h3>
-
 Mais tempo em uso.
 Mais rendimento para o negócio.
-
 </h3>
 
-
 <p>
-
-Reduzir manchas
-e desgaste visual precoce
-significa aproveitar cada peça por mais tempo
-antes da necessidade de reposição.
-
+Mais aproveitamento por peça antes da reposição.
 </p>
 
-
 </div>
-
 
 </article>
 
 
 </div>
 
-
 </div>
-
 
 </section>
 
@@ -3963,22 +3085,15 @@ antes da necessidade de reposição.
 class="section collection"
 id="produtos">
 
-
 <div class="container">
-
 
 <div class="split-heading">
 
-
 <div>
 
-
 <span class="section-code">
-
 02 • PRODUTOS
-
 </span>
-
 
 <h2 class="section-title">
 
@@ -3987,30 +3102,21 @@ Escolha sua cor.
 <br>
 
 <span class="gradient-text">
-
 Prepare sua operação.
-
 </span>
 
 </h2>
 
-
 </div>
-
 
 <p>
 
-Compre diretamente pelo site,
-tanto pelo computador quanto pelo celular.
-
-A linha inicial possui opções em azul,
-rosa e preto,
-com estrutura preparada para novos modelos,
-quantidades
-e futuras integrações.
+Os produtos,
+preços
+e estoque exibidos nesta área
+podem ser atualizados pela Área do Funcionário.
 
 </p>
-
 
 </div>
 
@@ -4018,12 +3124,10 @@ e futuras integrações.
 <div
 class="product-grid reveal"
 id="productGrid">
-
 </div>
 
 
 </div>
-
 
 </section>
 
@@ -4036,16 +3140,11 @@ id="productGrid">
 class="section kit-section"
 id="kits">
 
-
 <div class="container">
 
-
 <span class="section-code">
-
 03 • KITS IMPACTO PRO
-
 </span>
-
 
 <h2 class="section-title">
 
@@ -4054,297 +3153,80 @@ Escolha o volume ideal
 <br>
 
 <span class="gradient-text">
-
 para sua operação.
-
 </span>
 
 </h2>
 
-
 <p class="section-description">
 
-A Impacto Pro terá opções de kits prontos
-para diferentes níveis de utilização.
+KITs previamente preparados
+para facilitar compras em maior quantidade.
 
-Os valores serão definidos na Etapa 2,
-junto com o desenvolvimento do sistema administrativo.
-
-</p>
-
-
-<div class="kit-grid reveal">
-
-
-<!-- KIT 20 -->
-
-<article class="kit-card">
-
-
-<span class="kit-badge">
-
-KIT IMPACTO PRO
-
-</span>
-
-
-<div class="kit-number">
-
-20
-
-<span>
-
-TOALHAS
-
-</span>
-
-</div>
-
-
-<h3>
-
-KIT 20 TOALHAS
-
-</h3>
-
-
-<p>
-
-Ideal para operações menores,
-equipes enxutas
-ou primeiros pedidos em volume.
+Os valores poderão ser alterados
+pela Área do Funcionário.
 
 </p>
 
 
-<div class="kit-footer">
-
-
-<span class="kit-price">
-
-Valor a definir
-
-</span>
-
-
-<button
-class="btn btn-primary"
-onclick="kitInterest('KIT 20 TOALHAS')">
-
-Tenho interesse
-
-</button>
-
-
+<div
+class="kit-grid reveal"
+id="kitGrid">
 </div>
 
-
-</article>
-
-
-<!-- KIT 50 -->
-
-<article class="kit-card">
-
-
-<span class="kit-badge">
-
-KIT IMPACTO PRO
-
-</span>
-
-
-<div class="kit-number">
-
-50
-
-<span>
-
-TOALHAS
-
-</span>
-
-</div>
-
-
-<h3>
-
-KIT 50 TOALHAS
-
-</h3>
-
-
-<p>
-
-Opção intermediária
-para salões
-e operações com utilização frequente.
-
-</p>
-
-
-<div class="kit-footer">
-
-
-<span class="kit-price">
-
-Valor a definir
-
-</span>
-
-
-<button
-class="btn btn-primary"
-onclick="kitInterest('KIT 50 TOALHAS')">
-
-Tenho interesse
-
-</button>
-
-
-</div>
-
-
-</article>
-
-
-<!-- KIT 100 -->
-
-<article class="kit-card">
-
-
-<span class="kit-badge">
-
-KIT IMPACTO PRO
-
-</span>
-
-
-<div class="kit-number">
-
-100
-
-<span>
-
-TOALHAS
-
-</span>
-
-</div>
-
-
-<h3>
-
-KIT 100 TOALHAS
-
-</h3>
-
-
-<p>
-
-Desenvolvido para operações de alta rotatividade,
-redes
-e compras em maior volume.
-
-</p>
-
-
-<div class="kit-footer">
-
-
-<span class="kit-price">
-
-Valor a definir
-
-</span>
-
-
-<button
-class="btn btn-primary"
-onclick="kitInterest('KIT 100 TOALHAS')">
-
-Tenho interesse
-
-</button>
-
-
-</div>
-
-
-</article>
-
-
-</div>
-
-
-<!-- OUTRAS OPÇÕES -->
 
 <div class="custom-kit-box reveal">
 
-
 <div>
 
-
 <h3>
-
 Precisa de outra quantidade?
-
 </h3>
-
 
 <p>
 
-Também poderemos trabalhar com outras opções de KITs
-e composições personalizadas.
-
-Entre em contato com a equipe da Impacto Pro
-para consultar outras quantidades.
+Para opções de KITs diferentes de
+20,
+50
+ou 100 toalhas,
+entre em contato diretamente
+com a Impacto Pro.
 
 </p>
 
-
 </div>
-
 
 <button
 class="btn btn-pink btn-lg"
-onclick="openWhatsApp()">
+onclick="openWhatsApp('kits')">
 
 Consultar pelo WhatsApp →
 
 </button>
 
-
 </div>
 
-
 </div>
-
 
 </section>
 
 
 <!-- =========================================================
-     ALTA RESISTÊNCIA
+     RESISTÊNCIA
 ========================================================= -->
 
 <section
 class="section resistance-section"
 id="resistencia">
 
-
 <div class="container resistance-grid">
 
 
 <div class="reveal">
 
-
 <span class="section-code">
-
 04 • ALTA RESISTÊNCIA
-
 </span>
-
 
 <h2 class="section-title">
 
@@ -4353,20 +3235,16 @@ Quando a rotina é pesada,
 <br>
 
 <span class="gradient-text">
-
 a toalha precisa acompanhar.
-
 </span>
 
 </h2>
 
-
 <p class="section-description">
 
-A proposta da Impacto Pro é simples:
-
-desenvolver uma toalha profissional
-capaz de permanecer apresentável por mais tempo,
+A proposta da Impacto Pro
+é desenvolver uma toalha profissional
+que permaneça apresentável por mais tempo,
 mesmo em ambientes de grande utilização.
 
 </p>
@@ -4377,146 +3255,96 @@ mesmo em ambientes de grande utilização.
 
 <div class="resistance-item">
 
-
 <div class="resistance-number">
 01
 </div>
 
-
 <div>
 
-
 <strong>
-
 Uso intenso
-
 </strong>
 
-
 <p>
-
-Direcionada a salões,
-barbearias,
-estética
-e operações com alta rotatividade.
-
+Direcionada a operações de alta rotatividade.
 </p>
 
-
 </div>
-
 
 </div>
 
 
 <div class="resistance-item">
-
 
 <div class="resistance-number">
 02
 </div>
 
-
 <div>
 
-
 <strong>
-
 Contato com pó descolorante
-
 </strong>
 
-
 <p>
-
-Resistência desenvolvida para ajudar
-a reduzir manchas causadas
-na rotina profissional.
-
+Ajuda a reduzir manchas na rotina profissional.
 </p>
 
-
 </div>
-
 
 </div>
 
 
 <div class="resistance-item">
-
 
 <div class="resistance-number">
 03
 </div>
 
-
 <div>
 
-
 <strong>
-
 Lavagens frequentes
-
 </strong>
 
-
 <p>
-
-Produto pensado para permanecer em circulação
-em operações que lavam
-e reutilizam toalhas constantemente.
-
+Pensada para reutilização constante.
 </p>
 
-
 </div>
-
 
 </div>
 
 
 <div class="resistance-item">
 
-
 <div class="resistance-number">
 04
 </div>
 
-
 <div>
 
-
 <strong>
-
 Maior vida útil
-
 </strong>
 
-
 <p>
-
-Mais aproveitamento por peça
-antes da necessidade de substituição.
-
+Mais aproveitamento antes da substituição.
 </p>
 
+</div>
 
 </div>
 
 
 </div>
 
-
 </div>
 
 
-</div>
-
-
-<!-- CÍRCULOS DE TOALHA -->
+<!-- CÍRCULOS DE TECIDO -->
 
 <div class="resistance-visual reveal">
-
 
 <div class="towel-ring r1"></div>
 
@@ -4525,7 +3353,6 @@ antes da necessidade de substituição.
 
 <div class="resistance-core">
 
-
 <div>
 
 IMPACTO
@@ -4533,58 +3360,38 @@ IMPACTO
 <br>
 
 <b>
-
 PRO
-
 </b>
 
-
 <small>
-
 RESISTÊNCIA PROFISSIONAL
-
 </small>
 
-
 </div>
-
 
 </div>
 
 
 <div class="resistance-tag one">
-
 ALTA UTILIZAÇÃO
-
 </div>
-
 
 <div class="resistance-tag two">
-
 MENOS MANCHAS
-
 </div>
-
 
 <div class="resistance-tag three">
-
 LAVAGENS FREQUENTES
-
 </div>
-
 
 <div class="resistance-tag four">
-
 MAIOR VIDA ÚTIL
+</div>
 
 </div>
 
 
 </div>
-
-
-</div>
-
 
 </section>
 
@@ -4597,158 +3404,97 @@ MAIOR VIDA ÚTIL
 class="section"
 id="publico">
 
-
 <div class="container">
 
-
 <span class="section-code">
-
 05 • FEITA PARA QUEM USA MUITO
-
 </span>
-
 
 <h2 class="section-title">
 
 A Impacto Pro entra onde
 
 <span class="gradient-text">
-
 a toalha realmente trabalha.
-
 </span>
 
 </h2>
 
 
-<p class="section-description">
-
-Uma solução direcionada a profissionais
-e empresas que utilizam toalhas todos os dias
-e precisam conciliar apresentação,
-durabilidade
-e reposição inteligente.
-
-</p>
-
-
 <div class="audience-grid reveal">
 
-
 <article class="audience-card">
-
 
 <div class="audience-icon">
 ✂
 </div>
 
-
 <h3>
-
 Salões de beleza
-
 </h3>
 
-
 <p>
-
 Alta rotatividade,
-química,
-lavagens frequentes
-e grande consumo diário.
-
+química
+e lavagens frequentes.
 </p>
-
 
 </article>
 
 
 <article class="audience-card">
-
 
 <div class="audience-icon">
 ✦
 </div>
 
-
 <h3>
-
 Barbearias
-
 </h3>
 
-
 <p>
-
-Produto profissional para manter
-um padrão de atendimento
-e apresentação.
-
+Padrão profissional e utilização contínua.
 </p>
-
 
 </article>
 
 
 <article class="audience-card">
-
 
 <div class="audience-icon">
 ◎
 </div>
 
-
 <h3>
-
 Clínicas e estética
-
 </h3>
 
-
 <p>
-
-Ideal para operações que necessitam
-de uso contínuo
-e reposição organizada.
-
+Uso contínuo e reposição organizada.
 </p>
-
 
 </article>
 
 
 <article class="audience-card">
 
-
 <div class="audience-icon">
 ↗
 </div>
 
-
 <h3>
-
 Revendedores
-
 </h3>
 
-
 <p>
-
-Linha profissional preparada também
-para vendas em quantidade
-e distribuição.
-
+Compras em quantidade e distribuição.
 </p>
-
 
 </article>
 
-
 </div>
 
-
 </div>
-
 
 </section>
 
@@ -4761,85 +3507,50 @@ e distribuição.
 class="section"
 id="atacado">
 
-
 <div class="container">
-
 
 <div class="wholesale-card reveal">
 
-
 <div>
 
-
 <span class="section-code">
-
 06 • IMPACTO PRO ATACADO
-
 </span>
-
 
 <h2 class="section-title">
 
 Alta utilização pede
 
-<br>
-
 <span class="gradient-text">
-
 compra inteligente em volume.
-
 </span>
 
 </h2>
 
-
 <p>
 
-Condições especiais para salões,
+Condições especiais
+para salões,
 barbearias,
 redes,
-equipes,
-profissionais,
 lojistas
-e revendedores
-que precisam de reposição
-em maior quantidade.
+e revendedores.
 
 </p>
 
-
 </div>
-
-
-<div class="wholesale-actions">
-
 
 <button
 class="btn btn-primary"
-onclick="requestWholesale()">
+onclick="openWhatsApp('atacado')">
 
-Solicitar tabela
+Solicitar informações
 
 </button>
 
-
-<a
-class="btn btn-secondary"
-href="#contato">
-
-Falar com comercial
-
-</a>
-
-
 </div>
 
-
 </div>
-
-
-</div>
-
 
 </section>
 
@@ -4852,77 +3563,53 @@ Falar com comercial
 class="section"
 id="contato">
 
-
 <div class="container">
-
 
 <div class="final-cta reveal">
 
-
 <div class="final-content">
-
 
 <div>
 
-
 <span class="section-code">
-
 07 • IMPACTO PRO VENDAS
-
 </span>
-
 
 <h2>
 
 Quer toalhas feitas para
 
 <span>
-
 aguentar sua rotina?
-
 </span>
 
 </h2>
 
-
 <p>
 
-Fale com a Impacto Pro Vendas
+Fale com a Impacto Pro
 para pedidos,
 KITs,
-atacado,
-revenda
-e informações sobre a linha profissional.
+atacado
+e revenda.
 
 </p>
 
-
 </div>
-
-
-<div>
-
 
 <button
 class="btn btn-pink btn-lg"
-onclick="openWhatsApp()">
+onclick="openWhatsApp('contato')">
 
 Chamar no WhatsApp →
 
 </button>
 
+</div>
 
 </div>
 
-
 </div>
-
-
-</div>
-
-
-</div>
-
 
 </section>
 
@@ -4936,66 +3623,47 @@ Chamar no WhatsApp →
 
 <footer>
 
-
 <div class="container footer-grid">
-
 
 <div class="logo">
 
-
 <span class="logo-impacto">
-
 IMPACTO
-
 </span>
-
 
 <span class="logo-pro">
-
 PRO
-
 </span>
 
-
 </div>
-
 
 <p>
-
 Toalhas de confecção própria
 para alta utilização profissional.
-
 </p>
 
-
 <span>
-
 © 2026 IMPACTO PRO VENDAS
-
 </span>
 
-
 </div>
-
 
 </footer>
 
 
 <!-- =========================================================
-     MOBILE BUY BAR
+     MOBILE BAR
 ========================================================= -->
 
 <div class="mobile-buy-bar">
-
 
 <a
 class="btn btn-primary"
 href="#produtos">
 
-Comprar agora
+Comprar
 
 </a>
-
 
 <button
 class="btn btn-secondary"
@@ -5009,7 +3677,6 @@ Carrinho
 
 </button>
 
-
 </div>
 
 
@@ -5018,22 +3685,17 @@ Carrinho
 ========================================================= -->
 
 <div
-class="cart-modal hidden"
-id="cartModal">
-
+id="cartModal"
+class="cart-modal hidden">
 
 <div class="cart-box">
 
 
 <div class="cart-header">
 
-
 <h2>
-
 Seu carrinho
-
 </h2>
-
 
 <button
 class="btn btn-secondary"
@@ -5043,31 +3705,22 @@ Fechar
 
 </button>
 
-
 </div>
 
 
 <div id="cartItems">
-
 </div>
 
 
 <div class="cart-total">
 
-
 <strong>
-
 Total
-
 </strong>
-
 
 <strong id="cartTotal">
-
 R$ 0,00
-
 </strong>
-
 
 </div>
 
@@ -5080,29 +3733,12 @@ margin-top:18px;
 "
 onclick="checkout()">
 
-Continuar pedido →
+Realizar pedido →
 
 </button>
 
 
-<p class="cart-note">
-
-O carrinho da Etapa 1 já permite adicionar produtos,
-alterar quantidades,
-remover itens
-e calcular o total.
-
-Pagamento,
-estoque centralizado,
-pedidos reais
-e integração com o sistema administrativo
-serão implementados posteriormente.
-
-</p>
-
-
 </div>
-
 
 </div>
 
@@ -5110,7 +3746,7 @@ serão implementados posteriormente.
 <script>
 
 /* =========================================================
-   PRODUTOS DE DEMONSTRAÇÃO
+   PADRÕES
 ========================================================= */
 
 const DEFAULT_PRODUCTS = [
@@ -5123,7 +3759,11 @@ const DEFAULT_PRODUCTS = [
 
         price:19.90,
 
+        cost:0,
+
         stock:120,
+
+        minStock:20,
 
         color:
             "linear-gradient(#8fe3ff,#48b7e9)"
@@ -5138,7 +3778,11 @@ const DEFAULT_PRODUCTS = [
 
         price:19.90,
 
+        cost:0,
+
         stock:95,
+
+        minStock:20,
 
         color:
             "linear-gradient(#ff8dca,#ff2d94)"
@@ -5153,7 +3797,11 @@ const DEFAULT_PRODUCTS = [
 
         price:21.90,
 
+        cost:0,
+
         stock:140,
+
+        minStock:20,
 
         color:
             "linear-gradient(#454b55,#101216)"
@@ -5163,44 +3811,103 @@ const DEFAULT_PRODUCTS = [
 ];
 
 
-/* =========================================================
-   PRODUTOS
-========================================================= */
+const DEFAULT_KITS = [
 
-function getProducts(){
+    {
 
-    const stored =
-        localStorage.getItem(
-            "impacto_products"
-        );
+        id:"kit20",
 
-    if(stored){
+        name:"KIT 20 TOALHAS",
 
-        try{
+        qty:20,
 
-            return JSON.parse(
-                stored
-            );
+        price:null,
 
-        }
-        catch(error){
+        active:true,
 
-            console.warn(
-                "Não foi possível carregar produtos salvos."
-            );
+        description:
+            "Ideal para operações menores e primeiros pedidos em volume."
 
-        }
+    },
+
+    {
+
+        id:"kit50",
+
+        name:"KIT 50 TOALHAS",
+
+        qty:50,
+
+        price:null,
+
+        active:true,
+
+        description:
+            "Opção intermediária para operações com utilização frequente."
+
+    },
+
+    {
+
+        id:"kit100",
+
+        name:"KIT 100 TOALHAS",
+
+        qty:100,
+
+        price:null,
+
+        active:true,
+
+        description:
+            "Indicado para operações de alta rotatividade e compras em grande volume."
 
     }
 
-    return DEFAULT_PRODUCTS;
+];
+
+
+/* =========================================================
+   HELPERS
+========================================================= */
+
+function read(
+    key,
+    fallback
+){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(
+                key
+            )
+        ) ?? fallback;
+
+    }
+    catch(error){
+
+        return fallback;
+
+    }
 
 }
 
 
-/* =========================================================
-   MOEDA
-========================================================= */
+function write(
+    key,
+    value
+){
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(
+            value
+        )
+    );
+
+}
+
 
 function money(value){
 
@@ -5221,22 +3928,28 @@ function money(value){
 
 
 /* =========================================================
-   RENDERIZA PRODUTOS
+   PRODUTOS
 ========================================================= */
 
+function getProducts(){
+
+    return read(
+        "impacto_products",
+        DEFAULT_PRODUCTS
+    );
+
+}
+
+
 function renderProducts(){
+
+    const products =
+        getProducts();
 
     const container =
         document.getElementById(
             "productGrid"
         );
-
-    if(!container){
-        return;
-    }
-
-    const products =
-        getProducts();
 
     container.innerHTML =
         products.map(
@@ -5247,10 +3960,10 @@ function renderProducts(){
                 <div class="product-image">
 
                     <div
-                        class="product-towel"
-                        style="
-                        background:${product.color};
-                        ">
+                    class="product-towel"
+                    style="
+                    background:${product.color};
+                    ">
                     </div>
 
                 </div>
@@ -5258,11 +3971,12 @@ function renderProducts(){
 
                 <div class="product-body">
 
-
                     <span class="stock">
 
                         ${
-                            product.stock > 0
+                            Number(
+                                product.stock
+                            ) > 0
                             ? "EM ESTOQUE"
                             : "INDISPONÍVEL"
                         }
@@ -5271,9 +3985,7 @@ function renderProducts(){
 
 
                     <h3>
-
                         ${product.name}
-
                     </h3>
 
 
@@ -5281,14 +3993,12 @@ function renderProducts(){
 
                         Confecção própria •
                         Alta utilização •
-                        Resistência direcionada ao contato com pó descolorante •
-                        Maior vida útil.
+                        Resistência direcionada ao pó descolorante.
 
                     </div>
 
 
                     <div class="product-bottom">
-
 
                         <strong class="product-price">
 
@@ -5298,23 +4008,138 @@ function renderProducts(){
 
 
                         <button
-                            class="btn btn-primary"
-                            onclick="
-                            addToCart(
-                                '${product.id}'
-                            )
-                            ">
+                        class="btn btn-primary"
+                        ${
+                            Number(
+                                product.stock
+                            ) <= 0
+                            ? "disabled"
+                            : ""
+                        }
+                        onclick="addToCart('${product.id}')">
 
                             Adicionar
 
                         </button>
 
-
                     </div>
-
 
                 </div>
 
+            </article>
+
+            `
+        )
+        .join("");
+
+}
+
+
+/* =========================================================
+   KITS
+========================================================= */
+
+function getKits(){
+
+    return read(
+        "impacto_kits",
+        DEFAULT_KITS
+    );
+
+}
+
+
+function renderKits(){
+
+    const kits =
+        getKits()
+        .filter(
+            kit =>
+                kit.active !==
+                false
+        );
+
+
+    const container =
+        document.getElementById(
+            "kitGrid"
+        );
+
+
+    container.innerHTML =
+        kits.map(
+            kit => `
+
+            <article class="kit-card">
+
+                <span class="kit-badge">
+                    KIT IMPACTO PRO
+                </span>
+
+
+                <div class="kit-number">
+
+                    ${kit.qty}
+
+                    <span>
+                        TOALHAS
+                    </span>
+
+                </div>
+
+
+                <h3>
+                    ${kit.name}
+                </h3>
+
+
+                <p>
+                    ${kit.description || ""}
+                </p>
+
+
+                <div class="kit-footer">
+
+                    <span class="kit-price">
+
+                        ${
+                            kit.price == null
+                            ? "Valor a definir"
+                            : money(
+                                kit.price
+                            )
+                        }
+
+                    </span>
+
+
+                    ${
+                        kit.price == null
+                        ? `
+
+                        <button
+                        class="btn btn-secondary"
+                        onclick="openWhatsApp('kits')">
+
+                            Tenho interesse
+
+                        </button>
+
+                        `
+                        : `
+
+                        <button
+                        class="btn btn-primary"
+                        onclick="addKitToCart('${kit.id}')">
+
+                            Adicionar
+
+                        </button>
+
+                        `
+                    }
+
+                </div>
 
             </article>
 
@@ -5331,31 +4156,19 @@ function renderProducts(){
 
 function getCart(){
 
-    try{
-
-        return JSON.parse(
-            localStorage.getItem(
-                "impacto_cart"
-            ) || "[]"
-        );
-
-    }
-    catch(error){
-
-        return [];
-
-    }
+    return read(
+        "impacto_cart",
+        []
+    );
 
 }
 
 
 function saveCart(cart){
 
-    localStorage.setItem(
+    write(
         "impacto_cart",
-        JSON.stringify(
-            cart
-        )
+        cart
     );
 
     updateCartCount();
@@ -5363,52 +4176,164 @@ function saveCart(cart){
 }
 
 
-function addToCart(productId){
+function addToCart(
+    productId
+){
+
+    const products =
+        getProducts();
+
+    const product =
+        products.find(
+            product =>
+                product.id ===
+                productId
+        );
+
+    if(
+        !product ||
+        Number(
+            product.stock
+        ) <= 0
+    ){
+
+        alert(
+            "Produto indisponível."
+        );
+
+        return;
+
+    }
+
 
     const cart =
         getCart();
 
-    const product =
-        getProducts().find(
-            item =>
-                item.id === productId
-        );
 
-    if(!product){
-        return;
-    }
-
-    const existing =
+    const item =
         cart.find(
             item =>
-                item.id === productId
+                item.type ===
+                "product" &&
+                item.id ===
+                productId
         );
 
-    if(existing){
+
+    if(item){
 
         if(
-            existing.qty <
+            item.qty <
             product.stock
         ){
 
-            existing.qty++;
+            item.qty++;
 
         }
 
     }
     else{
 
-        cart.push({
+        cart.push(
+            {
 
-            id:productId,
+                type:
+                    "product",
 
-            qty:1
+                id:
+                    productId,
 
-        });
+                qty:
+                    1
+
+            }
+        );
 
     }
 
-    saveCart(cart);
+
+    saveCart(
+        cart
+    );
+
+    openCart();
+
+}
+
+
+/* =========================================================
+   KIT NO CARRINHO
+========================================================= */
+
+function addKitToCart(
+    kitId
+){
+
+    const kit =
+        getKits()
+        .find(
+            kit =>
+                kit.id ===
+                kitId
+        );
+
+
+    if(
+        !kit ||
+        kit.price == null
+    ){
+
+        openWhatsApp(
+            "kits"
+        );
+
+        return;
+
+    }
+
+
+    const cart =
+        getCart();
+
+
+    const item =
+        cart.find(
+            item =>
+                item.type ===
+                "kit" &&
+                item.id ===
+                kitId
+        );
+
+
+    if(item){
+
+        item.qty++;
+
+    }
+    else{
+
+        cart.push(
+            {
+
+                type:
+                    "kit",
+
+                id:
+                    kitId,
+
+                qty:
+                    1
+
+            }
+        );
+
+    }
+
+
+    saveCart(
+        cart
+    );
 
     openCart();
 
@@ -5420,60 +4345,77 @@ function addToCart(productId){
 ========================================================= */
 
 function changeQuantity(
-    productId,
+    type,
+    id,
     amount
 ){
 
     const cart =
         getCart();
 
-    const products =
-        getProducts();
-
-    const product =
-        products.find(
-            item =>
-                item.id === productId
-        );
-
     const item =
         cart.find(
             item =>
-                item.id === productId
+                item.type ===
+                type &&
+                item.id ===
+                id
         );
 
-    if(
-        !item ||
-        !product
-    ){
+
+    if(!item){
         return;
     }
 
-    item.qty += amount;
+
+    item.qty +=
+        amount;
+
 
     if(
         item.qty <= 0
     ){
 
         removeFromCart(
-            productId
+            type,
+            id
         );
 
         return;
 
     }
 
+
     if(
-        item.qty >
-        product.stock
+        type ===
+        "product"
     ){
 
-        item.qty =
-            product.stock;
+        const product =
+            getProducts()
+            .find(
+                product =>
+                    product.id ===
+                    id
+            );
+
+        if(
+            product &&
+            item.qty >
+            product.stock
+        ){
+
+            item.qty =
+                product.stock;
+
+        }
 
     }
 
-    saveCart(cart);
+
+    saveCart(
+        cart
+    );
 
     renderCart();
 
@@ -5485,107 +4427,28 @@ function changeQuantity(
 ========================================================= */
 
 function removeFromCart(
-    productId
+    type,
+    id
 ){
 
-    let cart =
-        getCart();
-
-    cart =
-        cart.filter(
-            item =>
-                item.id !==
-                productId
-        );
-
-    saveCart(cart);
-
-    renderCart();
-
-}
-
-
-/* =========================================================
-   CONTADOR DO CARRINHO
-========================================================= */
-
-function updateCartCount(){
-
-    const count =
+    const cart =
         getCart()
-        .reduce(
-            (
-                total,
-                item
-            ) =>
-                total +
-                item.qty,
-            0
+        .filter(
+            item =>
+                !(
+                    item.type ===
+                    type &&
+                    item.id ===
+                    id
+                )
         );
 
-    const desktop =
-        document.getElementById(
-            "cartCount"
-        );
 
-    const mobile =
-        document.getElementById(
-            "mobileCartCount"
-        );
-
-    if(desktop){
-        desktop.textContent =
-            count;
-    }
-
-    if(mobile){
-        mobile.textContent =
-            count;
-    }
-
-}
-
-
-/* =========================================================
-   ABRIR CARRINHO
-========================================================= */
-
-function openCart(){
-
-    const modal =
-        document.getElementById(
-            "cartModal"
-        );
-
-    modal.classList.remove(
-        "hidden"
+    saveCart(
+        cart
     );
-
-    document.body.style.overflow =
-        "hidden";
 
     renderCart();
-
-}
-
-
-/* =========================================================
-   FECHAR CARRINHO
-========================================================= */
-
-function closeCart(){
-
-    const modal =
-        document.getElementById(
-            "cartModal"
-        );
-
-    modal.classList.add(
-        "hidden"
-    );
-
-    document.body.style.overflow =
-        "";
 
 }
 
@@ -5602,60 +4465,116 @@ function renderCart(){
     const products =
         getProducts();
 
+    const kits =
+        getKits();
+
     const container =
         document.getElementById(
             "cartItems"
         );
 
-    let total = 0;
+    let total =
+        0;
+
 
     if(
-        cart.length === 0
+        cart.length ===
+        0
     ){
 
         container.innerHTML = `
 
-            <p
-                style="
-                color:#6d7d8e;
-                padding:18px 0;
-                ">
+        <p style="
+        color:#6d7d8e;
+        padding:18px 0;
+        ">
 
-                Seu carrinho está vazio.
+            Seu carrinho está vazio.
 
-            </p>
+        </p>
 
         `;
+
 
         document.getElementById(
             "cartTotal"
         ).textContent =
-            money(0);
+            money(
+                0
+            );
+
 
         return;
 
     }
 
+
     container.innerHTML =
         cart.map(
             item => {
 
-                const product =
-                    products.find(
-                        product =>
-                            product.id ===
-                            item.id
-                    );
+                let name = "";
 
-                if(!product){
-                    return "";
+                let price = 0;
+
+
+                if(
+                    item.type ===
+                    "kit"
+                ){
+
+                    const kit =
+                        kits.find(
+                            kit =>
+                                kit.id ===
+                                item.id
+                        );
+
+
+                    name =
+                        kit?.name ||
+                        item.id;
+
+
+                    price =
+                        Number(
+                            kit?.price ||
+                            0
+                        );
+
+                }
+                else{
+
+                    const product =
+                        products.find(
+                            product =>
+                                product.id ===
+                                item.id
+                        );
+
+
+                    name =
+                        product?.name ||
+                        item.id;
+
+
+                    price =
+                        Number(
+                            product?.price ||
+                            0
+                        );
+
                 }
 
+
                 const subtotal =
-                    product.price *
+                    price *
                     item.qty;
 
-                total += subtotal;
+
+                total +=
+                    subtotal;
+
 
                 return `
 
@@ -5664,59 +4583,62 @@ function renderCart(){
                     <div>
 
                         <strong>
-
-                            ${product.name}
-
+                            ${name}
                         </strong>
 
                         <small>
 
-                            ${money(product.price)}
+                            ${money(price)}
                             por unidade
 
                         </small>
 
+
                         <div class="cart-quantity">
 
                             <button
-                                class="quantity-button"
-                                onclick="
-                                changeQuantity(
-                                    '${product.id}',
-                                    -1
-                                )
-                                ">
+                            class="quantity-button"
+                            onclick="
+                            changeQuantity(
+                                '${item.type}',
+                                '${item.id}',
+                                -1
+                            )
+                            ">
 
                                 −
 
                             </button>
 
+
                             <strong>
-
                                 ${item.qty}
-
                             </strong>
 
+
                             <button
-                                class="quantity-button"
-                                onclick="
-                                changeQuantity(
-                                    '${product.id}',
-                                    1
-                                )
-                                ">
+                            class="quantity-button"
+                            onclick="
+                            changeQuantity(
+                                '${item.type}',
+                                '${item.id}',
+                                1
+                            )
+                            ">
 
                                 +
 
                             </button>
 
+
                             <button
-                                class="remove-button"
-                                onclick="
-                                removeFromCart(
-                                    '${product.id}'
-                                )
-                                ">
+                            class="remove-button"
+                            onclick="
+                            removeFromCart(
+                                '${item.type}',
+                                '${item.id}'
+                            )
+                            ">
 
                                 REMOVER
 
@@ -5726,10 +4648,9 @@ function renderCart(){
 
                     </div>
 
+
                     <strong>
-
                         ${money(subtotal)}
-
                     </strong>
 
                 </div>
@@ -5740,10 +4661,92 @@ function renderCart(){
         )
         .join("");
 
+
     document.getElementById(
         "cartTotal"
     ).textContent =
-        money(total);
+        money(
+            total
+        );
+
+}
+
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+function updateCartCount(){
+
+    const total =
+        getCart()
+        .reduce(
+            (
+                sum,
+                item
+            ) =>
+                sum +
+                Number(
+                    item.qty ||
+                    0
+                ),
+            0
+        );
+
+
+    document.getElementById(
+        "cartCount"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "mobileCartCount"
+    ).textContent =
+        total;
+
+}
+
+
+/* =========================================================
+   ABRIR / FECHAR
+========================================================= */
+
+function openCart(){
+
+    document
+    .getElementById(
+        "cartModal"
+    )
+    .classList
+    .remove(
+        "hidden"
+    );
+
+
+    renderCart();
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeCart(){
+
+    document
+    .getElementById(
+        "cartModal"
+    )
+    .classList
+    .add(
+        "hidden"
+    );
+
+
+    document.body.style.overflow =
+        "";
 
 }
 
@@ -5757,38 +4760,176 @@ function checkout(){
     const cart =
         getCart();
 
+
     if(
-        cart.length === 0
+        cart.length ===
+        0
     ){
 
         alert(
-            "Adicione pelo menos uma toalha ao carrinho."
+            "Seu carrinho está vazio."
         );
 
         return;
 
     }
 
-    alert(
-        "O carrinho da Etapa 1 está funcionando. A finalização real do pedido será integrada posteriormente com WhatsApp, pagamento e sistema administrativo."
+
+    const products =
+        getProducts();
+
+    const kits =
+        getKits();
+
+    let total =
+        0;
+
+
+    for(
+        const item of
+        cart
+    ){
+
+        if(
+            item.type ===
+            "product"
+        ){
+
+            const product =
+                products.find(
+                    product =>
+                        product.id ===
+                        item.id
+                );
+
+
+            if(
+                !product ||
+                product.stock <
+                item.qty
+            ){
+
+                alert(
+                    "Estoque insuficiente para " +
+                    (
+                        product?.name ||
+                        item.id
+                    )
+                );
+
+                return;
+
+            }
+
+
+            total +=
+                Number(
+                    product.price
+                ) *
+                Number(
+                    item.qty
+                );
+
+        }
+        else{
+
+            const kit =
+                kits.find(
+                    kit =>
+                        kit.id ===
+                        item.id
+                );
+
+
+            if(
+                !kit ||
+                kit.price == null
+            ){
+
+                alert(
+                    "Este KIT ainda não possui valor definido."
+                );
+
+                return;
+
+            }
+
+
+            total +=
+                Number(
+                    kit.price
+                ) *
+                Number(
+                    item.qty
+                );
+
+        }
+
+    }
+
+
+    const orders =
+        read(
+            "impacto_orders",
+            []
+        );
+
+
+    const order = {
+
+        id:
+            "WEB-" +
+            Date.now()
+            .toString()
+            .slice(
+                -6
+            ),
+
+        date:
+            new Date()
+            .toISOString(),
+
+        channel:
+            "Online",
+
+        status:
+            "Novo",
+
+        total:
+            total,
+
+        items:
+            cart
+
+    };
+
+
+    orders.unshift(
+        order
     );
 
-}
+
+    write(
+        "impacto_orders",
+        orders
+    );
 
 
-/* =========================================================
-   KIT
-========================================================= */
+    write(
+        "impacto_cart",
+        []
+    );
 
-function kitInterest(
-    kitName
-){
+
+    updateCartCount();
+
+    closeCart();
+
 
     alert(
-        kitName +
-        " selecionado. " +
-        "O valor será definido na Etapa 2. " +
-        "Para informações comerciais, entre em contato pelo WhatsApp."
+        "Pedido " +
+        order.id +
+        " criado com sucesso!"
     );
 
 }
@@ -5798,23 +4939,73 @@ function kitInterest(
    WHATSAPP
 ========================================================= */
 
-function openWhatsApp(){
+function openWhatsApp(
+    type
+){
 
-    alert(
-        "Na próxima atualização basta inserir o número oficial da Impacto Pro para este botão abrir o WhatsApp automaticamente."
-    );
+    const settings =
+        read(
+            "impacto_settings",
+            {}
+        );
 
-}
+
+    const number =
+        String(
+            settings.whatsapp ||
+            ""
+        )
+        .replace(
+            /\D/g,
+            ""
+        );
 
 
-/* =========================================================
-   ATACADO
-========================================================= */
+    if(!number){
 
-function requestWholesale(){
+        alert(
+            "O WhatsApp da Impacto Pro ainda precisa ser cadastrado na Área do Funcionário."
+        );
 
-    alert(
-        "O botão de atacado está preparado. Poderemos conectá-lo ao WhatsApp ou formulário comercial posteriormente."
+        return;
+
+    }
+
+
+    let text =
+        "Olá! Gostaria de informações sobre a Impacto Pro.";
+
+
+    if(
+        type ===
+        "kits"
+    ){
+
+        text =
+            "Olá! Gostaria de consultar outras opções de KITs da Impacto Pro.";
+
+    }
+
+
+    if(
+        type ===
+        "atacado"
+    ){
+
+        text =
+            "Olá! Gostaria de informações sobre compras em atacado da Impacto Pro.";
+
+    }
+
+
+    window.open(
+        "https://wa.me/" +
+        number +
+        "?text=" +
+        encodeURIComponent(
+            text
+        ),
+        "_blank"
     );
 
 }
@@ -5831,9 +5022,11 @@ function toggleMobileMenu(){
             "mobileMenu"
         );
 
+
     menu.classList.toggle(
         "open"
     );
+
 
     document.body.classList.toggle(
         "menu-open",
@@ -5846,37 +5039,11 @@ function toggleMobileMenu(){
 
 
 /* =========================================================
-   FECHAR CARRINHO CLICANDO FORA
+   REVEAL
 ========================================================= */
 
-document
-.getElementById(
-    "cartModal"
-)
-.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target ===
-            this
-        ){
-
-            closeCart();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   ANIMAÇÕES
-========================================================= */
-
-const revealObserver =
+const observer =
     new IntersectionObserver(
-
         entries => {
 
             entries.forEach(
@@ -5898,11 +5065,9 @@ const revealObserver =
             );
 
         },
-
         {
             threshold:.12
         }
-
     );
 
 
@@ -5912,23 +5077,64 @@ document
 )
 .forEach(
     element =>
-        revealObserver.observe(
+        observer.observe(
             element
         )
 );
 
 
 /* =========================================================
-   INICIALIZAÇÃO
+   SINCRONIZAÇÃO LOCAL
+========================================================= */
+
+window.addEventListener(
+    "storage",
+    function(event){
+
+        if(
+            event.key ===
+            "impacto_products"
+        ){
+
+            renderProducts();
+
+        }
+
+
+        if(
+            event.key ===
+            "impacto_kits"
+        ){
+
+            renderKits();
+
+        }
+
+
+        if(
+            event.key ===
+            "impacto_cart"
+        ){
+
+            updateCartCount();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   START
 ========================================================= */
 
 renderProducts();
+
+renderKits();
 
 updateCartCount();
 
 </script>
 
-
 </body>
-
 </html>
