@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
 <meta charset="UTF-8">
@@ -42,6 +43,8 @@ content="Toalhas Impacto Pro de confecção própria para alta utilização prof
     --muted:#657586;
 
     --green:#159b70;
+    --yellow:#b27d00;
+    --red:#d6405c;
 
     --line:rgba(17,19,24,.11);
 
@@ -109,7 +112,9 @@ a{
 }
 
 button,
-input{
+input,
+select,
+textarea{
     font:inherit;
 }
 
@@ -329,7 +334,7 @@ header{
 
 
 /* =========================================================
-   BOTÕES
+   BUTTONS
 ========================================================= */
 
 .btn{
@@ -415,7 +420,7 @@ header{
 
 
 /* =========================================================
-   ÁREA FUNCIONÁRIO
+   EMPLOYEE AREA
 ========================================================= */
 
 .employee-area{
@@ -486,7 +491,7 @@ header{
 
 
 /* =========================================================
-   MENU MOBILE
+   MOBILE MENU
 ========================================================= */
 
 .mobile-menu{
@@ -768,7 +773,7 @@ header{
 
 
 /* =========================================================
-   HERO FOTOS
+   HERO PHOTOS
 ========================================================= */
 
 .hero-gallery{
@@ -1053,7 +1058,7 @@ header{
 
 
 /* =========================================================
-   SEÇÕES
+   SECTIONS
 ========================================================= */
 
 .section{
@@ -1111,7 +1116,7 @@ header{
 
 
 /* =========================================================
-   DIFERENCIAIS
+   DIFFERENTIALS
 ========================================================= */
 
 .bento-grid{
@@ -1229,7 +1234,7 @@ header{
 
 
 /* =========================================================
-   PRODUTOS
+   PRODUCTS
 ========================================================= */
 
 .collection{
@@ -1349,6 +1354,15 @@ header{
     font-size:9px;
 
     font-weight:950;
+
+}
+
+.stock.out{
+
+    color:var(--red);
+
+    background:
+        rgba(214,64,92,.08);
 
 }
 
@@ -1587,7 +1601,7 @@ header{
 
 
 /* =========================================================
-   RESISTÊNCIA
+   RESISTANCE
 ========================================================= */
 
 .resistance-section{
@@ -1695,7 +1709,7 @@ header{
 
 
 /* =========================================================
-   CÍRCULOS TECIDO
+   TOWEL RINGS
 ========================================================= */
 
 .resistance-visual{
@@ -1891,7 +1905,7 @@ header{
 
 
 /* =========================================================
-   PÚBLICO
+   AUDIENCE
 ========================================================= */
 
 .audience-grid{
@@ -1961,7 +1975,7 @@ header{
 
 
 /* =========================================================
-   ATACADO
+   WHOLESALE
 ========================================================= */
 
 .wholesale-card{
@@ -2006,7 +2020,7 @@ header{
 
 
 /* =========================================================
-   CTA FINAL
+   FINAL CTA
 ========================================================= */
 
 .final-cta{
@@ -2122,7 +2136,7 @@ footer{
 
 
 /* =========================================================
-   CARRINHO
+   CART
 ========================================================= */
 
 .cart-modal{
@@ -2150,11 +2164,11 @@ footer{
 .cart-box{
 
     width:min(
-        580px,
+        620px,
         100%
     );
 
-    max-height:83vh;
+    max-height:90vh;
 
     overflow:auto;
 
@@ -2259,6 +2273,168 @@ footer{
     margin-top:20px;
 
     font-size:20px;
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+.checkout-modal{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:400;
+
+    display:grid;
+
+    place-items:center;
+
+    padding:20px;
+
+    background:
+        rgba(16,18,22,.58);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+.checkout-box{
+
+    width:min(
+        720px,
+        100%
+    );
+
+    max-height:92vh;
+
+    overflow:auto;
+
+    padding:26px;
+
+    border-radius:28px;
+
+    background:#fff;
+
+    box-shadow:
+        0 35px 90px
+        rgba(0,0,0,.28);
+
+}
+
+.checkout-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.checkout-header h2{
+    margin:0;
+}
+
+.checkout-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:12px;
+
+}
+
+.field label{
+
+    display:block;
+
+    margin-bottom:6px;
+
+    color:#657586;
+
+    font-size:10px;
+
+    font-weight:950;
+
+}
+
+.input{
+
+    width:100%;
+
+    padding:
+        12px 13px;
+
+    border-radius:12px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:#f9fdff;
+
+    outline:none;
+
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.checkout-summary{
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#effaff;
+
+    border:
+        1px solid
+        #d5eef9;
+
+}
+
+.checkout-summary-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    padding:7px 0;
+
+}
+
+.checkout-note{
+
+    margin-top:14px;
+
+    padding:13px;
+
+    border-radius:14px;
+
+    background:#fff7e5;
+
+    color:#76560f;
+
+    font-size:11px;
+
+    line-height:1.6;
 
 }
 
@@ -2448,7 +2624,8 @@ footer{
     .bento-grid,
     .product-grid,
     .kit-grid,
-    .audience-grid{
+    .audience-grid,
+    .checkout-grid{
 
         grid-template-columns:1fr;
 
@@ -2623,7 +2800,7 @@ onclick="toggleMobileMenu()">
 
 
 <!-- =========================================================
-     MENU MOBILE
+     MOBILE MENU
 ========================================================= -->
 
 <div
@@ -2807,8 +2984,6 @@ Mais tempo de uso e menos reposições.
 </div>
 
 
-<!-- FOTOS -->
-
 <div class="hero-gallery reveal">
 
 
@@ -2929,7 +3104,7 @@ Ajuda a preservar a aparência
 
 
 <!-- =========================================================
-     DIFERENCIAIS
+     DIFFERENTIALS
 ========================================================= -->
 
 <section
@@ -3078,7 +3253,7 @@ Mais aproveitamento por peça antes da reposição.
 
 
 <!-- =========================================================
-     PRODUTOS
+     PRODUCTS
 ========================================================= -->
 
 <section
@@ -3111,10 +3286,11 @@ Prepare sua operação.
 
 <p>
 
-Os produtos,
+Produtos,
 preços
-e estoque exibidos nesta área
-podem ser atualizados pela Área do Funcionário.
+e estoque
+são administrados
+pela Área do Funcionário.
 
 </p>
 
@@ -3158,13 +3334,17 @@ para sua operação.
 
 </h2>
 
+
 <p class="section-description">
 
-KITs previamente preparados
-para facilitar compras em maior quantidade.
+KITs de 20,
+50
+e 100 toalhas.
 
-Os valores poderão ser alterados
-pela Área do Funcionário.
+Valores
+e disponibilidade
+podem ser configurados
+pelo sistema.
 
 </p>
 
@@ -3185,12 +3365,8 @@ Precisa de outra quantidade?
 
 <p>
 
-Para opções de KITs diferentes de
-20,
-50
-ou 100 toalhas,
-entre em contato diretamente
-com a Impacto Pro.
+Consulte outras opções de KITs
+diretamente com a Impacto Pro.
 
 </p>
 
@@ -3212,7 +3388,7 @@ Consultar pelo WhatsApp →
 
 
 <!-- =========================================================
-     RESISTÊNCIA
+     RESISTANCE
 ========================================================= -->
 
 <section
@@ -3342,8 +3518,6 @@ Mais aproveitamento antes da substituição.
 </div>
 
 
-<!-- CÍRCULOS DE TECIDO -->
-
 <div class="resistance-visual reveal">
 
 <div class="towel-ring r1"></div>
@@ -3397,7 +3571,7 @@ MAIOR VIDA ÚTIL
 
 
 <!-- =========================================================
-     PÚBLICO
+     AUDIENCE
 ========================================================= -->
 
 <section
@@ -3500,7 +3674,7 @@ Compras em quantidade e distribuição.
 
 
 <!-- =========================================================
-     ATACADO
+     WHOLESALE
 ========================================================= -->
 
 <section
@@ -3556,7 +3730,7 @@ Solicitar informações
 
 
 <!-- =========================================================
-     CONTATO
+     CONTACT
 ========================================================= -->
 
 <section
@@ -3681,7 +3855,7 @@ Carrinho
 
 
 <!-- =========================================================
-     CARRINHO
+     CART
 ========================================================= -->
 
 <div
@@ -3731,9 +3905,279 @@ style="
 width:100%;
 margin-top:18px;
 "
-onclick="checkout()">
+onclick="openCheckout()">
 
-Realizar pedido →
+Continuar compra →
+
+</button>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================================================
+     CHECKOUT
+========================================================= -->
+
+<div
+id="checkoutModal"
+class="checkout-modal hidden">
+
+<div class="checkout-box">
+
+
+<div class="checkout-header">
+
+<div>
+
+<h2>
+Finalizar pedido
+</h2>
+
+<div
+style="
+color:#657586;
+font-size:11px;
+margin-top:4px;
+">
+
+Preencha os dados do cliente.
+
+</div>
+
+</div>
+
+
+<button
+class="btn btn-secondary"
+onclick="closeCheckout()">
+
+Fechar
+
+</button>
+
+</div>
+
+
+<div class="checkout-grid">
+
+
+<div class="field">
+
+<label>
+NOME *
+</label>
+
+<input
+id="customerName"
+class="input"
+placeholder="Nome completo">
+
+</div>
+
+
+<div class="field">
+
+<label>
+TELEFONE *
+</label>
+
+<input
+id="customerPhone"
+class="input"
+placeholder="(13) 99999-9999">
+
+</div>
+
+
+<div class="field full">
+
+<label>
+E-MAIL
+</label>
+
+<input
+id="customerEmail"
+type="email"
+class="input"
+placeholder="cliente@email.com">
+
+</div>
+
+
+<div class="field">
+
+<label>
+TIPO DE RECEBIMENTO
+</label>
+
+<select
+id="deliveryType"
+class="input"
+onchange="toggleAddress()">
+
+<option value="entrega">
+Entrega
+</option>
+
+<option value="retirada">
+Retirada
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+CEP
+</label>
+
+<input
+id="customerCep"
+class="input">
+
+</div>
+
+
+<div
+id="addressFields"
+class="full checkout-grid">
+
+
+<div class="field">
+
+<label>
+ENDEREÇO
+</label>
+
+<input
+id="customerAddress"
+class="input">
+
+</div>
+
+
+<div class="field">
+
+<label>
+NÚMERO
+</label>
+
+<input
+id="customerNumber"
+class="input">
+
+</div>
+
+
+<div class="field">
+
+<label>
+BAIRRO
+</label>
+
+<input
+id="customerDistrict"
+class="input">
+
+</div>
+
+
+<div class="field">
+
+<label>
+CIDADE
+</label>
+
+<input
+id="customerCity"
+class="input">
+
+</div>
+
+
+<div class="field">
+
+<label>
+ESTADO
+</label>
+
+<input
+id="customerState"
+class="input"
+maxlength="2">
+
+</div>
+
+
+<div class="field">
+
+<label>
+COMPLEMENTO
+</label>
+
+<input
+id="customerComplement"
+class="input">
+
+</div>
+
+
+</div>
+
+
+<div class="field full">
+
+<label>
+OBSERVAÇÕES
+</label>
+
+<textarea
+id="customerNotes"
+class="input"
+style="min-height:90px">
+</textarea>
+
+</div>
+
+
+</div>
+
+
+<div
+class="checkout-summary"
+id="checkoutSummary">
+</div>
+
+
+<div
+class="checkout-note"
+id="checkoutPaymentNotice">
+
+A forma definitiva de pagamento
+ainda será definida pela empresa.
+
+O pedido será registrado
+no sistema
+para atendimento da equipe.
+
+</div>
+
+
+<button
+class="btn btn-primary btn-lg"
+style="
+width:100%;
+margin-top:16px;
+"
+onclick="finishCheckout()">
+
+Confirmar pedido →
 
 </button>
 
@@ -3746,7 +4190,7 @@ Realizar pedido →
 <script>
 
 /* =========================================================
-   PADRÕES
+   DEFAULT PRODUCTS
 ========================================================= */
 
 const DEFAULT_PRODUCTS = [
@@ -3867,6 +4311,23 @@ const DEFAULT_KITS = [
 ];
 
 
+const DEFAULT_SETTINGS = {
+
+    company:
+        "Impacto Pro Vendas",
+
+    whatsapp:
+        "",
+
+    pix:
+        "",
+
+    checkoutMode:
+        "internal"
+
+};
+
+
 /* =========================================================
    HELPERS
 ========================================================= */
@@ -3928,7 +4389,7 @@ function money(value){
 
 
 /* =========================================================
-   PRODUTOS
+   PRODUCTS
 ========================================================= */
 
 function getProducts(){
@@ -3951,6 +4412,7 @@ function renderProducts(){
             "productGrid"
         );
 
+
     container.innerHTML =
         products.map(
             product => `
@@ -3971,7 +4433,14 @@ function renderProducts(){
 
                 <div class="product-body">
 
-                    <span class="stock">
+                    <span
+                    class="stock ${
+                        Number(
+                            product.stock
+                        ) <= 0
+                        ? "out"
+                        : ""
+                    }">
 
                         ${
                             Number(
@@ -4151,7 +4620,7 @@ function renderKits(){
 
 
 /* =========================================================
-   CARRINHO
+   CART
 ========================================================= */
 
 function getCart(){
@@ -4189,6 +4658,7 @@ function addToCart(
                 product.id ===
                 productId
         );
+
 
     if(
         !product ||
@@ -4260,10 +4730,6 @@ function addToCart(
 
 }
 
-
-/* =========================================================
-   KIT NO CARRINHO
-========================================================= */
 
 function addKitToCart(
     kitId
@@ -4340,10 +4806,6 @@ function addKitToCart(
 }
 
 
-/* =========================================================
-   QUANTIDADE
-========================================================= */
-
 function changeQuantity(
     type,
     id,
@@ -4399,6 +4861,7 @@ function changeQuantity(
                     id
             );
 
+
         if(
             product &&
             item.qty >
@@ -4421,10 +4884,6 @@ function changeQuantity(
 
 }
 
-
-/* =========================================================
-   REMOVER
-========================================================= */
 
 function removeFromCart(
     type,
@@ -4453,10 +4912,6 @@ function removeFromCart(
 }
 
 
-/* =========================================================
-   RENDER CARRINHO
-========================================================= */
-
 function renderCart(){
 
     const cart =
@@ -4472,6 +4927,7 @@ function renderCart(){
         document.getElementById(
             "cartItems"
         );
+
 
     let total =
         0;
@@ -4672,10 +5128,6 @@ function renderCart(){
 }
 
 
-/* =========================================================
-   CONTADOR
-========================================================= */
-
 function updateCartCount(){
 
     const total =
@@ -4707,10 +5159,6 @@ function updateCartCount(){
 
 }
 
-
-/* =========================================================
-   ABRIR / FECHAR
-========================================================= */
 
 function openCart(){
 
@@ -4755,14 +5203,10 @@ function closeCart(){
    CHECKOUT
 ========================================================= */
 
-function checkout(){
-
-    const cart =
-        getCart();
-
+function openCheckout(){
 
     if(
-        cart.length ===
+        getCart().length ===
         0
     ){
 
@@ -4775,19 +5219,451 @@ function checkout(){
     }
 
 
+    closeCart();
+
+
+    document
+    .getElementById(
+        "checkoutModal"
+    )
+    .classList
+    .remove(
+        "hidden"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    renderCheckoutSummary();
+
+    renderCheckoutNotice();
+
+}
+
+
+function closeCheckout(){
+
+    document
+    .getElementById(
+        "checkoutModal"
+    )
+    .classList
+    .add(
+        "hidden"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+function toggleAddress(){
+
+    const delivery =
+        document.getElementById(
+            "deliveryType"
+        )
+        .value;
+
+
+    document.getElementById(
+        "addressFields"
+    )
+    .style
+    .display =
+        delivery ===
+        "entrega"
+        ? "grid"
+        : "none";
+
+}
+
+
+function getCheckoutItems(){
+
+    const cart =
+        getCart();
+
     const products =
         getProducts();
 
     const kits =
         getKits();
 
-    let total =
-        0;
+
+    return cart.map(
+        item => {
+
+            if(
+                item.type ===
+                "kit"
+            ){
+
+                const kit =
+                    kits.find(
+                        kit =>
+                            kit.id ===
+                            item.id
+                    );
+
+
+                return {
+
+                    type:
+                        "kit",
+
+                    id:
+                        item.id,
+
+                    name:
+                        kit?.name ||
+                        item.id,
+
+                    qty:
+                        item.qty,
+
+                    price:
+                        Number(
+                            kit?.price ||
+                            0
+                        )
+
+                };
+
+            }
+
+
+            const product =
+                products.find(
+                    product =>
+                        product.id ===
+                        item.id
+                );
+
+
+            return {
+
+                type:
+                    "product",
+
+                id:
+                    item.id,
+
+                name:
+                    product?.name ||
+                    item.id,
+
+                qty:
+                    item.qty,
+
+                price:
+                    Number(
+                        product?.price ||
+                        0
+                    )
+
+            };
+
+        }
+    );
+
+}
+
+
+function getCheckoutTotal(){
+
+    return getCheckoutItems()
+    .reduce(
+        (
+            total,
+            item
+        ) =>
+            total +
+            (
+                Number(
+                    item.price
+                ) *
+                Number(
+                    item.qty
+                )
+            ),
+        0
+    );
+
+}
+
+
+function renderCheckoutSummary(){
+
+    const items =
+        getCheckoutItems();
+
+
+    const total =
+        getCheckoutTotal();
+
+
+    document.getElementById(
+        "checkoutSummary"
+    )
+    .innerHTML = `
+
+        <strong>
+            Resumo do pedido
+        </strong>
+
+        <div style="margin-top:10px">
+
+            ${
+                items.map(
+                    item => `
+
+                    <div class="checkout-summary-row">
+
+                        <span>
+
+                            ${item.name}
+                            x
+                            ${item.qty}
+
+                        </span>
+
+                        <strong>
+
+                            ${
+                                money(
+                                    item.price *
+                                    item.qty
+                                )
+                            }
+
+                        </strong>
+
+                    </div>
+
+                    `
+                )
+                .join("")
+            }
+
+        </div>
+
+
+        <div
+        style="
+        border-top:1px solid var(--line);
+        margin-top:8px;
+        padding-top:10px;
+        "
+        class="checkout-summary-row">
+
+            <strong>
+                TOTAL
+            </strong>
+
+            <strong
+            style="
+            font-size:21px;
+            color:var(--pink);
+            ">
+
+                ${money(total)}
+
+            </strong>
+
+        </div>
+
+    `;
+
+}
+
+
+function renderCheckoutNotice(){
+
+    const settings =
+        read(
+            "impacto_settings",
+            DEFAULT_SETTINGS
+        );
+
+
+    const mode =
+        settings.checkoutMode ||
+        "internal";
+
+
+    const notice =
+        document.getElementById(
+            "checkoutPaymentNotice"
+        );
+
+
+    if(
+        mode ===
+        "whatsapp"
+    ){
+
+        notice.innerHTML = `
+
+        Após confirmar,
+        o pedido será registrado
+        e o WhatsApp da Impacto Pro será aberto
+        para continuidade do atendimento.
+
+        `;
+
+        return;
+
+    }
+
+
+    if(
+        mode ===
+        "online"
+    ){
+
+        notice.innerHTML = `
+
+        A empresa definiu pagamento online,
+        porém o gateway ainda precisa ser integrado.
+
+        Por segurança,
+        o pedido será registrado como
+        <strong>Aguardando integração de pagamento</strong>.
+
+        `;
+
+        return;
+
+    }
+
+
+    notice.innerHTML = `
+
+    A forma definitiva de pagamento
+    ainda não foi definida.
+
+    O pedido será registrado
+    no sistema como
+    <strong>Aguardando definição de pagamento</strong>.
+
+    `;
+
+}
+
+
+function validateCheckout(){
+
+    const name =
+        document.getElementById(
+            "customerName"
+        )
+        .value
+        .trim();
+
+
+    const phone =
+        document.getElementById(
+            "customerPhone"
+        )
+        .value
+        .trim();
+
+
+    if(
+        !name ||
+        !phone
+    ){
+
+        alert(
+            "Informe nome e telefone."
+        );
+
+        return false;
+
+    }
+
+
+    if(
+        document.getElementById(
+            "deliveryType"
+        )
+        .value ===
+        "entrega"
+    ){
+
+        const address =
+            document.getElementById(
+                "customerAddress"
+            )
+            .value
+            .trim();
+
+
+        const number =
+            document.getElementById(
+                "customerNumber"
+            )
+            .value
+            .trim();
+
+
+        const city =
+            document.getElementById(
+                "customerCity"
+            )
+            .value
+            .trim();
+
+
+        if(
+            !address ||
+            !number ||
+            !city
+        ){
+
+            alert(
+                "Preencha os dados principais de entrega."
+            );
+
+            return false;
+
+        }
+
+    }
+
+
+    return true;
+
+}
+
+
+function finishCheckout(){
+
+    if(
+        !validateCheckout()
+    ){
+
+        return;
+
+    }
+
+
+    const items =
+        getCheckoutItems();
+
+
+    const products =
+        getProducts();
 
 
     for(
         const item of
-        cart
+        items
     ){
 
         if(
@@ -4811,68 +5687,54 @@ function checkout(){
 
                 alert(
                     "Estoque insuficiente para " +
-                    (
-                        product?.name ||
-                        item.id
-                    )
+                    item.name
                 );
 
                 return;
 
             }
-
-
-            total +=
-                Number(
-                    product.price
-                ) *
-                Number(
-                    item.qty
-                );
-
-        }
-        else{
-
-            const kit =
-                kits.find(
-                    kit =>
-                        kit.id ===
-                        item.id
-                );
-
-
-            if(
-                !kit ||
-                kit.price == null
-            ){
-
-                alert(
-                    "Este KIT ainda não possui valor definido."
-                );
-
-                return;
-
-            }
-
-
-            total +=
-                Number(
-                    kit.price
-                ) *
-                Number(
-                    item.qty
-                );
 
         }
 
     }
 
 
-    const orders =
+    const settings =
         read(
-            "impacto_orders",
-            []
+            "impacto_settings",
+            DEFAULT_SETTINGS
         );
+
+
+    const mode =
+        settings.checkoutMode ||
+        "internal";
+
+
+    let paymentStatus =
+        "Aguardando definição de pagamento";
+
+
+    if(
+        mode ===
+        "whatsapp"
+    ){
+
+        paymentStatus =
+            "Aguardando atendimento pelo WhatsApp";
+
+    }
+
+
+    if(
+        mode ===
+        "online"
+    ){
+
+        paymentStatus =
+            "Aguardando integração de pagamento";
+
+    }
 
 
     const order = {
@@ -4882,7 +5744,7 @@ function checkout(){
             Date.now()
             .toString()
             .slice(
-                -6
+                -8
             ),
 
         date:
@@ -4895,13 +5757,117 @@ function checkout(){
         status:
             "Novo",
 
-        total:
-            total,
+        paymentStatus:
+            paymentStatus,
+
+        checkoutMode:
+            mode,
+
+        customer:{
+
+            name:
+                document.getElementById(
+                    "customerName"
+                )
+                .value
+                .trim(),
+
+            phone:
+                document.getElementById(
+                    "customerPhone"
+                )
+                .value
+                .trim(),
+
+            email:
+                document.getElementById(
+                    "customerEmail"
+                )
+                .value
+                .trim()
+
+        },
+
+        delivery:{
+
+            type:
+                document.getElementById(
+                    "deliveryType"
+                )
+                .value,
+
+            cep:
+                document.getElementById(
+                    "customerCep"
+                )
+                .value
+                .trim(),
+
+            address:
+                document.getElementById(
+                    "customerAddress"
+                )
+                .value
+                .trim(),
+
+            number:
+                document.getElementById(
+                    "customerNumber"
+                )
+                .value
+                .trim(),
+
+            district:
+                document.getElementById(
+                    "customerDistrict"
+                )
+                .value
+                .trim(),
+
+            city:
+                document.getElementById(
+                    "customerCity"
+                )
+                .value
+                .trim(),
+
+            state:
+                document.getElementById(
+                    "customerState"
+                )
+                .value
+                .trim(),
+
+            complement:
+                document.getElementById(
+                    "customerComplement"
+                )
+                .value
+                .trim()
+
+        },
+
+        notes:
+            document.getElementById(
+                "customerNotes"
+            )
+            .value
+            .trim(),
 
         items:
-            cart
+            items,
+
+        total:
+            getCheckoutTotal()
 
     };
+
+
+    const orders =
+        read(
+            "impacto_orders",
+            []
+        );
 
 
     orders.unshift(
@@ -4923,13 +5889,99 @@ function checkout(){
 
     updateCartCount();
 
-    closeCart();
+    closeCheckout();
+
+
+    if(
+        mode ===
+        "whatsapp"
+    ){
+
+        openOrderWhatsApp(
+            order
+        );
+
+    }
 
 
     alert(
         "Pedido " +
         order.id +
-        " criado com sucesso!"
+        " registrado com sucesso!"
+    );
+
+}
+
+
+function openOrderWhatsApp(
+    order
+){
+
+    const settings =
+        read(
+            "impacto_settings",
+            DEFAULT_SETTINGS
+        );
+
+
+    const number =
+        String(
+            settings.whatsapp ||
+            ""
+        )
+        .replace(
+            /\D/g,
+            ""
+        );
+
+
+    if(!number){
+
+        return;
+
+    }
+
+
+    const items =
+        order.items
+        .map(
+            item =>
+                item.name +
+                " x" +
+                item.qty
+        )
+        .join("\n");
+
+
+    const text = `
+
+Olá!
+
+Pedido: ${order.id}
+
+Cliente:
+${order.customer.name}
+
+Telefone:
+${order.customer.phone}
+
+Itens:
+${items}
+
+Total:
+${money(order.total)}
+
+    `;
+
+
+    window.open(
+        "https://wa.me/" +
+        number +
+        "?text=" +
+        encodeURIComponent(
+            text
+        ),
+        "_blank"
     );
 
 }
@@ -4946,7 +5998,7 @@ function openWhatsApp(
     const settings =
         read(
             "impacto_settings",
-            {}
+            DEFAULT_SETTINGS
         );
 
 
@@ -4964,7 +6016,7 @@ function openWhatsApp(
     if(!number){
 
         alert(
-            "O WhatsApp da Impacto Pro ainda precisa ser cadastrado na Área do Funcionário."
+            "O WhatsApp ainda precisa ser cadastrado na Área do Funcionário."
         );
 
         return;
@@ -5012,7 +6064,7 @@ function openWhatsApp(
 
 
 /* =========================================================
-   MENU MOBILE
+   MOBILE MENU
 ========================================================= */
 
 function toggleMobileMenu(){
@@ -5084,7 +6136,7 @@ document
 
 
 /* =========================================================
-   SINCRONIZAÇÃO LOCAL
+   STORAGE UPDATE
 ========================================================= */
 
 window.addEventListener(
@@ -5133,6 +6185,8 @@ renderProducts();
 renderKits();
 
 updateCartCount();
+
+toggleAddress();
 
 </script>
 
