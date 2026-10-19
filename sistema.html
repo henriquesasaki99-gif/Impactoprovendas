@@ -29,9 +29,9 @@ Impacto Pro | Sistema
 
     --black2:#252a33;
 
-    --pink:#ff2d94;
+    --pink:#159bd2;
 
-    --pink2:#ff79bd;
+    --pink2:#8edfff;
 
     --blue:#94ddff;
 
@@ -54,6 +54,15 @@ Impacto Pro | Sistema
 *{
     box-sizing:border-box;
 }
+
+/* Identidade visual alinhada ao site Impacto Pro */
+::selection{background:rgba(73,185,237,.28);color:#101216}
+.input:focus, input:focus, select:focus, textarea:focus{
+    outline:2px solid rgba(73,185,237,.38);
+    outline-offset:1px;
+    border-color:#49b9ed;
+}
+
 
 body{
 
@@ -124,7 +133,7 @@ a{
 
         radial-gradient(
             circle at 90% 10%,
-            rgba(255,45,148,.14),
+            rgba(73,185,237,.18),
             transparent 30%
         ),
 
@@ -310,7 +319,7 @@ a{
         linear-gradient(
             90deg,
             rgba(255,255,255,.08),
-            rgba(255,45,148,.18)
+            rgba(21,155,210,.24)
         );
 
 }
@@ -432,7 +441,7 @@ a{
 
     color:var(--red);
 
-    background:#fff0f3;
+    background:#eaf8ff;
 
     border:
         1px solid
@@ -741,7 +750,7 @@ textarea.input{
 
     color:#b9233f;
 
-    background:#fff0f3;
+    background:#eaf8ff;
 
 }
 
@@ -2707,7 +2716,7 @@ const DEFAULT_PRODUCTS = [
         minStock:20,
 
         color:
-            "linear-gradient(#ff8dca,#ff2d94)"
+            "linear-gradient(#ff8dca,#159bd2)"
 
     },
 
