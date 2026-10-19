@@ -882,7 +882,36 @@ textarea.input{
 
 }
 
+
+.image-preview{min-height:54px;margin:10px 0;padding:9px;border:1px dashed #9bbdd0;border-radius:13px;display:flex;align-items:center;gap:9px;color:#60798b;font-size:12px;max-width:100%;overflow:hidden}.image-preview img{max-height:125px;max-width:100%;object-fit:contain;border-radius:10px}.editor-field{padding:10px 0;border-bottom:1px solid var(--line)}.editor-field label{display:block;margin-bottom:8px;font-weight:850;font-size:12px}.editor-field textarea{min-height:95px}
 </style>
+
+<script>
+/* Impacto Pro — preparação única da base inicial de demonstração.
+   Executa somente na primeira visita após a atualização neste navegador/origem.
+   Não apaga imagens, usuários, configurações ou edições do site. */
+(function(){
+  const marker='impacto_base_limpa_v1';
+  try {
+    if (localStorage.getItem(marker)==='ok') return;
+    const transactionKeys=['impacto_orders','impacto_sales','impacto_expenses','impacto_movements'];
+    transactionKeys.forEach(key=>localStorage.setItem(key,'[]'));
+    const raw=localStorage.getItem('impacto_products');
+    if (raw) {
+      const products=JSON.parse(raw);
+      if (Array.isArray(products)) {
+        const adjusted=products.map(product=>({...product,stock:0}));
+        localStorage.setItem('impacto_products',JSON.stringify(adjusted));
+      }
+    }
+    // O carrinho anterior não deve conservar itens de pedidos de demonstração.
+    ['impacto_cart','impacto_cart_v2','impacto_pdv_cart'].forEach(key=>localStorage.removeItem(key));
+    localStorage.setItem(marker,'ok');
+  } catch(error) {
+    console.error('Falha na preparação da base limpa:',error);
+  }
+})();
+</script>
 
 </head>
 
@@ -1105,6 +1134,7 @@ data-admin="true">
 
 </button>
 
+<button data-page="editor" data-admin="true">✦ Editor do Site</button>
 </div>
 
 
@@ -1638,6 +1668,7 @@ placeholder="linear-gradient(...)">
 </div>
 
 
+<div class="field full"><label>FOTO DO PRODUTO (JPG / PNG / WEBP)</label><input class="input" type="file" accept="image/png,image/jpeg,image/webp" id="productImageUpload" onchange="loadImageField(this,'productImage','productImagePreview')"><input type="hidden" id="productImage"><div id="productImagePreview" class="image-preview"></div><button type="button" class="btn btn-secondary btn-sm" onclick="clearImageField('productImage','productImageUpload','productImagePreview')">Remover foto</button></div>
 <div class="actions-row">
 
 <button
@@ -1789,6 +1820,7 @@ DESCRIÇÃO
 id="kitDescription"
 class="input">
 </textarea>
+<div class="field full"><label>IMAGEM DO KIT</label><input class="input" type="file" id="kitImageUpload" accept="image/png,image/jpeg,image/webp" onchange="loadImageField(this,'kitImage','kitImagePreview')"><input type="hidden" id="kitImage"><div id="kitImagePreview" class="image-preview"></div><button type="button" class="btn btn-secondary btn-sm" onclick="clearImageField('kitImage','kitImageUpload','kitImagePreview')">Remover imagem</button></div>
 
 </div>
 
@@ -2513,6 +2545,14 @@ sem reconstruir o site inteiro.
 </section>
 
 
+
+<section id="page-editor" class="page">
+ <div class="card"><h2>Editor visual do site público</h2><p class="muted">Altere textos e imagens dos destaques. As mudanças ficam disponíveis ao index.html quando os dois arquivos utilizam a mesma origem no navegador. Use o backup para proteger suas alterações.</p>
+ <div id="siteEditorFields" class="form-grid"></div>
+ <div class="actions-row"><button class="btn btn-primary" onclick="saveSiteEditor()">Salvar conteúdo do site</button><button class="btn btn-secondary" onclick="renderSiteEditor()">Recarregar</button></div></div>
+ <div class="card section-gap"><h2>Backup dos dados do sistema</h2><p class="muted">Inclui produtos, fotos compactadas, kits, pedidos, vendas, configurações e conteúdo visual. Guarde o arquivo em local seguro, pois ele também pode conter dados pessoais e senhas deste sistema legado.</p><div class="actions-row"><button class="btn btn-secondary" onclick="exportImpactoBackup()">Baixar backup JSON</button><label class="btn btn-secondary" for="backupImport">Importar backup JSON</label><input id="backupImport" type="file" accept=".json,application/json" onchange="importImpactoBackup(this)" hidden></div></div>
+</section>
+
 </main>
 
 </div>
@@ -2643,7 +2683,7 @@ const DEFAULT_PRODUCTS = [
 
         cost:0,
 
-        stock:120,
+        stock:0,
 
         minStock:20,
 
@@ -2662,7 +2702,7 @@ const DEFAULT_PRODUCTS = [
 
         cost:0,
 
-        stock:95,
+        stock:0,
 
         minStock:20,
 
@@ -2681,7 +2721,7 @@ const DEFAULT_PRODUCTS = [
 
         cost:0,
 
-        stock:140,
+        stock:0,
 
         minStock:20,
 
@@ -3080,9 +3120,8 @@ document
 );
 
 
-function openPage(
-    page
-){
+function openPage(page){
+    if (["usuarios","configuracoes","editor"].includes(page) && currentUser?.role !== "admin") { alert("Acesso reservado ao administrador."); return; }
 
     document
     .querySelectorAll(
@@ -3155,8 +3194,8 @@ function openPage(
         usuarios:
             "Usuários",
 
-        configuracoes:
-            "Configurações"
+        configuracoes: "Configurações",
+        editor: "Editor do Site"
 
     };
 
@@ -4478,6 +4517,7 @@ function renderProductList(){
 
 
 function saveProduct(){
+    if(!currentUser) return;
 
     const oldId =
         $("productEditId")
@@ -4549,6 +4589,7 @@ function saveProduct(){
                 20
             ),
 
+        image: $("productImage").value || "",
         color:
             $("productColor")
             .value ||
@@ -4642,8 +4683,10 @@ function editProduct(
     $("productMin").value =
         product.minStock;
 
-    $("productColor").value =
-        product.color;
+    $("productColor").value = product.color;
+    $("productImage").value = product.image || "";
+    $("productImageUpload").value = "";
+    updateImagePreview("productImage", "productImagePreview");
 
 }
 
@@ -4671,7 +4714,9 @@ function clearProductForm(){
         20;
 
 }
-
+// Limpeza da foto apenas ao limpar formulário; editar mantém a imagem atual.
+const originalClearProductForm = clearProductForm;
+clearProductForm = function(){ originalClearProductForm(); clearImageField("productImage","productImageUpload","productImagePreview"); };
 
 function deleteProduct(
     id
@@ -4745,9 +4790,10 @@ function syncKitForm(){
             false
         );
 
-    $("kitDescription").value =
-        kit.description ||
-        "";
+    $("kitDescription").value = kit.description || "";
+    $("kitImage").value = kit.image || "";
+    $("kitImageUpload").value = "";
+    updateImagePreview("kitImage","kitImagePreview");
 
 }
 
@@ -4807,6 +4853,7 @@ function saveKit(){
             .value ===
             "true",
 
+        image: $("kitImage").value || "",
         description:
             $("kitDescription")
             .value
@@ -5787,6 +5834,7 @@ function loadSettings(){
 
 
 function saveSettings(){
+    if(currentUser?.role !== "admin") return alert("Acesso reservado ao administrador.");
 
     write(
         "impacto_settings",
@@ -5890,6 +5938,56 @@ function renderAll(){
 }
 
 
+
+/* Editor de imagens e conteúdo visual (armazenamento local compatível). */
+const SITE_CONTENT_FIELDS = [
+ ["heroTitle","Título de abertura"],["heroDescription","Descrição de abertura"],
+ ["heroPhoto","Foto principal do topo","image"],["heroSidePhoto","Foto complementar do topo","image"],
+ ["differentialsTitle","Título dos diferenciais"],["differentialsDescription","Descrição dos diferenciais"],
+ ["feature1Title","Hero 1 • Alta resistência"],["feature1Description","Hero 1 • Descrição"],
+ ["feature2Title","Hero 2 • Menos manchas"],["feature2Description","Hero 2 • Descrição"],
+ ["feature3Title","Hero 3 • Confecção própria"],["feature3Description","Hero 3 • Descrição"],
+ ["feature4Title","Hero 4 • Vida útil"],["feature4Description","Hero 4 • Descrição"],
+ ["resistanceTitle","Título da seção de resistência"],["resistanceDescription","Descrição da seção de resistência"],
+ ["footerDescription","Descrição do rodapé"]
+];
+function safeText(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function updateImagePreview(hiddenId, previewId){
+ const src=$(hiddenId)?.value; const box=$(previewId);if(!box)return;
+ box.replaceChildren();
+ if(!src){box.textContent='Sem imagem selecionada';return;}
+ const img=document.createElement('img');img.src=src;img.alt='Prévia';box.append(img);
+}
+function clearImageField(hiddenId,fileId,previewId){$(hiddenId).value='';if($(fileId))$(fileId).value='';updateImagePreview(hiddenId,previewId);}
+function loadImageField(input, hiddenId, previewId){
+ const file=input.files?.[0];if(!file)return;
+ if(!['image/jpeg','image/png','image/webp'].includes(file.type)){alert('Use imagem JPG, PNG ou WEBP.');input.value='';return;}
+ if(file.size>8*1024*1024){alert('Imagem maior que 8 MB. Escolha uma menor.');input.value='';return;}
+ const reader=new FileReader();reader.onerror=()=>alert('Erro ao ler imagem');reader.onload=()=>{
+ const pic=new Image();pic.onerror=()=>alert('Imagem inválida');pic.onload=()=>{
+ const scale=Math.min(1,1050/Math.max(pic.width,pic.height));const c=document.createElement('canvas');c.width=Math.max(1,Math.round(pic.width*scale));c.height=Math.max(1,Math.round(pic.height*scale));
+ c.getContext('2d').drawImage(pic,0,0,c.width,c.height);const result=c.toDataURL('image/webp',.72);
+ if(result.length>750000){alert('Imagem ainda muito grande para este armazenamento.');return;}
+ $(hiddenId).value=result;updateImagePreview(hiddenId,previewId);
+ };pic.src=reader.result;
+ };reader.readAsDataURL(file);
+}
+function renderSiteEditor(){
+ const values=read('impacto_site_content',{});const el=$('siteEditorFields');if(!el)return;
+ el.innerHTML=SITE_CONTENT_FIELDS.map(([key,label,type])=>`<div class="field editor-field ${type==='image'?'full':''}"><label>${safeText(label)}</label>${type==='image'?`<input type="file" accept="image/jpeg,image/png,image/webp" class="input" onchange="loadImageField(this,'se_${key}','sp_${key}')"><input type="hidden" id="se_${key}"><div class="image-preview" id="sp_${key}"></div><button type="button" class="btn btn-secondary btn-sm" onclick="clearImageField('se_${key}',null,'sp_${key}')">Remover</button>`:`<textarea id="se_${key}" class="input" placeholder="Deixe em branco para usar texto original"></textarea>`}</div>`).join('');
+ SITE_CONTENT_FIELDS.forEach(([key,label,type])=>{ $('se_'+key).value=values[key]||'';if(type==='image')updateImagePreview('se_'+key,'sp_'+key); });
+}
+function saveSiteEditor(){
+ if(currentUser?.role!=='admin')return alert('Acesso restrito.');
+ const values={};SITE_CONTENT_FIELDS.forEach(([key])=>values[key]=$('se_'+key).value.trim());
+ try{write('impacto_site_content',values);alert('Conteúdo salvo neste navegador. Abra o index.html da mesma origem para visualizar.');}
+ catch(e){alert('Espaço insuficiente para as imagens. Reduza o tamanho ou remova alguma foto.');}
+}
+const IMPACTO_BACKUP_KEYS=['impacto_products','impacto_kits','impacto_orders','impacto_sales','impacto_expenses','impacto_movements','impacto_settings','impacto_users','impacto_site_content'];
+function exportImpactoBackup(){if(currentUser?.role!=='admin')return;const backup={format:'impactopro-local-v1',exportedAt:new Date().toISOString(),data:{}};IMPACTO_BACKUP_KEYS.forEach(key=>backup.data[key]=read(key,null));const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ImpactoPro_backup_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);}
+async function importImpactoBackup(input){if(currentUser?.role!=='admin')return;const f=input.files?.[0];if(!f)return;try{const obj=JSON.parse(await f.text());if(obj.format!=='impactopro-local-v1'||typeof obj.data!=='object')throw Error('Formato inválido');if(!confirm('Importar backup substitui todos os dados locais deste sistema. Continuar?'))return;const snapshot={};IMPACTO_BACKUP_KEYS.forEach(k=>snapshot[k]=localStorage.getItem(k));try{IMPACTO_BACKUP_KEYS.forEach(k=>{if(obj.data[k]!==null && obj.data[k]!==undefined)write(k,obj.data[k]);});}catch(error){IMPACTO_BACKUP_KEYS.forEach(k=>{if(snapshot[k]===null)localStorage.removeItem(k);else localStorage.setItem(k,snapshot[k]);});throw error;}renderAll();renderSiteEditor();alert('Backup restaurado.');}catch(e){alert('Erro na importação: '+e.message);}finally{input.value='';}}
+window.addEventListener('storage',e=>{if(!currentUser||!e.key?.startsWith('impacto_'))return;try{renderAll();renderSiteEditor();}catch(err){console.warn('Atualização entre abas',err)}});
+
 /* =========================================================
    START
 ========================================================= */
@@ -5908,8 +6006,21 @@ $("expenseDate")
 
 
 syncKitForm();
+renderSiteEditor();
 
 </script>
 
+<script>
+/* Impacto Pro: mantém listagens locais atualizadas entre abas. */
+(function(){
+ function refresh(){
+  if(typeof currentUser==='undefined'||!currentUser)return;
+  try{if(typeof renderAll==='function')renderAll();}
+  catch(err){console.warn('Impacto Pro: erro na atualização local',err)}
+ }
+ window.addEventListener('focus',refresh);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
+})();
+</script>
 </body>
 </html>
